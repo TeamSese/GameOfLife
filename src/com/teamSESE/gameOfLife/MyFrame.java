@@ -8,7 +8,7 @@ public class MyFrame extends JFrame
 {
 	
 	JButton start;
-	String items[] = {"-","1","2","3","4"};
+	String items[] = {"-","1","2","3","4","5","6"};
 	JComboBox combo = new JComboBox(items);
 	JLabel numOfP = new JLabel("Select Number Of Players");
 	JTextField players = new JTextField(20);
@@ -49,6 +49,12 @@ public class MyFrame extends JFrame
       
         if(str=="4"){
         	players.setText("4 Players selected");}
+        
+        if(str=="5"){
+        	players.setText("5 Players selected");}
+        
+        if(str=="6"){
+        	players.setText("6 Players selected");}
        }
 
        }
