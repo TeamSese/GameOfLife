@@ -13,22 +13,34 @@ public class MyFrame extends JFrame
 	JLabel numOfP = new JLabel("Select Number Of Players");
 	JTextField players = new JTextField(20);
 	
-	public MyFrame(int x, int y, String title, Color col)
+	public MyFrame(String title, Color col)
   {
       setTitle(title);
       setSize(500, 500);
-      setLocation(x, y);
+      setLocationRelativeTo(null);
 
       Container c = getContentPane();
       c.setBackground(col);
       c.setLayout(new FlowLayout());
       
+      JPanel welcome = new JPanel();
+      JLabel welcomeMessage = new JLabel ("Welcome to the Game of Life");
+      welcome.add(welcomeMessage);
+      c.add(welcome);
+      
+      JPanel playerPanel = new JPanel(); 
+      playerPanel.setLayout(new GridLayout(1,2));
+      playerPanel.add(numOfP);
+      playerPanel.add(combo);
+      c.add(playerPanel);
+      
+      JPanel startPanel = new JPanel(); 
+      startPanel.setLayout(new GridLayout(2,1));
       start = new JButton();
       start.setText("Start");
-      c.add(numOfP);
-      c.add(combo);
-      c.add(start);
-      c.add(players);
+      startPanel.add(players);
+      startPanel.add(start);
+      c.add(startPanel);
       
       combo.addItemListener(new ItemListener(){
         public void itemStateChanged(ItemEvent ie){
