@@ -21,26 +21,20 @@ public class MyFrame extends JFrame
 
       Container c = getContentPane();
       c.setBackground(col);
-      c.setLayout(new FlowLayout());
+      getContentPane().setLayout(null);
       
       JPanel welcome = new JPanel();
+      welcome.setBounds(155, 5, 190, 26);
       JLabel welcomeMessage = new JLabel ("Welcome to the Game of Life");
       welcome.add(welcomeMessage);
       c.add(welcome);
       
       JPanel playerPanel = new JPanel(); 
+      playerPanel.setBounds(92, 225, 316, 27);
       playerPanel.setLayout(new GridLayout(1,2));
+      c.add(playerPanel);
       playerPanel.add(numOfP);
       playerPanel.add(combo);
-      c.add(playerPanel);
-      
-      JPanel startPanel = new JPanel(); 
-      startPanel.setLayout(new GridLayout(2,1));
-      start = new JButton();
-      start.setText("Start");
-      startPanel.add(players);
-      startPanel.add(start);
-      c.add(startPanel);
       
       combo.addItemListener(new ItemListener(){
         public void itemStateChanged(ItemEvent ie){
@@ -74,6 +68,16 @@ public class MyFrame extends JFrame
       }
       
       );
+      
+      JPanel startPanel = new JPanel(); 
+      startPanel.setBounds(123, 264, 254, 58);
+      startPanel.setLayout(new GridLayout(2,1));
+      c.add(startPanel);
+      startPanel.add(players);
+      start = new JButton();
+      start.setBounds(123, 348, 254, 29);
+      getContentPane().add(start);
+      start.setText("Start");
       
 
       setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
