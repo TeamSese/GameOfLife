@@ -79,14 +79,13 @@ public class MyFrame extends JFrame
       getContentPane().add(start);
       start.setText("Start");
       
+      JButton btnHelp = new JButton("Help");
+      btnHelp.setBounds(191, 399, 117, 29);
+      getContentPane().add(btnHelp);
+      
 
       setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
       setVisible(true);
 
   } // MyFrame constructor
-	
-	//test
-	
-	
-
 }
