@@ -55,13 +55,13 @@ public class GameGUI extends JFrame{
 		
 		for (int i = 0; i < playerList.size(); i++){												//For each player...
 			panelArray[i] = new JPanel();															// *create a new JPanel
-			panelArray[i].setBackground(playerList.get(i).playerColor);								// *set the background colour to the players colour
+			panelArray[i].setBackground(playerList.get(i).color);								// *set the background colour to the players colour
 			panel.add(panelArray[i]);																// *add it to the main panel
 
-			playerNameArray[i] = new JLabel(playerList.get(i).playerName);							// *put the player name on a JLabel
+			playerNameArray[i] = new JLabel(playerList.get(i).name);							// *put the player name on a JLabel
 			panel.add(playerNameArray[i]);															// *add the JLabel to the main panel
 
-			playerMoneyArray[i] = new JLabel("- £" + playerList.get(i).playerMoney.toString());		// *put player money on a JLabel
+			playerMoneyArray[i] = new JLabel("- £" + playerList.get(i).money.toString());		// *put player money on a JLabel
 			panel.add(playerMoneyArray[i]);															// *add the JLabel to the main panel
 		}
 

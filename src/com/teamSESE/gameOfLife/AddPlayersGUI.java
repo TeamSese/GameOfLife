@@ -161,7 +161,7 @@ public class AddPlayersGUI extends JFrame implements ActionListener{
 
 	private boolean colorIsAvailable (Color col){				//Method finds if colour is already used by another player
 		for(int i = 0; i < playerList.size(); i++){				//Cycles through players in list
-			if(playerList.get(i).playerColor.equals(col)){		//If a player already has that colour
+			if(playerList.get(i).color.equals(col)){		//If a player already has that colour
 				return false;									//	return false for colorIsAvailable
 			}
 		}
@@ -174,8 +174,8 @@ public class AddPlayersGUI extends JFrame implements ActionListener{
 
 		if(!playerNameField.getText().equals(null) && !playerNameField.getText().equals("") && getSelectedColor() != null){	//if all player info has been entered
 			playerList.add(new Player(playerNameField.getText(),getSelectedColor()));										//add the player
-			System.out.println("Adding Player: " + playerList.get(playerList.size()-1).playerName);
-			System.out.println("Player Colour: " + playerList.get(playerList.size()-1).playerColor.toString());
+			System.out.println("Adding Player: " + playerList.get(playerList.size()-1).name);
+			System.out.println("Player Colour: " + playerList.get(playerList.size()-1).color.toString());
 			dispose();																										//close the GUI
 			if (MyFrame.selectedPlayers != playerList.size()){				//if another player needs to be added
 				new AddPlayersGUI();										//open the AddPlayersGUI again 
