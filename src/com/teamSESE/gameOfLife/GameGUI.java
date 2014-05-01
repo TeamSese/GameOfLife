@@ -5,10 +5,12 @@ import java.awt.event.*;
 import java.util.ArrayList;
 
 import javax.swing.*;
+
 import com.jgoodies.forms.layout.FormLayout;
 import com.jgoodies.forms.layout.ColumnSpec;
 import com.jgoodies.forms.layout.RowSpec;
 import com.jgoodies.forms.factories.FormFactory;
+
 import javax.swing.border.TitledBorder;
 
 
@@ -30,10 +32,41 @@ public class GameGUI extends JFrame{
 	protected static final ArrayList<Player> playerList = new ArrayList<Player>();	
 
 	public GameGUI(ArrayList<Player> playerList){
+		
+		int sizeOfGrid = 5;
 
 		setTitle("QUB Game of Life");
 		setExtendedState(getExtendedState()|JFrame.MAXIMIZED_BOTH );		//Maximises GUI
 		setLocationRelativeTo(null);
+		getContentPane().setLayout(new GridLayout(2, 0, 0, 0));
+		
+		JPanel panel = new JPanel();
+		JButton squares[][] = new JButton[sizeOfGrid][sizeOfGrid];
+
+		
+		JPanel panel_1 = new JPanel();
+		panel_1.setBorder(new TitledBorder(null, "QUB Game of Life", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		getContentPane().add(panel_1);
+		getContentPane().add(panel);
+		panel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
+		panel_1.setLayout(new GridLayout(sizeOfGrid, sizeOfGrid, 0, 0));
+		
+		ImageIcon water = new ImageIcon("src\\water.jpg");
+		
+		for (int i = 0; i < 5; i++) {
+      for (int j = 0; j < 5; j++) {
+          squares[i][j] = new JButton(water);
+          squares[i][j].setIcon(water);
+ 
+          panel_1.add(squares[i][j]);
+      }
+  }
+		
+		JMenuBar menuBar = new JMenuBar();
+		setJMenuBar(menuBar);
+		
+		JMenuItem mntmMenuitem = new JMenuItem("MenuItem");
+		menuBar.add(mntmMenuitem);
 		getContentPane().setLayout(new FormLayout(new ColumnSpec[] {		//Layout set up with WindowBuilder
 				FormFactory.GLUE_COLSPEC,},
 			new RowSpec[] {
@@ -41,10 +74,10 @@ public class GameGUI extends JFrame{
 				FormFactory.RELATED_GAP_ROWSPEC,
 				FormFactory.GLUE_ROWSPEC,}));
 		
-		JPanel panel = new JPanel();
+		//JPanel panel = new JPanel();
 		getContentPane().add(panel, "1, 1, fill, top");
 		
-		JPanel panel_1 = new JPanel();
+		//JPanel panel_1 = new JPanel();
 		panel_1.setBorder(new TitledBorder(null, "QUB Game of Life", TitledBorder.LEADING, TitledBorder.TOP, null, null));	//Border for game
 		getContentPane().add(panel_1, "1, 3, fill, fill");
 		
