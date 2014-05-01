@@ -15,7 +15,15 @@ import javax.swing.border.TitledBorder;
 
 
 public class GameGUI extends JFrame{
-
+	
+	
+	int sizeOfGrid = 5;
+	JPanel gamePanel, scorePanel;
+	JButton [][] squares = new JButton[sizeOfGrid][sizeOfGrid];
+	JMenu options;
+	JMenuItem intructions;
+	JMenuBar bar;
+	
 	/*
 	 * 
 	 * The players are held in an ArrayList as I think this is the best way
@@ -32,59 +40,37 @@ public class GameGUI extends JFrame{
 	protected static final ArrayList<Player> playerList = new ArrayList<Player>();	
 
 	public GameGUI(ArrayList<Player> playerList){
-		
-		int sizeOfGrid = 5;
 
 		setTitle("QUB Game of Life");
 		setExtendedState(getExtendedState()|JFrame.MAXIMIZED_BOTH );		//Maximises GUI
 		setLocationRelativeTo(null);
-		getContentPane().setLayout(new GridLayout(0, 2, 0, 0));
 		
-		JPanel panel = new JPanel();
-		JButton squares[][] = new JButton[sizeOfGrid][sizeOfGrid];
-
+		Container c = getContentPane();
+		c.setBackground(Color.green);
+		c.setLayout(new GridLayout(1,2));
 		
-		JPanel panel_1 = new JPanel();
-		panel_1.setBorder(new TitledBorder(null, "QUB Game of Life", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-		getContentPane().add(panel_1);
-		getContentPane().add(panel);
-		panel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
-		panel_1.setLayout(new GridLayout(sizeOfGrid, sizeOfGrid, 0, 0));
+		intructions = new JMenuItem("Instructions");
+		options = new JMenu("Options");
+		options.add(intructions);
+		bar = new JMenuBar();
+		bar.add(options);
 		
-		ImageIcon water = new ImageIcon("src\\water.jpg");
+		gamePanel = new JPanel();
+		gamePanel.setLayout(new GridLayout(sizeOfGrid,sizeOfGrid));
+		ImageIcon water = new ImageIcon(getClass().getResource("water.jpg"));
 		
-		for (int i = 0; i < 5; i++) {
-      for (int j = 0; j < 5; j++) {
+		for (int i= 0; i< sizeOfGrid; i++) {
+      for (int j= 0; j< sizeOfGrid; j++) {
       		
-          squares[i][j] = new JButton(water);
-          //squares[i][j].setBackground(Color.RED);
-          squares[i][j].setOpaque(true);
-          squares[i][j].setBorderPainted(false);
+          squares[i][j] = new JButton();
           squares[i][j].setIcon(water);
- 
-          panel_1.add(squares[i][j]);
+          gamePanel.add(squares[i][j]);
       }
-  }
+		}
 		
-		JMenuBar menuBar = new JMenuBar();
-		setJMenuBar(menuBar);
-		
-		JMenuItem mntmMenuitem = new JMenuItem("MenuItem");
-		menuBar.add(mntmMenuitem);
-		getContentPane().setLayout(new FormLayout(new ColumnSpec[] {		//Layout set up with WindowBuilder
-				FormFactory.GLUE_COLSPEC,},
-			new RowSpec[] {
-				FormFactory.PREF_ROWSPEC,
-				FormFactory.RELATED_GAP_ROWSPEC,
-				FormFactory.GLUE_ROWSPEC,}));
-		
-		//JPanel panel = new JPanel();
-		getContentPane().add(panel, "1, 1, fill, top");
-		
-		//JPanel panel_1 = new JPanel();
-		panel_1.setBorder(new TitledBorder(null, "QUB Game of Life", TitledBorder.LEADING, TitledBorder.TOP, null, null));	//Border for game
-		getContentPane().add(panel_1, "1, 3, fill, fill");
-		
+		scorePanel = new JPanel();
+		scorePanel.setBorder(new TitledBorder(null, "QUB Game of Life", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		scorePanel.setLayout(new FlowLayout());
 		
 		JPanel panelArray[] = new JPanel[playerList.size()];										//Creates an array of JPanels and 
 		JLabel playerNameArray[] = new JLabel[playerList.size()];									//JLabels of size number of players 
@@ -93,15 +79,20 @@ public class GameGUI extends JFrame{
 		for (int i = 0; i < playerList.size(); i++){												//For each player...
 			panelArray[i] = new JPanel();															// *create a new JPanel
 			panelArray[i].setBackground(playerList.get(i).color);								// *set the background colour to the players colour
-			panel.add(panelArray[i]);																// *add it to the main panel
+			scorePanel.add(panelArray[i]);																// *add it to the main panel
 
 			playerNameArray[i] = new JLabel(playerList.get(i).name);							// *put the player name on a JLabel
-			panel.add(playerNameArray[i]);															// *add the JLabel to the main panel
+			scorePanel.add(playerNameArray[i]);															// *add the JLabel to the main panel
 
 			playerMoneyArray[i] = new JLabel("- £" + playerList.get(i).money.toString());		// *put player money on a JLabel
-			panel.add(playerMoneyArray[i]);															// *add the JLabel to the main panel
+			scorePanel.add(playerMoneyArray[i]);															// *add the JLabel to the main panel
 		}
+		
+		setJMenuBar(bar);
+		c.add(gamePanel);
+		c.add(scorePanel);
 
+		setDefaultCloseOperation(MyFrame.EXIT_ON_CLOSE);
 		setVisible(true);
 	}		
 }

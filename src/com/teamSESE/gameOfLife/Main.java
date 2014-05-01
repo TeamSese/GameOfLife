@@ -8,10 +8,7 @@ public class Main {
 		
 		GameMechanics.setUpCourses();
 		MyFrame f1 = new MyFrame("Game Of Life", Color.lightGray);
-		f1.setDefaultCloseOperation(MyFrame.EXIT_ON_CLOSE);
 		//DebugGUI g1 = new DebugGUI();
-		DebugGUI g1 = new DebugGUI();
-		g1.setDefaultCloseOperation(MyFrame.EXIT_ON_CLOSE);
 
 	}
 
