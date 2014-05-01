@@ -38,7 +38,7 @@ public class GameGUI extends JFrame{
 		setTitle("QUB Game of Life");
 		setExtendedState(getExtendedState()|JFrame.MAXIMIZED_BOTH );		//Maximises GUI
 		setLocationRelativeTo(null);
-		getContentPane().setLayout(new GridLayout(2, 0, 0, 0));
+		getContentPane().setLayout(new GridLayout(0, 2, 0, 0));
 		
 		JPanel panel = new JPanel();
 		JButton squares[][] = new JButton[sizeOfGrid][sizeOfGrid];
@@ -55,7 +55,11 @@ public class GameGUI extends JFrame{
 		
 		for (int i = 0; i < 5; i++) {
       for (int j = 0; j < 5; j++) {
+      		
           squares[i][j] = new JButton(water);
+          //squares[i][j].setBackground(Color.RED);
+          squares[i][j].setOpaque(true);
+          squares[i][j].setBorderPainted(false);
           squares[i][j].setIcon(water);
  
           panel_1.add(squares[i][j]);
