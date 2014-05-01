@@ -16,7 +16,6 @@ import javax.swing.border.TitledBorder;
 
 public class GameGUI extends JFrame{
 	
-	
 	int sizeOfGrid = 5;
 	JPanel gamePanel, scorePanel;
 	JButton [][] squares = new JButton[sizeOfGrid][sizeOfGrid];
