@@ -21,6 +21,8 @@ public class GameMechanics {
 		houseList.add(new House("Caravan",	true,		new BigDecimal(40000),	new BigDecimal(20000)));
 	}
 	
-	
+	public static int dice(){
+		return 1 + (int)(6 * Math.random());
+	}
 
 }
