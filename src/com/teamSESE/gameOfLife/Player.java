@@ -9,9 +9,6 @@ public class Player {
 	Color color;			//holds player colour for each player 	- note it is of type Color 
 	BigDecimal money;		//holds player money for each player 	- note it is of type BigDecimal
 	BigDecimal loan;
-	Boolean degree;
-	Boolean married;
-	int noOfChildren;
 	Course course;
 	House house;
 	int boardPosition;
@@ -20,6 +17,12 @@ public class Player {
 		this.color = playerColor;
 		this.name = playerName;
 		this.money = BigDecimal.ZERO;
+		this.loan = BigDecimal.ZERO;
+		this.course = null;
+		this.house = GameMechanics.houseList.get(0);	//Sets beginner house to ELMS
+		this.boardPosition = 0;
+		
+		
 	}
 	
 	void setMoney(BigDecimal newAmount){		//resets the players money to amount passed in

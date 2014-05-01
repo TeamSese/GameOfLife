@@ -24,11 +24,11 @@ import java.util.ArrayList;
 public class AddPlayersGUI extends JFrame implements ActionListener{
 	private JTextField playerNameField;
 	protected JRadioButton rdbtnRed,rdbtnBlue,rdbtnGreen,rdbtnOrange,rdbtnYellow,rdbtnPink,rdbtnMagenta,rdbtnCyan;
-	protected static final ArrayList<Player> playerList = new ArrayList<Player>();											//Creates arraylist of players
+	private int selectedPlayers;										//Creates arraylist of players
 
-	AddPlayersGUI(){
+	AddPlayersGUI(int selectedPlayers){
 
-
+		this.selectedPlayers = selectedPlayers;
 		setTitle("Enter Player Info");																	//title is set in main method
 		setSize(320, 250);																				// this may need changed but looks ok 
 		setLocationRelativeTo(null);																	// sets the location as the centre of the screen
@@ -45,7 +45,7 @@ public class AddPlayersGUI extends JFrame implements ActionListener{
 		JPanel panel = new JPanel();
 		getContentPane().add(panel, "1, 1, fill, fill");
 
-		JLabel lblEnterPlayer = new JLabel("Enter Player"+(playerList.size()+1)+"'s Name:");
+		JLabel lblEnterPlayer = new JLabel("Enter Player"+(GameMechanics.playerList.size()+1)+"'s Name:");
 		panel.add(lblEnterPlayer);
 
 		playerNameField = new JTextField();
@@ -160,8 +160,8 @@ public class AddPlayersGUI extends JFrame implements ActionListener{
 	}
 
 	private boolean colorIsAvailable (Color col){				//Method finds if colour is already used by another player
-		for(int i = 0; i < playerList.size(); i++){				//Cycles through players in list
-			if(playerList.get(i).color.equals(col)){		//If a player already has that colour
+		for(int i = 0; i < GameMechanics.playerList.size(); i++){				//Cycles through players in list
+			if(GameMechanics.playerList.get(i).color.equals(col)){		//If a player already has that colour
 				return false;									//	return false for colorIsAvailable
 			}
 		}
@@ -173,15 +173,16 @@ public class AddPlayersGUI extends JFrame implements ActionListener{
 		System.out.println("btnNextActionListener Called");
 
 		if(!playerNameField.getText().equals(null) && !playerNameField.getText().equals("") && getSelectedColor() != null){	//if all player info has been entered
-			playerList.add(new Player(playerNameField.getText(),getSelectedColor()));										//add the player
-			System.out.println("Adding Player: " + playerList.get(playerList.size()-1).name);
-			System.out.println("Player Colour: " + playerList.get(playerList.size()-1).color.toString());
+			GameMechanics.playerList.add(new Player(playerNameField.getText(),getSelectedColor()));										//add the player
+			System.out.println("Adding Player: " + GameMechanics.playerList.get(GameMechanics.playerList.size()-1).name);
+			System.out.println("Player Colour: " + GameMechanics.playerList.get(GameMechanics.playerList.size()-1).color.toString());
 			dispose();																										//close the GUI
-			if (MyFrame.selectedPlayers != playerList.size()){				//if another player needs to be added
-				new AddPlayersGUI();										//open the AddPlayersGUI again 
+			if (selectedPlayers != GameMechanics.playerList.size()){				//if another player needs to be added
+				new AddPlayersGUI(selectedPlayers);										//open the AddPlayersGUI again 
 			}
 			else{
-				new GameGUI(playerList);			//If all players have been added open the GameGUI and pass
+				DebugGUI g1 = new DebugGUI();
+				new GameGUI(GameMechanics.playerList);			//If all players have been added open the GameGUI and pass
 			}										//in the ArrayList of players
 
 

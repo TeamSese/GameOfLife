@@ -11,7 +11,6 @@ public class MyFrame extends JFrame
 	JComboBox combo = new JComboBox(items);											// this is the drag down box
 	JLabel numOfP = new JLabel("Select Number Of Players");							// label of instructions
 	JTextField players = new JTextField(20);										// text box shows how many players are selected
-	protected static int selectedPlayers = 0;										// selected no of players after start has been pressed 
 
 	public MyFrame(String title, Color col)
 	{
@@ -98,8 +97,7 @@ public class MyFrame extends JFrame
 						JOptionPane.ERROR_MESSAGE);
 			}
 			else{
-				selectedPlayers = combo.getSelectedIndex();		//get selected number of players
-				AddPlayersGUI aPGUI = new AddPlayersGUI();		//Open add players GUI
+				AddPlayersGUI aPGUI = new AddPlayersGUI(combo.getSelectedIndex());		//Open add players GUI and passes in no of players
 				dispose();										//Closes this GUI
 			}
 		}

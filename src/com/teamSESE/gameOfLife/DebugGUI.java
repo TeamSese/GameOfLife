@@ -1,7 +1,12 @@
 package com.teamSESE.gameOfLife;
 
 import javax.swing.JFrame;
+
+import java.awt.Color;
 import java.awt.GridLayout;
+import java.math.BigDecimal;
+import java.util.ArrayList;
+
 import javax.swing.JPanel;
 import javax.swing.border.TitledBorder;
 import javax.swing.JTextField;
@@ -9,192 +14,143 @@ import javax.swing.UIManager;
 import javax.swing.JLabel;
 
 public class DebugGUI extends JFrame{
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
-	private JTextField textField_3;
-	private JTextField textField_4;
-	private JTextField textField_5;
-	private JTextField textField_6;
-	private JTextField textField_7;
-	private JTextField textField_8;
-	private JTextField textField_9;
-	private JTextField textField_10;
-	private JTextField textField_12;
-	private JTextField textField_13;
-	private JTextField textField_14;
-	private JTextField textField_15;
-	private JTextField textField_16;
-	private JTextField textField_17;
-	private JTextField textField_18;
-	private JTextField textField_19;
-	private JTextField textField_20;
-	private JTextField textField_21;
-	private JTextField textField_22;
-	private JTextField textField_23;
-	private JLabel lblName;
-	private JLabel lblAvailability;
-	private JLabel lblBasesalary;
-	private JLabel lblCurrentsalary;
-	private JLabel lblMaxsalary;
 	
+	String playerLabel[] = {"Name","Colour","Money","Loan","Course","House","Board Position:"};
+	String courseLabel[] = {"Name","available", "baseSalary", "maxSalary","currentSalary"};
+	String houseLabel[] =  {"Name", "Available", "Rent"};
+	
+	private ArrayList<JTextField> playertfArray = new ArrayList<JTextField>();
+	ArrayList<JLabel> playerlblArray = new ArrayList<JLabel>();
+	ArrayList<JPanel> playerpnlArray = new ArrayList<JPanel>();
+	
+	ArrayList<JTextField> coursetfArray = new ArrayList<JTextField>();
+	ArrayList<JLabel> courselblArray = new ArrayList<JLabel>();
+	ArrayList<JPanel> coursepnlArray = new ArrayList<JPanel>();
+	
+	ArrayList<JTextField> housetfArray = new ArrayList<JTextField>();
+	ArrayList<JLabel> houselblArray = new ArrayList<JLabel>();
+	ArrayList<JPanel> housepnlArray = new ArrayList<JPanel>();
+	
+
 	DebugGUI(){
 		setTitle("Debugging Window");
 		setSize(1024,768);
 		getContentPane().setLayout(new GridLayout(1, 0, 0, 0));
 		
-		JPanel panel = new JPanel();
-		panel.setBorder(new TitledBorder(null, "Players", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-		getContentPane().add(panel);
+		//********************	Players Panel
+		JPanel playersPanel = new JPanel();
+		playersPanel.setBorder(new TitledBorder(null, "Players", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		getContentPane().add(playersPanel);
 		
-		JPanel panel_4 = new JPanel();
-		panel_4.setBorder(new TitledBorder(null, "Player1", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-		panel.add(panel_4);
-		panel_4.setLayout(new GridLayout(0, 2, 0, 0));
+		for(int i = 0, k = 0; i < GameMechanics.playerList.size(); i++){
+			playerpnlArray.add(new JPanel());
+			playerpnlArray.get(i).setLayout(new GridLayout(0, 2, 0, 0));
+			playerpnlArray.get(i).setBorder(new TitledBorder(null, "Player: " + i, TitledBorder.LEADING, TitledBorder.TOP, null, null));
+			
+			for (int j =0; j < playerLabel.length; j++){
+				playerlblArray.add(new JLabel(playerLabel[j]));
+				playertfArray.add(new JTextField());
+				playertfArray.get(k).setColumns(10);
+				
+				playerpnlArray.get(i).add(playerlblArray.get(k));
+				playerpnlArray.get(i).add(playertfArray.get(k));
+				k++;
+			}
+			playersPanel.add(playerpnlArray.get(i));
+		}
 		
-		textField = new JTextField();
-		panel_4.add(textField);
-		textField.setColumns(10);
+		//********************	Courses Panel
 		
-		textField_1 = new JTextField();
-		panel_4.add(textField_1);
-		textField_1.setColumns(10);
+		JPanel coursesPanel = new JPanel();
+		coursesPanel.setBorder(new TitledBorder(null, "Courses", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		getContentPane().add(coursesPanel);
+		for(int i = 0, k = 0; i < GameMechanics.courseList.size(); i++){
+			coursepnlArray.add(new JPanel());
+			coursepnlArray.get(i).setLayout(new GridLayout(0, 2, 0, 0));
+			coursepnlArray.get(i).setBorder(new TitledBorder(null, "Course: " + i, TitledBorder.LEADING, TitledBorder.TOP, null, null));
+			
+			for (int j =0; j < courseLabel.length; j++){
+				courselblArray.add(new JLabel(courseLabel[j]));
+				coursetfArray.add(new JTextField());
+				coursetfArray.get(k).setColumns(10);
+				
+				coursepnlArray.get(i).add(courselblArray.get(k));
+				coursepnlArray.get(i).add(coursetfArray.get(k));
+				k++;
+			}
+			coursesPanel.add(coursepnlArray.get(i));
+		}
 		
-		textField_2 = new JTextField();
-		panel_4.add(textField_2);
-		textField_2.setColumns(10);
+		//********************	Houses Panel
 		
-		textField_3 = new JTextField();
-		panel_4.add(textField_3);
-		textField_3.setColumns(10);
+		JPanel housesPanel = new JPanel();
+		housesPanel.setBorder(new TitledBorder(null, "Houses", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		getContentPane().add(housesPanel);
 		
-		textField_4 = new JTextField();
-		panel_4.add(textField_4);
-		textField_4.setColumns(10);
+		for(int i = 0, k = 0; i < GameMechanics.houseList.size(); i++){
+			housepnlArray.add(new JPanel());
+			housepnlArray.get(i).setLayout(new GridLayout(0, 2, 0, 0));
+			housepnlArray.get(i).setBorder(new TitledBorder(null, "house: " + i, TitledBorder.LEADING, TitledBorder.TOP, null, null));
+			
+			for (int j =0; j < houseLabel.length; j++){
+				houselblArray.add(new JLabel(houseLabel[j]));
+				housetfArray.add(new JTextField());
+				housetfArray.get(k).setColumns(10);
+				
+				housepnlArray.get(i).add(houselblArray.get(k));
+				housepnlArray.get(i).add(housetfArray.get(k));
+				k++;
+			}
+			housesPanel.add(housepnlArray.get(i));
+		}
 		
-		textField_5 = new JTextField();
-		panel_4.add(textField_5);
-		textField_5.setColumns(10);
+		//********************	General Panel
 		
-		JPanel panel_1 = new JPanel();
-		panel_1.setBorder(new TitledBorder(null, "Courses", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-		getContentPane().add(panel_1);
+		JPanel generalPanel = new JPanel();
+		generalPanel.setBorder(new TitledBorder(null, "General Stuff", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		getContentPane().add(generalPanel);
 		
-		JPanel panel_10 = new JPanel();
-		panel_10.setBorder(new TitledBorder(null, "Course1", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-		panel_1.add(panel_10);
-		panel_10.setLayout(new GridLayout(0, 2, 0, 0));
-		
-		lblName = new JLabel("Name:");
-		panel_10.add(lblName);
-		
-		textField_6 = new JTextField();
-		panel_10.add(textField_6);
-		textField_6.setColumns(10);
-		
-		lblAvailability = new JLabel("Availability:");
-		panel_10.add(lblAvailability);
-		
-		textField_7 = new JTextField();
-		panel_10.add(textField_7);
-		textField_7.setColumns(10);
-		
-		lblBasesalary = new JLabel("BaseSalary:");
-		panel_10.add(lblBasesalary);
-		
-		textField_8 = new JTextField();
-		panel_10.add(textField_8);
-		textField_8.setColumns(10);
-		
-		lblCurrentsalary = new JLabel("CurrentSalary:");
-		panel_10.add(lblCurrentsalary);
-		
-		textField_9 = new JTextField();
-		panel_10.add(textField_9);
-		textField_9.setColumns(10);
-		
-		lblMaxsalary = new JLabel("MaxSalary:");
-		panel_10.add(lblMaxsalary);
-		
-		textField_10 = new JTextField();
-		panel_10.add(textField_10);
-		textField_10.setColumns(10);
-		
-		JPanel panel_2 = new JPanel();
-		panel_2.setBorder(new TitledBorder(null, "Houses", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-		getContentPane().add(panel_2);
-		
-		JPanel panel_12 = new JPanel();
-		panel_12.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Houses1", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-		panel_2.add(panel_12);
-		panel_12.setLayout(new GridLayout(0, 2, 0, 0));
-		
-		textField_12 = new JTextField();
-		textField_12.setColumns(10);
-		panel_12.add(textField_12);
-		
-		textField_13 = new JTextField();
-		textField_13.setColumns(10);
-		panel_12.add(textField_13);
-		
-		textField_14 = new JTextField();
-		textField_14.setColumns(10);
-		panel_12.add(textField_14);
-		
-		textField_15 = new JTextField();
-		textField_15.setColumns(10);
-		panel_12.add(textField_15);
-		
-		textField_16 = new JTextField();
-		textField_16.setColumns(10);
-		panel_12.add(textField_16);
-		
-		textField_17 = new JTextField();
-		textField_17.setColumns(10);
-		panel_12.add(textField_17);
-		
-		JPanel panel_3 = new JPanel();
-		panel_3.setBorder(new TitledBorder(null, "General Stuff", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-		getContentPane().add(panel_3);
-		
-		JPanel panel_11 = new JPanel();
-		panel_11.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "General1", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-		panel_3.add(panel_11);
-		panel_11.setLayout(new GridLayout(0, 2, 0, 0));
-		
-		textField_18 = new JTextField();
-		textField_18.setColumns(10);
-		panel_11.add(textField_18);
-		
-		textField_19 = new JTextField();
-		textField_19.setColumns(10);
-		panel_11.add(textField_19);
-		
-		textField_20 = new JTextField();
-		textField_20.setColumns(10);
-		panel_11.add(textField_20);
-		
-		textField_21 = new JTextField();
-		textField_21.setColumns(10);
-		panel_11.add(textField_21);
-		
-		textField_22 = new JTextField();
-		textField_22.setColumns(10);
-		panel_11.add(textField_22);
-		
-		textField_23 = new JTextField();
-		textField_23.setColumns(10);
-		panel_11.add(textField_23);
+		updateDebugGUI();
 		setVisible(true);
 		
+	}
+	
+	void updateDebugGUI(){
+		int k = 0;
+		for(int i = 0; i < GameMechanics.playerList.size();i++){
+			playertfArray.get(k).setText(GameMechanics.playerList.get(i).name);k++;
+			playertfArray.get(k).setBackground(GameMechanics.playerList.get(i).color);k++;
+			playertfArray.get(k).setText(GameMechanics.playerList.get(i).money.toString());k++;
+			playertfArray.get(k).setText(GameMechanics.playerList.get(i).loan.toString());k++;
+			
+			/*playertfArray.get(k).setText(GameMechanics.playerList.get(i).course.name);*/k++;
+			playertfArray.get(k).setText(GameMechanics.playerList.get(i).house.name);k++;
+			playertfArray.get(k).setText(Integer.toString(GameMechanics.playerList.get(i).boardPosition));k++;
+		}
+		
+		k = 0;
+		for(int i = 0; i < GameMechanics.courseList.size();i++){
+			coursetfArray.get(k).setText(GameMechanics.courseList.get(i).name);k++;
+			coursetfArray.get(k).setText(GameMechanics.courseList.get(i).available.toString())
+			;k++;
+			coursetfArray.get(k).setText(GameMechanics.courseList.get(i).maxSalary.toString());k++;
+			coursetfArray.get(k).setText(GameMechanics.courseList.get(i).currentSalary.toString());k++;
+			coursetfArray.get(k).setText(GameMechanics.courseList.get(i).baseSalary.toString());k++;
+
+		}
+		
+		k = 0;
+		for(int i = 0; i < GameMechanics.houseList.size();i++){
+			housetfArray.get(k).setText(GameMechanics.houseList.get(i).name);k++;
+			housetfArray.get(k).setText(GameMechanics.houseList.get(i).available.toString());k++;
+			housetfArray.get(k).setText(GameMechanics.houseList.get(i).rentPrice.toString());k++;
+		}
+		/*
 		textField_6.setText(GameMechanics.courseList.get(1).name);
 		textField_7.setText(GameMechanics.courseList.get(1).available.toString());
 		textField_8.setText(GameMechanics.courseList.get(1).baseSalary.toString());
 		textField_9.setText(GameMechanics.courseList.get(1).currentSalary.toString());
-		textField_10.setText(GameMechanics.courseList.get(1).maxSalary.toString());
-		
+		textField_10.setText(GameMechanics.courseList.get(1).maxSalary.toString());*/
 	}
 	
-	
-
 }

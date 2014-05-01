@@ -7,12 +7,12 @@ public class Main {
 	public static void main(String[] args) {
 		
 		GameMechanics.setUpCourses();
-		MyFrame f1 = new MyFrame("Game Of Life", Color.lightGray);
-		f1.setDefaultCloseOperation(MyFrame.EXIT_ON_CLOSE);
+		GameMechanics.setUpHouses();
+		MyFrame f1 = new MyFrame("Game Of Life", Color.lightGray);	//Selects number of Players
+		
 		//DebugGUI g1 = new DebugGUI();
-		DebugGUI g1 = new DebugGUI();
-		g1.setDefaultCloseOperation(MyFrame.EXIT_ON_CLOSE);
-
+		
+	
 	}
 
 }
