@@ -32,6 +32,8 @@ public class GameMechanics {
 		
 	}
 	
-	
+	public static int dice(){
+		return 1 + (int)(6 * Math.random());
+	}
 
 }
