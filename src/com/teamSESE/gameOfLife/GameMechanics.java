@@ -5,13 +5,13 @@ import java.util.ArrayList;
 
 public class GameMechanics {
 	
-	static ArrayList<Career> careerList = new ArrayList<Career>();
+	static ArrayList<Course> courseList = new ArrayList<Course>();
 	static ArrayList<House> houseList = new ArrayList<House>();
 	
-	public static void setUpCareers(){
+	public static void setUpCourses(){
 								//	Name					Available	DegreeReq?		BaseSalary				MaxSalary				CurrentSalary
-		careerList.add(new Career("Doctor",					true, 		true, 			new BigDecimal(60000), 	new BigDecimal(100000),	new BigDecimal(60000)));
-		careerList.add(new Career("Computer Consultant",	true, 		true, 			new BigDecimal(40000), 	new BigDecimal(70000),	new BigDecimal(40000)));
+		courseList.add(new Course("Doctor",					true, 		true, 			new BigDecimal(60000), 	new BigDecimal(100000),	new BigDecimal(60000)));
+		courseList.add(new Course("Computer Consultant",	true, 		true, 			new BigDecimal(40000), 	new BigDecimal(70000),	new BigDecimal(40000)));
 		//etc...
 	}
 	

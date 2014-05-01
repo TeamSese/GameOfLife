@@ -2,7 +2,7 @@ package com.teamSESE.gameOfLife;
 
 import java.math.BigDecimal;
 
-public class Career {
+public class Course {
 	
 	String name;
 	Boolean available;
@@ -11,7 +11,7 @@ public class Career {
 	BigDecimal maxSalary;
 	BigDecimal currentSalary;
 	
-	Career(String name, Boolean available, Boolean degreeRequired, BigDecimal baseSalary, BigDecimal maxSalary, BigDecimal currentSalary){
+	Course(String name, Boolean available, Boolean degreeRequired, BigDecimal baseSalary, BigDecimal maxSalary, BigDecimal currentSalary){
 		
 		this.name = name;
 		this.available = available;

@@ -12,7 +12,7 @@ public class Player {
 	Boolean degree;
 	Boolean married;
 	int noOfChildren;
-	Career career;
+	Course course;
 	House house;
 	int boardPosition;
 

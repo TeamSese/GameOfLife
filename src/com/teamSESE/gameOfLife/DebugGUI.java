@@ -79,11 +79,11 @@ public class DebugGUI extends JFrame{
 		textField_5.setColumns(10);
 		
 		JPanel panel_1 = new JPanel();
-		panel_1.setBorder(new TitledBorder(null, "Careers", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		panel_1.setBorder(new TitledBorder(null, "Courses", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		getContentPane().add(panel_1);
 		
 		JPanel panel_10 = new JPanel();
-		panel_10.setBorder(new TitledBorder(null, "Career1", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		panel_10.setBorder(new TitledBorder(null, "Course1", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		panel_1.add(panel_10);
 		panel_10.setLayout(new GridLayout(0, 2, 0, 0));
 		
@@ -196,12 +196,12 @@ public class DebugGUI extends JFrame{
 		panel_11.add(textField_23);
 		setVisible(true);
 		
-		textField_6.setText(GameMechanics.careerList.get(1).name);
-		textField_7.setText(GameMechanics.careerList.get(1).available.toString());
-		textField_8.setText(GameMechanics.careerList.get(1).baseSalary.toString());
-		textField_9.setText(GameMechanics.careerList.get(1).currentSalary.toString());
-		textField_10.setText(GameMechanics.careerList.get(1).maxSalary.toString());
-		textField_11.setText(GameMechanics.careerList.get(1).degreeRequired.toString());
+		textField_6.setText(GameMechanics.courseList.get(1).name);
+		textField_7.setText(GameMechanics.courseList.get(1).available.toString());
+		textField_8.setText(GameMechanics.courseList.get(1).baseSalary.toString());
+		textField_9.setText(GameMechanics.courseList.get(1).currentSalary.toString());
+		textField_10.setText(GameMechanics.courseList.get(1).maxSalary.toString());
+		textField_11.setText(GameMechanics.courseList.get(1).degreeRequired.toString());
 		
 		
 	}
