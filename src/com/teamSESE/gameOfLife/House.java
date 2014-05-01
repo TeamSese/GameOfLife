@@ -5,13 +5,11 @@ public class House {
 	
 	String name;
 	Boolean available;
-	BigDecimal buyPrice;
-	BigDecimal sellPrice;
+	BigDecimal rentPrice;
 
-	public House(String name, Boolean available, BigDecimal buyPrice, BigDecimal sellPrice){
+	public House(String name, Boolean available, BigDecimal rentPrice){
 		this.name = name;
 		this.available = available;
-		this.buyPrice = buyPrice;
-		this.sellPrice = sellPrice;
+		this.rentPrice = rentPrice;
 	}
 }

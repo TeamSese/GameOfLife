@@ -20,7 +20,6 @@ public class DebugGUI extends JFrame{
 	private JTextField textField_8;
 	private JTextField textField_9;
 	private JTextField textField_10;
-	private JTextField textField_11;
 	private JTextField textField_12;
 	private JTextField textField_13;
 	private JTextField textField_14;
@@ -38,7 +37,6 @@ public class DebugGUI extends JFrame{
 	private JLabel lblBasesalary;
 	private JLabel lblCurrentsalary;
 	private JLabel lblMaxsalary;
-	private JLabel lblNewLabel;
 	
 	DebugGUI(){
 		setTitle("Debugging Window");
@@ -122,13 +120,6 @@ public class DebugGUI extends JFrame{
 		panel_10.add(textField_10);
 		textField_10.setColumns(10);
 		
-		lblNewLabel = new JLabel("Degree Req?");
-		panel_10.add(lblNewLabel);
-		
-		textField_11 = new JTextField();
-		panel_10.add(textField_11);
-		textField_11.setColumns(10);
-		
 		JPanel panel_2 = new JPanel();
 		panel_2.setBorder(new TitledBorder(null, "Houses", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		getContentPane().add(panel_2);
@@ -201,8 +192,6 @@ public class DebugGUI extends JFrame{
 		textField_8.setText(GameMechanics.courseList.get(1).baseSalary.toString());
 		textField_9.setText(GameMechanics.courseList.get(1).currentSalary.toString());
 		textField_10.setText(GameMechanics.courseList.get(1).maxSalary.toString());
-		textField_11.setText(GameMechanics.courseList.get(1).degreeRequired.toString());
-		
 		
 	}
 	
