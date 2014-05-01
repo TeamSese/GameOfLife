@@ -9,6 +9,7 @@ public class Main {
 		//GameMechanics.setUpCareers();
 		//GameMechanics.setUpCourses();
 		MyFrame f1 = new MyFrame("Game Of Life", Color.lightGray);
+		f1.setDefaultCloseOperation(MyFrame.EXIT_ON_CLOSE);
 		//DebugGUI g1 = new DebugGUI();
 
 	}
