@@ -4,14 +4,21 @@ import java.math.BigDecimal;
 
 public class Career {
 	
-	String careerTitle;
-	BigDecimal salary;
+	String name;
+	Boolean available;
+	Boolean degreeRequired;
+	BigDecimal baseSalary;
+	BigDecimal maxSalary;
+	BigDecimal currentSalary;
 	
-	public Career (String careerTitle, BigDecimal salary)
-	{
-		this.careerTitle = careerTitle;
-		this.salary = salary;
+	Career(String name, Boolean available, Boolean degreeRequired, BigDecimal baseSalary, BigDecimal maxSalary, BigDecimal currentSalary){
 		
+		this.name = name;
+		this.available = available;
+		this.degreeRequired = degreeRequired;
+		this.baseSalary = baseSalary;
+		this.maxSalary = maxSalary;
+		this.currentSalary = currentSalary;
 	}
 
 }
