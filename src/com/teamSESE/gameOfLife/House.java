@@ -1,15 +1,17 @@
 package com.teamSESE.gameOfLife;
+import java.math.BigDecimal;
 
 public class House {
 	
-	String houseType;
-	int houseValue;
-	
-	public House (String houseType, int houseValue)
-	{
-		this.houseType = houseType;
-		this.houseValue = houseValue;
-	}
-	
+	String name;
+	Boolean available;
+	BigDecimal buyPrice;
+	BigDecimal sellPrice;
 
+	public House(String name, Boolean available, BigDecimal buyPrice, BigDecimal sellPrice){
+		this.name = name;
+		this.available = available;
+		this.buyPrice = buyPrice;
+		this.sellPrice = sellPrice;
+	}
 }

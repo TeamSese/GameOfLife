@@ -38,6 +38,7 @@ public class GameGUI extends JFrame{
 		setTitle("QUB Game of Life");
 		setExtendedState(getExtendedState()|JFrame.MAXIMIZED_BOTH );		//Maximises GUI
 		setLocationRelativeTo(null);
+<<<<<<< .merge_file_gSx7mB
 		getContentPane().setLayout(new GridLayout(1, 0, 0, 0));
 		
 		JPanel panel = new JPanel();
@@ -67,6 +68,21 @@ public class GameGUI extends JFrame{
 		
 		JMenuItem mntmMenuitem = new JMenuItem("MenuItem");
 		menuBar.add(mntmMenuitem);
+=======
+		getContentPane().setLayout(new FormLayout(new ColumnSpec[] {		//Layout set up with WindowBuilder
+				FormFactory.GLUE_COLSPEC,},
+			new RowSpec[] {
+				FormFactory.PREF_ROWSPEC,
+				FormFactory.RELATED_GAP_ROWSPEC,
+				FormFactory.GLUE_ROWSPEC,}));
+		
+		JPanel panel = new JPanel();
+		getContentPane().add(panel, "1, 1, fill, top");
+		
+		JPanel panel_1 = new JPanel();
+		panel_1.setBorder(new TitledBorder(null, "QUB Game of Life", TitledBorder.LEADING, TitledBorder.TOP, null, null));	//Border for game
+		getContentPane().add(panel_1, "1, 3, fill, fill");
+>>>>>>> .merge_file_I0MSUe
 		
 		
 		JPanel panelArray[] = new JPanel[playerList.size()];										//Creates an array of JPanels and 
