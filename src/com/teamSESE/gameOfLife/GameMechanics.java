@@ -3,6 +3,8 @@ package com.teamSESE.gameOfLife;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 
+import javax.swing.JOptionPane;
+
 public class GameMechanics {
 	
 	static ArrayList<Player> playerList = new ArrayList<Player>();
@@ -89,10 +91,22 @@ public class GameMechanics {
 	}
 
 	public static void movePlayer(int i) {
+		JOptionPane.showMessageDialog(null, GameMechanics.playerList.get(i).name + ", your turn to roll");
 		int j = dice();
+		JOptionPane.showMessageDialog(null, GameMechanics.playerList.get(i).name + ", you rolled a " + j);
 		System.out.print("Player " +i+ " rolled the dice and got a " +j+ ".. \n Moved from position " + playerList.get(i).boardPosition+ " to ");
-		playerList.get(i).boardPosition = playerList.get(i).boardPosition + j;
-		System.out.println("position " + playerList.get(i).boardPosition);
+		
+		if ((playerList.get(i).boardPosition  + j >= 15) && (playerList.get(i).house.equals(houseList.get(0))))
+		{
+			playerList.get(i).boardPosition = 15;
+			JOptionPane.showMessageDialog(null, GameMechanics.playerList.get(i).name + ", you must choose a house ");
+			playerList.get(i).house = houseList.get(1);
+		}
+		else
+		{
+			playerList.get(i).boardPosition = playerList.get(i).boardPosition + j;
+			System.out.println("position " + playerList.get(i).boardPosition);
+		}
 	}
 
 	public static void startGame() {
@@ -122,10 +136,7 @@ public class GameMechanics {
 					gameOver = true;
 				}
 				g1.updateDebugGUI();
-				
 			}
 		}
-		
 	}
-
 }
