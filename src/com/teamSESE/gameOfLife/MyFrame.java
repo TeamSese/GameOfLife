@@ -19,18 +19,20 @@ public class MyFrame extends JFrame
 		setLocationRelativeTo(null);																	// sets the location as the centre of the screen
 
 		Container c = getContentPane();																	//container to hold the different panels
-		c.setBackground(col);																			//col from main
+		c.setBackground(Color.green);																			//col from main
 		getContentPane().setLayout(null);																//no layout selected so we can place anywhere
-
+		
 		JPanel welcome = new JPanel();																		//wecome to the game message to display at top of box
 		welcome.setBounds(155, 5, 190, 26);																	// location
 		JLabel welcomeMessage = new JLabel ("Welcome to the Game of Life"); //message
 		welcome.add(welcomeMessage);																		//add to panel
+		welcome.setBackground(Color.green);
 		c.add(welcome);																						// add to container
 
 		JPanel playerPanel = new JPanel(); 													// new panel for players
 		playerPanel.setBounds(92, 225, 316, 27);											// location
 		playerPanel.setLayout(new GridLayout(1,2));											//layout as grid
+		playerPanel.setBackground(Color.green);
 		c.add(playerPanel);																	//add to container
 		playerPanel.add(numOfP);															//label to tell to select num of players
 		playerPanel.add(combo);																// drop down menu
@@ -70,7 +72,8 @@ public class MyFrame extends JFrame
 		startPanel.setBounds(123, 264, 254, 70);						//location 
 		startPanel.setLayout(new GridLayout(2,1));						// using a grid layout
 		startPanel.add(players);										// text box says number of payers
-
+		startPanel.setBackground(Color.green);
+		
 		startButton = new JButton();
 		startButton.setText("Start");											// button has the label start												// actual start button
 		startPanel.add(startButton);											// button added
