@@ -45,5 +45,9 @@ public class Player {
 	void takeMoney(BigDecimal amount){							//Subtracts the amount passed in from the 
 		this.money = this.money.subtract(amount);	//players current money
 	}
+	
+	public String toString(){			//Needed for select player dialogue to show player
+		return this.name;
+	}
 
 }

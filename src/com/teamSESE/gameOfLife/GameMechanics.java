@@ -3,12 +3,52 @@ package com.teamSESE.gameOfLife;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 
+import javax.swing.JOptionPane;
+
 public class GameMechanics {
 	
 	static ArrayList<Player> playerList = new ArrayList<Player>();
 	static ArrayList<Course> courseList = new ArrayList<Course>();
 	static ArrayList<House> houseList = new ArrayList<House>();
 	static ArrayList<Tile> tileList = new ArrayList<Tile>();
+	public static boolean gameOver =false;
+	
+	static int tileProperties[] = {		//What each tile should do goes in here - in order!
+								//Tile Number
+		Tile.SELECT_COURSE,		//0
+		Tile.LOOSE_200,			//1
+		Tile.GAIN_200,			//2
+		Tile.LOOSE_200,			//3
+		Tile.SUE_PLAYER_100,	//4
+		Tile.SUE_PLAYER_100,	//5
+		Tile.SUE_PLAYER_100,	//6
+		Tile.LOOSE_200,			//7
+		Tile.GAIN_200,			//8
+		Tile.LOOSE_200,			//9
+		Tile.GAIN_200,			//10
+		Tile.LOOSE_200,			//11
+		Tile.GAIN_200,			//12
+		Tile.LOOSE_200,			//13
+		Tile.GAIN_200,			//14
+		Tile.LOOSE_200,			//15
+		Tile.GAIN_200,			//16
+		Tile.LOOSE_200,			//17
+		Tile.GAIN_200,			//18
+		Tile.LOOSE_200,			//19
+		Tile.GAIN_200,			//20
+		Tile.LOOSE_200,			//21
+		Tile.GAIN_200,			//22
+		Tile.LOOSE_200,			//23
+		Tile.GAIN_200,			//24
+		Tile.LOOSE_200,			//25
+		Tile.GAIN_200,			//26
+		Tile.LOOSE_200,			//27
+		Tile.GAIN_200,			//28
+		Tile.LOOSE_200			//29
+		
+		//Tile.PAY_DAY,			//dont work yet 
+		
+		};
 	
 	
 	public static void setUpCourses(){
@@ -26,7 +66,7 @@ public class GameMechanics {
 	
 	public static void setUpHouses(){
 						//		Name		Available		Rent
-		houseList.add(new House("Elms",			true,		new BigDecimal(40)));
+		houseList.add(new House("Elms",			false,		new BigDecimal(40)));
 		houseList.add(new House("Holylands",	true,		new BigDecimal(20)));
 		houseList.add(new House("Malone Road",	true,		new BigDecimal(40)));
 		houseList.add(new House("Lisburn Road",	true,		new BigDecimal(40)));
@@ -36,8 +76,67 @@ public class GameMechanics {
 		
 	}
 	
+	public static void setUpBoard(){
+		for(int i = 0; i < tileProperties.length; i++){			//This will create the new tiles as they are in the tileProperties array
+			tileList.add(new Tile(tileProperties[i])); 			//and add them to the tileList ArrayList (the board)
+		}
+	}
+	
 	public static int dice(){
 		return 1 + (int)(6 * Math.random());
 	}
+	
+	public static int randomNumber(int low, int high){
+		return low + (int)(high * Math.random());
+	}
 
+	public static void movePlayer(int i) {
+		JOptionPane.showMessageDialog(null, GameMechanics.playerList.get(i).name + ", your turn to roll");
+		int j = dice();
+		JOptionPane.showMessageDialog(null, GameMechanics.playerList.get(i).name + ", you rolled a " + j);
+		System.out.print("Player " +i+ " rolled the dice and got a " +j+ ".. \n Moved from position " + playerList.get(i).boardPosition+ " to ");
+		
+		if ((playerList.get(i).boardPosition  + j >= 15) && (playerList.get(i).house.equals(houseList.get(0))))
+		{
+			playerList.get(i).boardPosition = 15;
+			JOptionPane.showMessageDialog(null, GameMechanics.playerList.get(i).name + ", you must choose a house ");
+			playerList.get(i).house = houseList.get(1);
+		}
+		else
+		{
+			playerList.get(i).boardPosition = playerList.get(i).boardPosition + j;
+			System.out.println("position " + playerList.get(i).boardPosition);
+		}
+	}
+
+	public static void startGame() {
+		for(int i = 0; i < playerList.size(); i++){
+			GameMechanics.tileList.get(0).execute(i);				//This will execute tile 0 on each player - they will select a course on this tile 
+		}
+		
+		DebugGUI g1 = new DebugGUI();
+		/*
+		int i = randomNumber(0, playerList.size()-1);	//This just gets a random number for i to see who takes first go
+		
+		do{
+			movePlayer(i);											//This will change player i s boardPosition
+			tileList.get(playerList.get(i).boardPosition).execute(i);
+			i++;
+		}
+		while(i != playerList.size());
+		*/
+		while(gameOver == false){
+			for(int i = 0; i < playerList.size(); i++){
+				movePlayer(i);
+				if(playerList.get(i).boardPosition < tileList.size()){
+					tileList.get(playerList.get(i).boardPosition).execute(i);
+				}
+				else{
+					System.out.println(playerList.get(i).name + " has finished the game");
+					gameOver = true;
+				}
+				g1.updateDebugGUI();
+			}
+		}
+	}
 }

@@ -21,6 +21,7 @@ public class GameGUI extends JFrame{
 	JButton [][] squares = new JButton[sizeOfGrid][sizeOfGrid];
 	JMenu options;
 	JMenuItem intructions;
+	instructionsFrame instructs = new instructionsFrame();
 	JMenuBar bar;
 	
 	/*
@@ -68,7 +69,7 @@ public class GameGUI extends JFrame{
 		}
 		
 		scorePanel = new JPanel();
-		scorePanel.setBorder(new TitledBorder(null, "QUB Game of Life", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		scorePanel.setBorder(new TitledBorder(null, "Player Stats", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		scorePanel.setLayout(new FlowLayout());
 		
 		JPanel panelArray[] = new JPanel[playerList.size()];										//Creates an array of JPanels and 
@@ -90,6 +91,17 @@ public class GameGUI extends JFrame{
 		setJMenuBar(bar);
 		c.add(gamePanel);
 		c.add(scorePanel);
+		
+		intructions.addActionListener(
+				new ActionListener()
+				{
+					//If howToPlay button is clicked
+					public void actionPerformed(ActionEvent e) {
+						//Close the menu and open the howToPlay frame (using visibility settings)
+						//setVisible(false);
+						instructs.setVisible(true);
+					}
+				});
 
 		setDefaultCloseOperation(MyFrame.EXIT_ON_CLOSE);
 		setVisible(true);
