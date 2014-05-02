@@ -145,6 +145,9 @@ public class DebugGUI extends JFrame{
 			housetfArray.get(k).setText(GameMechanics.houseList.get(i).available.toString());k++;
 			housetfArray.get(k).setText(GameMechanics.houseList.get(i).rentPrice.toString());k++;
 		}
+		validate();
+		repaint();
+		
 		/*
 		textField_6.setText(GameMechanics.courseList.get(1).name);
 		textField_7.setText(GameMechanics.courseList.get(1).available.toString());
