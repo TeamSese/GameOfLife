@@ -17,9 +17,9 @@ public class GameMechanics {
 		Tile.LOOSE_200,			//1
 		Tile.GAIN_200,			//2
 		Tile.LOOSE_200,			//3
-		Tile.SUE_PLAYER_100,			//4
-		Tile.SUE_PLAYER_100,			//5
-		Tile.SUE_PLAYER_100,			//6
+		Tile.SUE_PLAYER_100,	//4
+		Tile.SUE_PLAYER_100,	//5
+		Tile.SUE_PLAYER_100,	//6
 		Tile.LOOSE_200,			//7
 		Tile.GAIN_200,			//8
 		Tile.LOOSE_200,			//9

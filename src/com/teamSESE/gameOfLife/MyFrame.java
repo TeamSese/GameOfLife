@@ -80,9 +80,6 @@ public class MyFrame extends JFrame
 		startButton.addActionListener(startButtonActionListener);				// added actionlistener 
 		c.add(startPanel);														// added to container
 
-		JButton btnHelp = new JButton("Help");							//help button created with label help
-		btnHelp.setBounds(191, 399, 117, 29);							//set a location
-		getContentPane().add(btnHelp);									// added to container
 
 
 		setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);			//close when closed

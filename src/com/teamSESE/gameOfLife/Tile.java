@@ -63,7 +63,7 @@ public class Tile {
         	}
         	
         	case GAIN_500:{
-        		payPlayer(playerID,new BigDecimal(200));
+        		payPlayer(playerID,new BigDecimal(500));
         		System.out.println("Player " + playerID + " gained £500!");
         		break;
         	}
