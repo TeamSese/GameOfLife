@@ -7,7 +7,7 @@ import javax.swing.*;
 public class MyFrame extends JFrame 
 {
 	JButton startButton;															// start button creation
-	String items[] = {"-","1","2","3","4","5","6"};									// options of number of players
+	String items[] = {"-","2","3","4","5","6"};									// options of number of players
 	JComboBox combo = new JComboBox(items);											// this is the drag down box
 	JLabel numOfP = new JLabel("Select Number Of Players");							// label of instructions
 	JTextField players = new JTextField(20);										// text box shows how many players are selected
@@ -42,9 +42,6 @@ public class MyFrame extends JFrame
 
 				if(ie.getStateChange() == ItemEvent.SELECTED){							
 					String str = (String)combo.getSelectedItem();							// if the number changes then change the number of player message
-
-					if(str=="1"){															// self explanatory
-						players.setText("1 Player selected");}
 
 					if(str=="2"){
 						players.setText("2 Players selected");}
@@ -97,7 +94,7 @@ public class MyFrame extends JFrame
 						JOptionPane.ERROR_MESSAGE);
 			}
 			else{
-				AddPlayersGUI aPGUI = new AddPlayersGUI(combo.getSelectedIndex());		//Open add players GUI and passes in no of players
+				AddPlayersGUI aPGUI = new AddPlayersGUI((combo.getSelectedIndex()) + 1);		//Open add players GUI and passes in no of players
 				dispose();										//Closes this GUI
 			}
 		}
