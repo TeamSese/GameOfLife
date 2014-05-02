@@ -14,7 +14,7 @@ public class GameMechanics {
 	public static void setUpCourses(){
 								//	Name		Available	BaseSalary				MaxSalary				CurrentSalary
 		
-		courseList.add(new Course("SESE",		true, 		new BigDecimal(60000), 	new BigDecimal(100000),	new BigDecimal(60000)));
+		courseList.add(new Course("SESE",		false, 		new BigDecimal(60000), 	new BigDecimal(100000),	new BigDecimal(60000)));
 		courseList.add(new Course("Medicine",	true, 		new BigDecimal(40000), 	new BigDecimal(70000),	new BigDecimal(40000)));
 		courseList.add(new Course("Law",		true, 		new BigDecimal(40000), 	new BigDecimal(70000),	new BigDecimal(40000)));
 		courseList.add(new Course("Languages",	true, 		new BigDecimal(40000), 	new BigDecimal(70000),	new BigDecimal(40000)));

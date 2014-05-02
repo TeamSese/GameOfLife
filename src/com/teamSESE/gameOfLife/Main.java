@@ -8,9 +8,9 @@ public class Main {
 		
 		
 		GameMechanics.setUpCourses();
-		GameMechanics.setUpHouses();
-		MyFrame f1 = new MyFrame("Game Of Life", Color.lightGray);	//Selects number of Players
-		
+		//GameMechanics.setUpHouses();
+		//MyFrame f1 = new MyFrame("Game Of Life", Color.lightGray);	//Selects number of Players
+		SelectCourseGUI test = new SelectCourseGUI(1);
 	}
 
 }
