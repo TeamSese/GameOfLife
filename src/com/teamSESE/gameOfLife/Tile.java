@@ -20,6 +20,8 @@ public class Tile {
 	protected static final int GAIN_200 = 5;
 	protected static final int GAIN_500 = 6;
 	protected static final int SUE_PLAYER_100 = 7;		//Player is selected from GUI when tile is landed on
+	protected static final int GAIN_LIFE_TILE = 8;
+	
 	//private static final int BLUE = 5;
 	//private static final int RED = 5;
 	

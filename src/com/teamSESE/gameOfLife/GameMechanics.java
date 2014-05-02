@@ -17,9 +17,9 @@ public class GameMechanics {
 		Tile.LOOSE_200,			//1
 		Tile.GAIN_200,			//2
 		Tile.LOOSE_200,			//3
-		Tile.GAIN_200,			//4
-		Tile.LOOSE_200,			//5
-		Tile.GAIN_200,			//6
+		Tile.SUE_PLAYER_100,			//4
+		Tile.SUE_PLAYER_100,			//5
+		Tile.SUE_PLAYER_100,			//6
 		Tile.LOOSE_200,			//7
 		Tile.GAIN_200,			//8
 		Tile.LOOSE_200,			//9
@@ -44,8 +44,7 @@ public class GameMechanics {
 		Tile.GAIN_200,			//28
 		Tile.LOOSE_200			//29
 		
-		//Tile.PAY_DAY,			//dont work yet
-		//Tile.SUE_PLAYER_100	//
+		//Tile.PAY_DAY,			//dont work yet 
 		
 		};
 	
