@@ -16,9 +16,9 @@ import javax.swing.border.TitledBorder;
 
 public class GameGUI extends JFrame{
 	
-	int sizeOfGrid = 5;
+	int sizeOfGrid = 8;
 	JPanel gamePanel, scorePanel;
-	JButton [][] squares = new JButton[sizeOfGrid][sizeOfGrid];
+	JLabel [][] squares = new JLabel[sizeOfGrid][sizeOfGrid];
 	JMenu options;
 	JMenuItem intructions;
 	instructionsFrame instructs = new instructionsFrame();
@@ -57,7 +57,7 @@ public class GameGUI extends JFrame{
 		
 		gamePanel = new JPanel();
 		gamePanel.setLayout(new GridLayout(sizeOfGrid,sizeOfGrid));
-		ImageIcon straight = new ImageIcon(getClass().getResource("straight.jpg"));
+		ImageIcon straight1 = new ImageIcon(getClass().getResource("straight1.jpg"));
 		ImageIcon turn1 = new ImageIcon(getClass().getResource("turn1.jpg"));
 		ImageIcon turn2 = new ImageIcon(getClass().getResource("turn2.jpg"));
 		ImageIcon turn3 = new ImageIcon(getClass().getResource("turn3.jpg"));
@@ -67,8 +67,8 @@ public class GameGUI extends JFrame{
 		for (int i= 0; i< sizeOfGrid; i++) {
       for (int j= 0; j< sizeOfGrid; j++) {
       		
-          squares[i][j] = new JButton();
-          squares[i][j].setIcon(straight);
+          squares[i][j] = new JLabel();
+          squares[i][j].setIcon(straight1);
           gamePanel.add(squares[i][j]);
       }
 		}
