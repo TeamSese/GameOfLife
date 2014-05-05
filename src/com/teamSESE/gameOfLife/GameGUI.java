@@ -57,13 +57,18 @@ public class GameGUI extends JFrame{
 		
 		gamePanel = new JPanel();
 		gamePanel.setLayout(new GridLayout(sizeOfGrid,sizeOfGrid));
-		ImageIcon water = new ImageIcon(getClass().getResource("water.jpg"));
+		ImageIcon straight = new ImageIcon(getClass().getResource("straight.jpg"));
+		ImageIcon turn1 = new ImageIcon(getClass().getResource("turn1.jpg"));
+		ImageIcon turn2 = new ImageIcon(getClass().getResource("turn2.jpg"));
+		ImageIcon turn3 = new ImageIcon(getClass().getResource("turn3.jpg"));
+		ImageIcon turn4 = new ImageIcon(getClass().getResource("turn4.jpg"));
+
 		
 		for (int i= 0; i< sizeOfGrid; i++) {
       for (int j= 0; j< sizeOfGrid; j++) {
       		
           squares[i][j] = new JButton();
-          squares[i][j].setIcon(water);
+          squares[i][j].setIcon(straight);
           gamePanel.add(squares[i][j]);
       }
 		}
