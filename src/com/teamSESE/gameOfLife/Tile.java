@@ -34,7 +34,7 @@ public class Tile {
 		switch (tileType) {
         	
 			case SELECT_COURSE:	{
-        		//new SelectCourseGUI(playerID);
+        		new SelectCourseGUI(playerID);
 				System.out.println("Player " + playerID + " course selected...");
 				break;
         	}
