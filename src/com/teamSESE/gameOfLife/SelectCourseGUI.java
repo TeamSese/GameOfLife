@@ -1,6 +1,7 @@
 package com.teamSESE.gameOfLife;
 
 import javax.swing.ButtonGroup;
+import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -30,7 +31,7 @@ import java.awt.Rectangle;
 import java.awt.Dimension;
 
 
-public class SelectCourseGUI extends JFrame{
+public class SelectCourseGUI extends JDialog{
 	JPanel panel_1 = new JPanel();
 	JTextField txt1 = new JTextField();
 	JTextField txt2 = new JTextField();
@@ -46,6 +47,9 @@ public class SelectCourseGUI extends JFrame{
 	int playerPos;
 	
 	SelectCourseGUI(int playerPosition){
+		super((SelectCourseGUI)null);
+		setModal(true);
+		
 		playerPos = playerPosition;
 		setTitle("Select Course");
 		setSize(500,352);
@@ -63,7 +67,14 @@ public class SelectCourseGUI extends JFrame{
 		details1.setLayout(new FlowLayout());
 		JPanel details2 = new JPanel();
 		details2.setLayout(new FlowLayout());
-
+		
+		for(int i=0; i<GameMechanics.courseList.size(); i++){
+			if(GameMechanics.courseList.get(i).available){
+				list.add(i);		
+			}
+		}
+		Collections.shuffle(list);
+		
 		button1.setText("???");
 		button1.addActionListener(buttonActionListener);
 		button2.setText("???");
@@ -109,16 +120,11 @@ public class SelectCourseGUI extends JFrame{
 		panel_2.add(select2);
 		select2.addActionListener(select2ActionListener);
 		
-		setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);			//close when closed
+		//setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);			//close when closed
 		setVisible(true);
 		
-		for(int i=0; i<GameMechanics.courseList.size(); i++){
-			if(GameMechanics.courseList.get(i).available){
-				list.add(i);		
-			}
-		}
-		Collections.shuffle(list);
 		
+	
 		
 	}
 	
@@ -142,15 +148,14 @@ public class SelectCourseGUI extends JFrame{
 				buttonPressCount++;
 			}
 		}
-				
+		//)
 	};
 	
 	ActionListener select1ActionListener = new ActionListener(){
 		public void actionPerformed(ActionEvent e)
 		{
-			GameMechanics.playerList.get(playerPos).course.equals(GameMechanics.courseList.get(list.get(0)));
-			GameMechanics.courseList.get(list.get(0)).available.equals(false);
-			GameMechanics.updateDebug();
+			GameMechanics.playerList.get(playerPos).course = GameMechanics.courseList.get(list.get(0));
+			GameMechanics.courseList.get(list.get(0)).available = false;
 			dispose();
 		}	
 				
@@ -159,8 +164,8 @@ public class SelectCourseGUI extends JFrame{
 	ActionListener select2ActionListener = new ActionListener(){
 		public void actionPerformed(ActionEvent e)
 		{
-			GameMechanics.playerList.get(playerPos).course.equals(GameMechanics.courseList.get(list.get(1)));
-			GameMechanics.courseList.get(list.get(1)).available.equals(false);
+			GameMechanics.playerList.get(playerPos).course = GameMechanics.courseList.get(list.get(1));
+			GameMechanics.courseList.get(list.get(1)).available = false;
 			dispose();
 		}	
 				

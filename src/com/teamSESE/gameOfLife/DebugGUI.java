@@ -123,7 +123,7 @@ public class DebugGUI extends JFrame{
 			playertfArray.get(k).setText(GameMechanics.playerList.get(i).money.toString());k++;
 			playertfArray.get(k).setText(GameMechanics.playerList.get(i).loan.toString());k++;
 			
-			/*playertfArray.get(k).setText(GameMechanics.playerList.get(i).course.name);*/k++;
+			playertfArray.get(k).setText(GameMechanics.playerList.get(i).course.name);k++;
 			playertfArray.get(k).setText(GameMechanics.playerList.get(i).house.name);k++;
 			playertfArray.get(k).setText(Integer.toString(GameMechanics.playerList.get(i).boardPosition));k++;
 		}
