@@ -12,6 +12,7 @@ public class GameMechanics {
 	static ArrayList<House> houseList = new ArrayList<House>();
 	static ArrayList<Tile> tileList = new ArrayList<Tile>();
 	public static boolean gameOver =false;
+	public static DebugGUI g1;
 	
 	static int tileProperties[] = {		//What each tile should do goes in here - in order!
 								//Tile Number
@@ -114,7 +115,7 @@ public class GameMechanics {
 			GameMechanics.tileList.get(0).execute(i);				//This will execute tile 0 on each player - they will select a course on this tile 
 		}
 		
-		DebugGUI g1 = new DebugGUI();
+		g1 = new DebugGUI();
 		/*
 		int i = randomNumber(0, playerList.size()-1);	//This just gets a random number for i to see who takes first go
 		
@@ -128,15 +129,19 @@ public class GameMechanics {
 		while(gameOver == false){
 			for(int i = 0; i < playerList.size(); i++){
 				movePlayer(i);
+				updateDebug();
 				if(playerList.get(i).boardPosition < tileList.size()){
 					tileList.get(playerList.get(i).boardPosition).execute(i);
 				}
 				else{
 					System.out.println(playerList.get(i).name + " has finished the game");
 					gameOver = true;
-				}
-				g1.updateDebugGUI();
+				}	
 			}
 		}
+	}
+	
+	public static void updateDebug(){
+		g1.updateDebugGUI();
 	}
 }

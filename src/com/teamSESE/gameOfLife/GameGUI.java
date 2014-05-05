@@ -146,7 +146,7 @@ public class GameGUI extends JFrame{
 		JPanel panelArray[] = new JPanel[playerList.size()];										//Creates an array of JPanels and 
 		JLabel playerNameArray[] = new JLabel[playerList.size()];									//JLabels of size number of players 
 		JLabel playerMoneyArray[] = new JLabel[playerList.size()];		
-		
+	/*	
 		for (int i = 0; i < playerList.size(); i++){												//For each player...
 			panelArray[i] = new JPanel();															// *create a new JPanel
 			panelArray[i].setBackground(playerList.get(i).color);								// *set the background colour to the players colour
@@ -157,7 +157,7 @@ public class GameGUI extends JFrame{
 
 			playerMoneyArray[i] = new JLabel("- £" + playerList.get(i).money.toString());		// *put player money on a JLabel
 			scorePanel.add(playerMoneyArray[i]);															// *add the JLabel to the main panel
-		}
+		}*/
 		
 		setJMenuBar(bar);
 		getContentPane().setLayout(new FormLayout(new ColumnSpec[] {
@@ -169,12 +169,9 @@ public class GameGUI extends JFrame{
 		getContentPane().add(scorePanel, "2, 1, fill, fill");
 		scorePanel.setLayout(new GridLayout(0, 1, 0, 0));
 		
-		panel = new JPanel();
-		scorePanel.add(panel);
-		
-		
-		
-		
+		for(int i = 0; i < GameMechanics.playerList.size(); i++){
+			scorePanel.add(createPlayerPanel(i));
+		}
 		
 		intructions.addActionListener(
 				new ActionListener()
@@ -192,9 +189,23 @@ public class GameGUI extends JFrame{
 	}
 	
 	private static JPanel createPlayerPanel(int playerID){
-		JPanel temp = new JPanel();
+		JPanel tempPanel = new JPanel();
+		tempPanel.setBorder(new TitledBorder(null, GameMechanics.playerList.get(playerID).name, TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		
-		return temp;
+		JPanel colorPanel = new JPanel();
+		colorPanel.setBackground(GameMechanics.playerList.get(playerID).color);	// *set the background colour to the players colour
+		tempPanel.add(colorPanel);
+		
+		JLabel moneyLabel = new JLabel("Money - £" + GameMechanics.playerList.get(playerID).money.toString());
+		tempPanel.add(moneyLabel);
+		JLabel loanLabel = new JLabel("Loan - £" + GameMechanics.playerList.get(playerID).loan.toString());
+		tempPanel.add(loanLabel);
+		JLabel courseLabel = new JLabel("Course - £"); //+ GameMechanics.playerList.get(playerID).course.name);
+		tempPanel.add(courseLabel);
+		JLabel houseLabel = new JLabel("House - £" + GameMechanics.playerList.get(playerID).house.name);
+		tempPanel.add(houseLabel);
+		
+		return tempPanel;
 		
 	}
 }

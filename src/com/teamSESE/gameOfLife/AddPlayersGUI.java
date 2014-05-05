@@ -184,8 +184,6 @@ public class AddPlayersGUI extends JFrame implements ActionListener{
 				new GameGUI(GameMechanics.playerList);			//If all players have been added open the GameGUI and pass
 				GameMechanics.startGame();						//in the ArrayList of players
 			}										
-
-
 		}
 		else{
 			System.out.println("Player name and colour not entered...");	//If all info is not entered show message
