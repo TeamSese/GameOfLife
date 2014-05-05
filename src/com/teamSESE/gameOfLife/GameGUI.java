@@ -76,6 +76,8 @@ public class GameGUI extends JFrame{
 		ImageIcon OrangeCurvedPathUpRight = new ImageIcon(new ImageIcon(getClass().getResource("OrangeCurvedPathRightUp.jpg")).getImage().getScaledInstance(sizeConstraint,sizeConstraint, java.awt.Image.SCALE_SMOOTH));
 		ImageIcon OrangeHorizontalPath = new ImageIcon(new ImageIcon(getClass().getResource("OrangeHorizontalPathOrange.jpg")).getImage().getScaledInstance(sizeConstraint,sizeConstraint, java.awt.Image.SCALE_SMOOTH));
 		ImageIcon OrangeVerticalPath = new ImageIcon(new ImageIcon(getClass().getResource("OrangeVerticalPathOrange.jpg")).getImage().getScaledInstance(sizeConstraint,sizeConstraint, java.awt.Image.SCALE_SMOOTH));
+		ImageIcon OrangeFinishPathDown = new ImageIcon(new ImageIcon(getClass().getResource("OrangeFinishPathDown.jpg")).getImage().getScaledInstance(sizeConstraint,sizeConstraint, java.awt.Image.SCALE_SMOOTH));
+		ImageIcon OrangeFinishPathUp = new ImageIcon(new ImageIcon(getClass().getResource("OrangeFinishPathUp.jpg")).getImage().getScaledInstance(sizeConstraint,sizeConstraint, java.awt.Image.SCALE_SMOOTH));
 		
 		ImageIcon BlueCurvedPathLeftDown = new ImageIcon(new ImageIcon(getClass().getResource("BlueCurvedPathLeftDown.jpg")).getImage().getScaledInstance(sizeConstraint,sizeConstraint, java.awt.Image.SCALE_SMOOTH));
 		ImageIcon BlueCurvedPathLeftUp = new ImageIcon(new ImageIcon(getClass().getResource("BlueCurvedPathLeftUp.jpg")).getImage().getScaledInstance(sizeConstraint,sizeConstraint, java.awt.Image.SCALE_SMOOTH));
@@ -204,7 +206,7 @@ public class GameGUI extends JFrame{
       		}
       		else if (j == 4)
       		{
-      			squares[i][j].setIcon(RedVerticalPath);
+      			squares[i][j].setIcon(OrangeFinishPathDown);
       		}
       		else if (j == 5)
       		{
@@ -253,7 +255,7 @@ public class GameGUI extends JFrame{
       		}
       		else if (j == 5)
       		{
-      			squares[i][j].setIcon(RedVerticalPath);
+      			squares[i][j].setIcon(OrangeFinishPathDown);
       		}
       		else if (j == 6)
       		{
@@ -274,18 +276,84 @@ public class GameGUI extends JFrame{
       		else squares[i][j].setIcon(GrassTile);
       	}
       	
+      	if (i == 5)
+      	{
+      		if (j == 1)
+      		{
+      			squares[i][j].setIcon(BlueCurvedPathRightDown);
+      		}
+      		else if (j == 2)
+      		{
+      			squares[i][j].setIcon(OrangeCurvedPathLeftUp);
+      		}
+      		else if (j == 3)
+      		{
+      			squares[i][j].setIcon(OrangeVerticalPath);
+      		}
+      		else if (j == 4)
+      		{
+      			squares[i][j].setIcon(OrangeCurvedPathUpRight);
+      		}
+      		else if (j == 5)
+      		{
+      			squares[i][j].setIcon(GreenCurvedPathLeftDown);
+      		}
+      		else if (j == 6)
+      		{
+      			squares[i][j].setIcon(OrangeVerticalPath);
+      		}
+      		else if (j == 7)
+      		{
+      			squares[i][j].setIcon(OrangeCurvedPathRightDown);
+      		}
+      		else if (j == 8)
+      		{
+      			squares[i][j].setIcon(BlueCurvedPathLeftUp);
+      		}
+      		else if (j == 9)
+      		{
+      			squares[i][j].setIcon(GreenVerticalPath);
+      		}
+      		else squares[i][j].setIcon(GrassTile);
+      	}
       	
-      	
-      	
-      	
-      	
-      	
-      
-      	
-      	
-      	
-      	
-      	
+      	if (i == 6)
+      	{
+      		if (j == 1)
+      		{
+      			squares[i][j].setIcon(OrangeCurvedPathUpRight);
+      		}
+      		else if (j == 2)
+      		{
+      			squares[i][j].setIcon(GreenHorizontalPath);
+      		}
+      		else if (j == 3)
+      		{
+      			squares[i][j].setIcon(OrangeCurvedPathLeftUp);
+      		}
+      		else if (j == 5)
+      		{
+      			squares[i][j].setIcon(BlueCurvedPathUpRight);
+      		}
+      		else if (j == 6)
+      		{
+      			squares[i][j].setIcon(OrangeCurvedPathLeftUp);
+      		}
+      		else if (j == 7)
+      		{
+      			squares[i][j].setIcon(OrangeCurvedPathUpRight);
+      		}
+      		else if (j == 8)
+      		{
+      			squares[i][j].setIcon(OrangeHorizontalPath);
+      		}
+      		else if (j == 9)
+      		{
+      			squares[i][j].setIcon(OrangeCurvedPathLeftUp);
+      		}
+      		else squares[i][j].setIcon(GrassTile);
+      	}
+     
           gamePanel.add(squares[i][j]);
 
       }
