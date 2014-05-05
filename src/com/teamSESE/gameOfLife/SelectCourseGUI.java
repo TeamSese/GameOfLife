@@ -148,9 +148,9 @@ public class SelectCourseGUI extends JFrame{
 	ActionListener select1ActionListener = new ActionListener(){
 		public void actionPerformed(ActionEvent e)
 		{
-			System.out.println(GameMechanics.playerList.get(playerPos).name);
 			GameMechanics.playerList.get(playerPos).course.equals(GameMechanics.courseList.get(list.get(0)));
-			System.out.println(GameMechanics.playerList.get(playerPos).course.name);
+			GameMechanics.courseList.get(list.get(0)).available.equals(false);
+			GameMechanics.updateDebug();
 			dispose();
 		}	
 				
@@ -159,8 +159,8 @@ public class SelectCourseGUI extends JFrame{
 	ActionListener select2ActionListener = new ActionListener(){
 		public void actionPerformed(ActionEvent e)
 		{
-			System.out.println(GameMechanics.playerList.get(playerPos).course.name);
 			GameMechanics.playerList.get(playerPos).course.equals(GameMechanics.courseList.get(list.get(1)));
+			GameMechanics.courseList.get(list.get(1)).available.equals(false);
 			dispose();
 		}	
 				

@@ -12,13 +12,16 @@ import com.jgoodies.forms.layout.RowSpec;
 import com.jgoodies.forms.factories.FormFactory;
 
 import javax.swing.border.TitledBorder;
+import javax.swing.GroupLayout.Alignment;
+import javax.swing.LayoutStyle.ComponentPlacement;
 
 
 public class GameGUI extends JFrame{
 	
-	int sizeOfGrid = 5;
+	int sizeOfGridX = 7;
+	int sizeOfGridY = 10;
 	JPanel gamePanel, scorePanel;
-	JButton [][] squares = new JButton[sizeOfGrid][sizeOfGrid];
+	JLabel [][] squares = new JLabel[sizeOfGridX][sizeOfGridY];
 	JMenu options;
 	JMenuItem intructions;
 	instructionsFrame instructs = new instructionsFrame();
@@ -38,8 +41,10 @@ public class GameGUI extends JFrame{
 	 */
 
 	protected static final ArrayList<Player> playerList = new ArrayList<Player>();	
+	private JPanel panel;
 
 	public GameGUI(ArrayList<Player> playerList){
+		getContentPane().setMinimumSize(new Dimension(1100, 700));
 
 		setTitle("QUB Game of Life");
 		setExtendedState(getExtendedState()|JFrame.MAXIMIZED_BOTH );		//Maximises GUI
@@ -47,7 +52,6 @@ public class GameGUI extends JFrame{
 		
 		Container c = getContentPane();
 		c.setBackground(Color.green);
-		c.setLayout(new GridLayout(1,2));
 		
 		intructions = new JMenuItem("Instructions");
 		options = new JMenu("Options");
@@ -56,26 +60,312 @@ public class GameGUI extends JFrame{
 		bar.add(options);
 		
 		gamePanel = new JPanel();
-		gamePanel.setLayout(new GridLayout(sizeOfGrid,sizeOfGrid));
-		ImageIcon water = new ImageIcon(getClass().getResource("water.jpg"));
 		
-		for (int i= 0; i< sizeOfGrid; i++) {
-      for (int j= 0; j< sizeOfGrid; j++) {
-      		
-          squares[i][j] = new JButton();
-          squares[i][j].setIcon(water);
+		int sizeConstraint = 100;
+		
+		ImageIcon GreenCurvedPathLeftDown = new ImageIcon(new ImageIcon(getClass().getResource("GreenCurvedPathLeftDown.jpg")).getImage().getScaledInstance(sizeConstraint,sizeConstraint, java.awt.Image.SCALE_SMOOTH));
+		ImageIcon GreenCurvedPathLeftUp = new ImageIcon(new ImageIcon(getClass().getResource("GreenCurvedPathLeftUp.jpg")).getImage().getScaledInstance(sizeConstraint,sizeConstraint, java.awt.Image.SCALE_SMOOTH));
+		ImageIcon GreenCurvedPathRightDown = new ImageIcon(new ImageIcon(getClass().getResource("GreenCurvedPathRightDown.jpg")).getImage().getScaledInstance(sizeConstraint,sizeConstraint, java.awt.Image.SCALE_SMOOTH));
+		ImageIcon GreenCurvedPathUpRight = new ImageIcon(new ImageIcon(getClass().getResource("GreenCurvedPathUpRight.jpg")).getImage().getScaledInstance(sizeConstraint,sizeConstraint, java.awt.Image.SCALE_SMOOTH));
+		ImageIcon GreenHorizontalPath = new ImageIcon(new ImageIcon(getClass().getResource("GreenHorizontalPath.jpg")).getImage().getScaledInstance(sizeConstraint,sizeConstraint, java.awt.Image.SCALE_SMOOTH));
+		ImageIcon GreenVerticalPath = new ImageIcon(new ImageIcon(getClass().getResource("GreenVerticalPath.jpg")).getImage().getScaledInstance(sizeConstraint,sizeConstraint, java.awt.Image.SCALE_SMOOTH));
+		
+		ImageIcon OrangeCurvedPathLeftDown = new ImageIcon(new ImageIcon(getClass().getResource("OrangeCurvedPathLeftDown.jpg")).getImage().getScaledInstance(sizeConstraint,sizeConstraint, java.awt.Image.SCALE_SMOOTH));
+		ImageIcon OrangeCurvedPathLeftUp = new ImageIcon(new ImageIcon(getClass().getResource("OrangeCurvedPathLeftUp.jpg")).getImage().getScaledInstance(sizeConstraint,sizeConstraint, java.awt.Image.SCALE_SMOOTH));
+		ImageIcon OrangeCurvedPathRightDown = new ImageIcon(new ImageIcon(getClass().getResource("OrangeCurvedPathRightDown.jpg")).getImage().getScaledInstance(sizeConstraint,sizeConstraint, java.awt.Image.SCALE_SMOOTH));
+		ImageIcon OrangeCurvedPathUpRight = new ImageIcon(new ImageIcon(getClass().getResource("OrangeCurvedPathRightUp.jpg")).getImage().getScaledInstance(sizeConstraint,sizeConstraint, java.awt.Image.SCALE_SMOOTH));
+		ImageIcon OrangeHorizontalPath = new ImageIcon(new ImageIcon(getClass().getResource("OrangeHorizontalPathOrange.jpg")).getImage().getScaledInstance(sizeConstraint,sizeConstraint, java.awt.Image.SCALE_SMOOTH));
+		ImageIcon OrangeVerticalPath = new ImageIcon(new ImageIcon(getClass().getResource("OrangeVerticalPathOrange.jpg")).getImage().getScaledInstance(sizeConstraint,sizeConstraint, java.awt.Image.SCALE_SMOOTH));
+		ImageIcon OrangeFinishPathDown = new ImageIcon(new ImageIcon(getClass().getResource("OrangeFinishPathDown.jpg")).getImage().getScaledInstance(sizeConstraint,sizeConstraint, java.awt.Image.SCALE_SMOOTH));
+		ImageIcon OrangeFinishPathUp = new ImageIcon(new ImageIcon(getClass().getResource("OrangeFinishPathUp.jpg")).getImage().getScaledInstance(sizeConstraint,sizeConstraint, java.awt.Image.SCALE_SMOOTH));
+		
+		ImageIcon BlueCurvedPathLeftDown = new ImageIcon(new ImageIcon(getClass().getResource("BlueCurvedPathLeftDown.jpg")).getImage().getScaledInstance(sizeConstraint,sizeConstraint, java.awt.Image.SCALE_SMOOTH));
+		ImageIcon BlueCurvedPathLeftUp = new ImageIcon(new ImageIcon(getClass().getResource("BlueCurvedPathLeftUp.jpg")).getImage().getScaledInstance(sizeConstraint,sizeConstraint, java.awt.Image.SCALE_SMOOTH));
+		ImageIcon BlueCurvedPathRightDown = new ImageIcon(new ImageIcon(getClass().getResource("BlueCurvedPathRightDown.jpg")).getImage().getScaledInstance(sizeConstraint,sizeConstraint, java.awt.Image.SCALE_SMOOTH));
+		ImageIcon BlueCurvedPathUpRight = new ImageIcon(new ImageIcon(getClass().getResource("BlueCurvedPathRightUp.jpg")).getImage().getScaledInstance(sizeConstraint,sizeConstraint, java.awt.Image.SCALE_SMOOTH));
+		ImageIcon BlueHorizontalPath = new ImageIcon(new ImageIcon(getClass().getResource("BlueHorizontalPath.jpg")).getImage().getScaledInstance(sizeConstraint,sizeConstraint, java.awt.Image.SCALE_SMOOTH));
+		ImageIcon BlueVerticalPath = new ImageIcon(new ImageIcon(getClass().getResource("BlueVerticalPath.jpg")).getImage().getScaledInstance(sizeConstraint,sizeConstraint, java.awt.Image.SCALE_SMOOTH));
+		
+		ImageIcon RedVerticalPath = new ImageIcon(new ImageIcon(getClass().getResource("RedVerticalPath.jpg")).getImage().getScaledInstance(sizeConstraint,sizeConstraint, java.awt.Image.SCALE_SMOOTH));
+		
+		ImageIcon GrassTile = new ImageIcon(new ImageIcon(getClass().getResource("GrassTile.jpg")).getImage().getScaledInstance(sizeConstraint,sizeConstraint, java.awt.Image.SCALE_SMOOTH));
+		
+
+		
+		// dont look in here its full of if statements 
+		for (int i= 0; i< sizeOfGridX; i++) {
+      for (int j= 0; j< sizeOfGridY; j++) {
+      	
+      	squares[i][j] = new JLabel();
+      	squares[i][j].setPreferredSize(new Dimension(sizeConstraint, sizeConstraint));
+      	
+      	if (i == 0)
+      	{
+      		if (j == 2)
+      		{
+      			squares[i][j].setIcon(OrangeCurvedPathRightDown);
+      		}
+      		else if (j == 3)
+      		{
+      			squares[i][j].setIcon(OrangeHorizontalPath);
+      		}
+      		else if (j == 4)
+      		{
+      			squares[i][j].setIcon(OrangeCurvedPathLeftDown);
+      		}
+      		else if (j == 6)
+      		{
+      			squares[i][j].setIcon(OrangeCurvedPathRightDown);
+      		}
+      		else if (j == 7)
+      		{
+      			squares[i][j].setIcon(OrangeHorizontalPath);
+      		}
+      		else if (j == 8)
+      		{
+      			squares[i][j].setIcon(GreenHorizontalPath);
+      		}
+      		else if (j == 9)
+      		{
+      			squares[i][j].setIcon(OrangeCurvedPathLeftDown);
+      		}
+      		else squares[i][j].setIcon(GrassTile);
+      	}
+      	
+      	if (i == 1)
+      	{
+      		if (j == 0)
+      		{
+      			squares[i][j].setIcon(OrangeCurvedPathRightDown);
+      		}
+      		else if (j == 1)
+      		{
+      			squares[i][j].setIcon(BlueHorizontalPath);
+      		}
+      		else if (j == 2)
+      		{
+      			squares[i][j].setIcon(OrangeCurvedPathLeftUp);
+      		}
+      		else if (j == 4)
+      		{
+      			squares[i][j].setIcon(GreenVerticalPath);
+      		}
+      		else if (j == 5)
+      		{
+      			squares[i][j].setIcon(OrangeCurvedPathRightDown);
+      		}
+      		else if (j == 6)
+      		{
+      			squares[i][j].setIcon(BlueCurvedPathLeftUp);
+      		}
+      		else if (j == 9)
+      		{
+      			squares[i][j].setIcon(BlueVerticalPath);
+      		}
+      		else squares[i][j].setIcon(GrassTile);
+      	}
+      	
+      	if (i == 2)
+      	{
+      		if (j == 0)
+      		{
+      			squares[i][j].setIcon(OrangeVerticalPath);
+      		}
+      		else if (j == 4)
+      		{
+      			squares[i][j].setIcon(OrangeVerticalPath);
+      		}
+      		else if (j == 5)
+      		{
+      			squares[i][j].setIcon(OrangeVerticalPath);
+      		}
+      		else if (j == 8)
+      		{
+      			squares[i][j].setIcon(OrangeCurvedPathRightDown);
+      		}
+      		else if (j == 9)
+      		{
+      			squares[i][j].setIcon(OrangeCurvedPathLeftUp);
+      		}
+      		else squares[i][j].setIcon(GrassTile);
+      	}
+      	
+      	if (i == 3)
+      	{
+      		if (j == 0)
+      		{
+      			squares[i][j].setIcon(GreenVerticalPath);
+      		}
+      		else if (j == 1)
+      		{
+      			squares[i][j].setIcon(OrangeCurvedPathRightDown);
+      		}
+      		else if (j == 2)
+      		{
+      			squares[i][j].setIcon(OrangeCurvedPathLeftDown);
+      		}
+      		else if (j == 4)
+      		{
+      			squares[i][j].setIcon(OrangeFinishPathDown);
+      		}
+      		else if (j == 5)
+      		{
+      			squares[i][j].setIcon(OrangeVerticalPath);
+      		}
+      		else if (j == 6)
+      		{
+      			squares[i][j].setIcon(BlueCurvedPathRightDown);
+      		}
+      		else if (j == 7)
+      		{
+      			squares[i][j].setIcon(GreenCurvedPathLeftDown);
+      		}
+      		else if (j == 8)
+      		{
+      			squares[i][j].setIcon(OrangeCurvedPathUpRight);
+      		}
+      		else if (j == 9)
+      		{
+      			squares[i][j].setIcon(OrangeCurvedPathLeftDown);
+      		}
+      		else squares[i][j].setIcon(GrassTile);
+      	}
+      	
+      	if (i == 4)
+      	{
+      		if (j == 0)
+      		{
+      			squares[i][j].setIcon(OrangeCurvedPathUpRight);
+      		}
+      		else if (j == 1)
+      		{
+      			squares[i][j].setIcon(OrangeCurvedPathLeftUp);
+      		}
+      		else if (j == 2)
+      		{
+      			squares[i][j].setIcon(RedVerticalPath);
+      		}
+      		else if (j == 3)
+      		{
+      			squares[i][j].setIcon(OrangeCurvedPathRightDown);
+      		}
+      		else if (j == 4)
+      		{
+      			squares[i][j].setIcon(OrangeCurvedPathLeftDown);
+      		}
+      		else if (j == 5)
+      		{
+      			squares[i][j].setIcon(OrangeFinishPathDown);
+      		}
+      		else if (j == 6)
+      		{
+      			squares[i][j].setIcon(OrangeVerticalPath);
+      		}
+      		else if (j == 7)
+      		{
+      			squares[i][j].setIcon(OrangeCurvedPathUpRight);
+      		}
+      		else if (j == 8)
+      		{
+      			squares[i][j].setIcon(OrangeCurvedPathLeftDown);
+      		}
+      		else if (j == 9)
+      		{
+      			squares[i][j].setIcon(BlueVerticalPath);
+      		}
+      		else squares[i][j].setIcon(GrassTile);
+      	}
+      	
+      	if (i == 5)
+      	{
+      		if (j == 1)
+      		{
+      			squares[i][j].setIcon(BlueCurvedPathRightDown);
+      		}
+      		else if (j == 2)
+      		{
+      			squares[i][j].setIcon(OrangeCurvedPathLeftUp);
+      		}
+      		else if (j == 3)
+      		{
+      			squares[i][j].setIcon(OrangeVerticalPath);
+      		}
+      		else if (j == 4)
+      		{
+      			squares[i][j].setIcon(OrangeCurvedPathUpRight);
+      		}
+      		else if (j == 5)
+      		{
+      			squares[i][j].setIcon(GreenCurvedPathLeftDown);
+      		}
+      		else if (j == 6)
+      		{
+      			squares[i][j].setIcon(OrangeVerticalPath);
+      		}
+      		else if (j == 7)
+      		{
+      			squares[i][j].setIcon(OrangeCurvedPathRightDown);
+      		}
+      		else if (j == 8)
+      		{
+      			squares[i][j].setIcon(BlueCurvedPathLeftUp);
+      		}
+      		else if (j == 9)
+      		{
+      			squares[i][j].setIcon(GreenVerticalPath);
+      		}
+      		else squares[i][j].setIcon(GrassTile);
+      	}
+      	
+      	if (i == 6)
+      	{
+      		if (j == 1)
+      		{
+      			squares[i][j].setIcon(OrangeCurvedPathUpRight);
+      		}
+      		else if (j == 2)
+      		{
+      			squares[i][j].setIcon(GreenHorizontalPath);
+      		}
+      		else if (j == 3)
+      		{
+      			squares[i][j].setIcon(OrangeCurvedPathLeftUp);
+      		}
+      		else if (j == 5)
+      		{
+      			squares[i][j].setIcon(BlueCurvedPathUpRight);
+      		}
+      		else if (j == 6)
+      		{
+      			squares[i][j].setIcon(OrangeCurvedPathLeftUp);
+      		}
+      		else if (j == 7)
+      		{
+      			squares[i][j].setIcon(OrangeCurvedPathUpRight);
+      		}
+      		else if (j == 8)
+      		{
+      			squares[i][j].setIcon(OrangeHorizontalPath);
+      		}
+      		else if (j == 9)
+      		{
+      			squares[i][j].setIcon(OrangeCurvedPathLeftUp);
+      		}
+      		else squares[i][j].setIcon(GrassTile);
+      	}
+     
           gamePanel.add(squares[i][j]);
+
       }
 		}
 		
 		scorePanel = new JPanel();
 		scorePanel.setBorder(new TitledBorder(null, "Player Stats", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-		scorePanel.setLayout(new FlowLayout());
 		
 		JPanel panelArray[] = new JPanel[playerList.size()];										//Creates an array of JPanels and 
 		JLabel playerNameArray[] = new JLabel[playerList.size()];									//JLabels of size number of players 
 		JLabel playerMoneyArray[] = new JLabel[playerList.size()];		
-		
+	/*	
 		for (int i = 0; i < playerList.size(); i++){												//For each player...
 			panelArray[i] = new JPanel();															// *create a new JPanel
 			panelArray[i].setBackground(playerList.get(i).color);								// *set the background colour to the players colour
@@ -86,11 +376,43 @@ public class GameGUI extends JFrame{
 
 			playerMoneyArray[i] = new JLabel("- £" + playerList.get(i).money.toString());		// *put player money on a JLabel
 			scorePanel.add(playerMoneyArray[i]);															// *add the JLabel to the main panel
-		}
+		}*/
 		
 		setJMenuBar(bar);
-		c.add(gamePanel);
-		c.add(scorePanel);
+		scorePanel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
+		GroupLayout groupLayout = new GroupLayout(getContentPane());
+		groupLayout.setHorizontalGroup(
+			groupLayout.createParallelGroup(Alignment.LEADING)
+				.addGroup(groupLayout.createSequentialGroup()
+					.addComponent(gamePanel, GroupLayout.PREFERRED_SIZE, 1000, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(scorePanel, GroupLayout.PREFERRED_SIZE, 431, GroupLayout.PREFERRED_SIZE)
+					.addGap(81))
+		);
+		groupLayout.setVerticalGroup(
+			groupLayout.createParallelGroup(Alignment.LEADING)
+				.addGroup(groupLayout.createSequentialGroup()
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addComponent(gamePanel, GroupLayout.PREFERRED_SIZE, 800, GroupLayout.PREFERRED_SIZE)
+						.addComponent(scorePanel, GroupLayout.PREFERRED_SIZE, 830, GroupLayout.PREFERRED_SIZE))
+					.addContainerGap())
+		);
+		gamePanel.setLayout(new GridLayout(7, 10));
+		getContentPane().setLayout(groupLayout);
+		getContentPane().setLayout(new FormLayout(new ColumnSpec[] {
+				ColumnSpec.decode("1000px"),
+				FormFactory.GLUE_COLSPEC,},
+			new RowSpec[] {
+				RowSpec.decode("700px"),}));
+		getContentPane().add(gamePanel, "1, 1, fill, fill");
+		getContentPane().add(scorePanel, "2, 1, fill, fill");
+		scorePanel.setLayout(new GridLayout(0, 1, 0, 0));
+		
+		for(int i = 0; i < GameMechanics.playerList.size(); i++){
+			scorePanel.add(createPlayerPanel(i));
+		}
+		panel = new JPanel();
+		scorePanel.add(panel);
 		
 		intructions.addActionListener(
 				new ActionListener()
@@ -105,5 +427,26 @@ public class GameGUI extends JFrame{
 
 		setDefaultCloseOperation(MyFrame.EXIT_ON_CLOSE);
 		setVisible(true);
-	}		
+	}
+	
+	private static JPanel createPlayerPanel(int playerID){
+		JPanel tempPanel = new JPanel();
+		tempPanel.setBorder(new TitledBorder(null, GameMechanics.playerList.get(playerID).name, TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		
+		JPanel colorPanel = new JPanel();
+		colorPanel.setBackground(GameMechanics.playerList.get(playerID).color);	// *set the background colour to the players colour
+		tempPanel.add(colorPanel);
+		
+		JLabel moneyLabel = new JLabel("Money - £" + GameMechanics.playerList.get(playerID).money.toString());
+		tempPanel.add(moneyLabel);
+		JLabel loanLabel = new JLabel("Loan - £" + GameMechanics.playerList.get(playerID).loan.toString());
+		tempPanel.add(loanLabel);
+		JLabel courseLabel = new JLabel("Course - £"); //+ GameMechanics.playerList.get(playerID).course.name);
+		tempPanel.add(courseLabel);
+		JLabel houseLabel = new JLabel("House - £" + GameMechanics.playerList.get(playerID).house.name);
+		tempPanel.add(houseLabel);
+		
+		return tempPanel;
+		
+	}
 }
