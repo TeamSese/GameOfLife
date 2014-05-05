@@ -439,10 +439,16 @@ public class GameGUI extends JFrame{
 		tempPanel.add(moneyLabel);
 		JLabel loanLabel = new JLabel("Loan - £" + GameMechanics.playerList.get(playerID).loan.toString());
 		tempPanel.add(loanLabel);
-		JLabel courseLabel = new JLabel("Course - £" + GameMechanics.playerList.get(playerID).course.name);
+		JLabel courseLabel = new JLabel("Course - " + GameMechanics.playerList.get(playerID).course.name);
 		tempPanel.add(courseLabel);
-		JLabel houseLabel = new JLabel("House - £" + GameMechanics.playerList.get(playerID).house.name);
+		JLabel placementLabel = new JLabel("Placement - " + GameMechanics.playerList.get(playerID).course.placement);
+		tempPanel.add(placementLabel);
+		JLabel salaryLabel = new JLabel("Salary - £" + GameMechanics.playerList.get(playerID).course.currentSalary.toPlainString());
+		tempPanel.add(salaryLabel);
+		JLabel houseLabel = new JLabel("House - " + GameMechanics.playerList.get(playerID).house.name);
 		tempPanel.add(houseLabel);
+		JLabel rentLabel = new JLabel("Rent - £" + GameMechanics.playerList.get(playerID).house.rentPrice.toString());
+		tempPanel.add(rentLabel);
 		
 		return tempPanel;
 		

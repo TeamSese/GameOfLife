@@ -77,14 +77,14 @@ public class GameMechanics {
 	public static void setUpCourses(){
 								//	Name		Available	BaseSalary				MaxSalary				CurrentSalary
 		
-		courseList.add(new Course("SESE",		true, 		new BigDecimal(60000), 	new BigDecimal(100000),	new BigDecimal(60000)));
-		courseList.add(new Course("Medicine",	true, 		new BigDecimal(40000), 	new BigDecimal(70000),	new BigDecimal(40000)));
-		courseList.add(new Course("Law",		true, 		new BigDecimal(40000), 	new BigDecimal(70000),	new BigDecimal(40000)));
-		courseList.add(new Course("Languages",	true, 		new BigDecimal(40000), 	new BigDecimal(70000),	new BigDecimal(40000)));
-		courseList.add(new Course("History",	true, 		new BigDecimal(40000), 	new BigDecimal(70000),	new BigDecimal(40000)));
-		courseList.add(new Course("Engineering",true,		new BigDecimal(40000), 	new BigDecimal(70000),	new BigDecimal(40000)));
-		courseList.add(new Course("Nursing",	true, 		new BigDecimal(40000), 	new BigDecimal(70000),	new BigDecimal(40000)));
-		courseList.add(new Course("Geography",	true, 		new BigDecimal(40000), 	new BigDecimal(70000),	new BigDecimal(40000)));
+		courseList.add(new Course("SESE","Job",		true, 		new BigDecimal(60000), 	new BigDecimal(100000),	new BigDecimal(60000)));
+		courseList.add(new Course("Medicine","Job",	true, 		new BigDecimal(40000), 	new BigDecimal(70000),	new BigDecimal(40000)));
+		courseList.add(new Course("Law","Job",		true, 		new BigDecimal(40000), 	new BigDecimal(70000),	new BigDecimal(40000)));
+		courseList.add(new Course("Languages","Job",	true, 		new BigDecimal(40000), 	new BigDecimal(70000),	new BigDecimal(40000)));
+		courseList.add(new Course("History","Job",	true, 		new BigDecimal(40000), 	new BigDecimal(70000),	new BigDecimal(40000)));
+		courseList.add(new Course("Engineering","Job",true,		new BigDecimal(40000), 	new BigDecimal(70000),	new BigDecimal(40000)));
+		courseList.add(new Course("Nursing","Job",	true, 		new BigDecimal(40000), 	new BigDecimal(70000),	new BigDecimal(40000)));
+		courseList.add(new Course("Geography","Job",	true, 		new BigDecimal(40000), 	new BigDecimal(70000),	new BigDecimal(40000)));
 	}
 	
 	public static void setUpHouses(){
@@ -133,11 +133,15 @@ public class GameMechanics {
 	}
 
 	public static void startGame() {
+		
+		
 		for(int i = 0; i < playerList.size(); i++){
-			GameMechanics.tileList.get(0).execute(i);				//This will execute tile 0 on each player - they will select a course on this tile 
+			GameMechanics.tileList.get(0).execute(i);		//This will execute tile 0 on each player - they will select a course on this tile 
 		}
 		
+		new GameGUI(GameMechanics.playerList);			//If all players have been added open the GameGUI and pass
 		g1 = new DebugGUI();
+		
 		/*
 		int i = randomNumber(0, playerList.size()-1);	//This just gets a random number for i to see who takes first go
 		

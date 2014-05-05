@@ -181,7 +181,6 @@ public class AddPlayersGUI extends JFrame implements ActionListener{
 				new AddPlayersGUI(selectedPlayers);										//open the AddPlayersGUI again 
 			}
 			else{
-				new GameGUI(GameMechanics.playerList);			//If all players have been added open the GameGUI and pass
 				GameMechanics.startGame();						//in the ArrayList of players
 			}										
 		}
