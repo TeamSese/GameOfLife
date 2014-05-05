@@ -408,14 +408,13 @@ public class GameGUI extends JFrame{
 		getContentPane().add(scorePanel, "2, 1, fill, fill");
 		scorePanel.setLayout(new GridLayout(0, 1, 0, 0));
 		
-<<<<<<< HEAD
+
 		for(int i = 0; i < GameMechanics.playerList.size(); i++){
 			scorePanel.add(createPlayerPanel(i));
 		}
-=======
+
 		panel = new JPanel();
 		scorePanel.add(panel);
->>>>>>> ae5b847289134d4a018670412c5a568d69844ddf
 		
 		intructions.addActionListener(
 				new ActionListener()
@@ -444,7 +443,7 @@ public class GameGUI extends JFrame{
 		tempPanel.add(moneyLabel);
 		JLabel loanLabel = new JLabel("Loan - £" + GameMechanics.playerList.get(playerID).loan.toString());
 		tempPanel.add(loanLabel);
-		JLabel courseLabel = new JLabel("Course - £"); //+ GameMechanics.playerList.get(playerID).course.name);
+		JLabel courseLabel = new JLabel("Course - £");// + GameMechanics.playerList.get(playerID).course.name);
 		tempPanel.add(courseLabel);
 		JLabel houseLabel = new JLabel("House - £" + GameMechanics.playerList.get(playerID).house.name);
 		tempPanel.add(houseLabel);
