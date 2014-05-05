@@ -151,14 +151,14 @@ public class GameMechanics {
 		while(gameOver == false){
 			for(int i = 0; i < playerList.size(); i++){
 				movePlayer(i);
-				updateDebug();
 				if(playerList.get(i).boardPosition < tileList.size()){
 					tileList.get(playerList.get(i).boardPosition).execute(i);
 				}
 				else{
 					System.out.println(playerList.get(i).name + " has finished the game");
 					gameOver = true;
-				}	
+				}
+				updateDebug();
 			}
 		}
 	}
