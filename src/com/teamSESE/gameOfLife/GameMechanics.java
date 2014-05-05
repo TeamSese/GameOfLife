@@ -17,37 +17,59 @@ public class GameMechanics {
 	static int tileProperties[] = {		//What each tile should do goes in here - in order!
 								//Tile Number
 		Tile.SELECT_COURSE,		//0
-		Tile.LOOSE_200,			//1
-		Tile.GAIN_200,			//2
-		Tile.LOOSE_200,			//3
-		Tile.SUE_PLAYER_100,	//4
-		Tile.SUE_PLAYER_100,	//5
-		Tile.SUE_PLAYER_100,	//6
-		Tile.LOOSE_200,			//7
-		Tile.GAIN_200,			//8
-		Tile.LOOSE_200,			//9
-		Tile.GAIN_200,			//10
-		Tile.LOOSE_200,			//11
-		Tile.GAIN_200,			//12
-		Tile.LOOSE_200,			//13
-		Tile.GAIN_200,			//14
-		Tile.LOOSE_200,			//15
-		Tile.GAIN_200,			//16
-		Tile.LOOSE_200,			//17
-		Tile.GAIN_200,			//18
-		Tile.LOOSE_200,			//19
-		Tile.GAIN_200,			//20
-		Tile.LOOSE_200,			//21
-		Tile.GAIN_200,			//22
-		Tile.LOOSE_200,			//23
-		Tile.GAIN_200,			//24
-		Tile.LOOSE_200,			//25
-		Tile.GAIN_200,			//26
-		Tile.LOOSE_200,			//27
-		Tile.GAIN_200,			//28
-		Tile.LOOSE_200			//29
-		
-		//Tile.PAY_DAY,			//dont work yet 
+		Tile.GAIN_200,				//1
+		Tile.PAY_DAY,					//2
+		Tile.GAIN_200,				//3
+		Tile.GAIN_200,				//4
+		Tile.GAIN_200,				//5
+		Tile.GAIN_200,				//6
+		Tile.SUE_PLAYER_100,	//7
+		Tile.GAIN_200,				//8
+		Tile.GAIN_200,				//9
+		Tile.PAY_DAY,					//10
+		Tile.GAIN_200,				//11
+		Tile.GAIN_200,				//12
+		Tile.GAIN_200,				//13
+		Tile.GAIN_200,				//14
+		Tile.GAIN_200,	//Tile.SELECT_HOUSE,		//15
+		Tile.GAIN_200,				//16
+		Tile.SUE_PLAYER_100,					//17
+		Tile.GAIN_200,	//Tile.SELECT_HOUSE,		//18
+		Tile.PAY_DAY,				//19
+		Tile.GAIN_200,				//20
+		Tile.SUE_PLAYER_100,				//21
+		Tile.GAIN_200,				//22
+		Tile.GAIN_200,				//23
+		Tile.GAIN_200,				//24
+		Tile.PAY_DAY,					//25
+		Tile.SUE_PLAYER_100,				//26
+		Tile.GAIN_200,				//27
+		Tile.GAIN_200,				//28
+		Tile.GAIN_200,				//29
+		Tile.SUE_PLAYER_100,				//30
+		Tile.PAY_DAY,				//31
+		Tile.GAIN_200,	//Tile.SELECT_HOUSE,		//32
+		Tile.GAIN_200,				//33
+		Tile.GAIN_200,				//34
+		Tile.GAIN_200,					//35
+		Tile.GAIN_200,				//36
+		Tile.GAIN_200,				//37
+		Tile.GAIN_200,				//38
+		Tile.PAY_DAY,				//39
+		Tile.SUE_PLAYER_100,				//40
+		Tile.GAIN_200,				//41
+		Tile.GAIN_200,			//42
+		Tile.GAIN_200,				//43
+		Tile.GAIN_200,				//44
+		Tile.SUE_PLAYER_100,					//45
+		Tile.GAIN_200,				//46
+		Tile.PAY_DAY,				//47
+		Tile.GAIN_200,	//Tile.SELECT_HOUSE,		//48
+		Tile.GAIN_200,				//49
+		Tile.SUE_PLAYER_100,				//50
+		Tile.GAIN_200,				//51
+		Tile.GAIN_200,			//52
+		Tile.GAIN_200,				//53
 		
 		};
 	
