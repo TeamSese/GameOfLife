@@ -41,8 +41,10 @@ public class GameGUI extends JFrame{
 	 */
 
 	protected static final ArrayList<Player> playerList = new ArrayList<Player>();	
+	private JPanel panel;
 
 	public GameGUI(ArrayList<Player> playerList){
+		getContentPane().setMinimumSize(new Dimension(1100, 700));
 
 		setTitle("QUB Game of Life");
 		setExtendedState(getExtendedState()|JFrame.MAXIMIZED_BOTH );		//Maximises GUI
@@ -59,30 +61,30 @@ public class GameGUI extends JFrame{
 		
 		gamePanel = new JPanel();
 		
-		ImageIcon GreenCurvedPathLeftDown = new ImageIcon(getClass().getResource("GreenCurvedPathLeftDown.jpg"));
-		ImageIcon GreenCurvedPathLeftUp = new ImageIcon(getClass().getResource("GreenCurvedPathLeftUp.jpg"));
-		ImageIcon GreenCurvedPathRightDown = new ImageIcon(getClass().getResource("GreenCurvedPathRightDown.jpg"));
-		ImageIcon GreenCurvedPathUpRight = new ImageIcon(getClass().getResource("GreenCurvedPathUpRight.jpg"));
-		ImageIcon GreenHorizontalPath = new ImageIcon(getClass().getResource("GreenHorizontalPath.jpg"));
-		ImageIcon GreenVerticalPath = new ImageIcon(getClass().getResource("GreenVerticalPath.jpg"));
+		ImageIcon GreenCurvedPathLeftDown = new ImageIcon(new ImageIcon(getClass().getResource("GreenCurvedPathLeftDown.jpg")).getImage().getScaledInstance(100,100, java.awt.Image.SCALE_SMOOTH));
+		ImageIcon GreenCurvedPathLeftUp = new ImageIcon(new ImageIcon(getClass().getResource("GreenCurvedPathLeftUp.jpg")).getImage().getScaledInstance(100,100, java.awt.Image.SCALE_SMOOTH));
+		ImageIcon GreenCurvedPathRightDown = new ImageIcon(new ImageIcon(getClass().getResource("GreenCurvedPathRightDown.jpg")).getImage().getScaledInstance(100,100, java.awt.Image.SCALE_SMOOTH));
+		ImageIcon GreenCurvedPathUpRight = new ImageIcon(new ImageIcon(getClass().getResource("GreenCurvedPathUpRight.jpg")).getImage().getScaledInstance(100,100, java.awt.Image.SCALE_SMOOTH));
+		ImageIcon GreenHorizontalPath = new ImageIcon(new ImageIcon(getClass().getResource("GreenHorizontalPath.jpg")).getImage().getScaledInstance(100,100, java.awt.Image.SCALE_SMOOTH));
+		ImageIcon GreenVerticalPath = new ImageIcon(new ImageIcon(getClass().getResource("GreenVerticalPath.jpg")).getImage().getScaledInstance(100,100, java.awt.Image.SCALE_SMOOTH));
 		
 		ImageIcon OrangeCurvedPathLeftDown = new ImageIcon(new ImageIcon(getClass().getResource("OrangeCurvedPathLeftDown.jpg")).getImage().getScaledInstance(100,100, java.awt.Image.SCALE_SMOOTH));
-		ImageIcon OrangeCurvedPathLeftUp = new ImageIcon(getClass().getResource("OrangeCurvedPathLeftUp.jpg"));
-		ImageIcon OrangeCurvedPathRightDown = new ImageIcon(getClass().getResource("OrangeCurvedPathRightDown.jpg"));
-		ImageIcon OrangeCurvedPathUpRight = new ImageIcon(getClass().getResource("OrangeCurvedPathRightUp.jpg"));
-		ImageIcon OrangeHorizontalPath = new ImageIcon(getClass().getResource("OrangeHorizontalPathOrange.jpg"));
-		ImageIcon OrangeVerticalPath = new ImageIcon(getClass().getResource("OrangeVerticalPathOrange.jpg"));
+		ImageIcon OrangeCurvedPathLeftUp = new ImageIcon(new ImageIcon(getClass().getResource("OrangeCurvedPathLeftUp.jpg")).getImage().getScaledInstance(100,100, java.awt.Image.SCALE_SMOOTH));
+		ImageIcon OrangeCurvedPathRightDown = new ImageIcon(new ImageIcon(getClass().getResource("OrangeCurvedPathRightDown.jpg")).getImage().getScaledInstance(100,100, java.awt.Image.SCALE_SMOOTH));
+		ImageIcon OrangeCurvedPathUpRight = new ImageIcon(new ImageIcon(getClass().getResource("OrangeCurvedPathRightUp.jpg")).getImage().getScaledInstance(100,100, java.awt.Image.SCALE_SMOOTH));
+		ImageIcon OrangeHorizontalPath = new ImageIcon(new ImageIcon(getClass().getResource("OrangeHorizontalPathOrange.jpg")).getImage().getScaledInstance(100,100, java.awt.Image.SCALE_SMOOTH));
+		ImageIcon OrangeVerticalPath = new ImageIcon(new ImageIcon(getClass().getResource("OrangeVerticalPathOrange.jpg")).getImage().getScaledInstance(100,100, java.awt.Image.SCALE_SMOOTH));
 		
-		ImageIcon BlueCurvedPathLeftDown = new ImageIcon(getClass().getResource("BlueCurvedPathLeftDown.jpg"));
-		ImageIcon BlueCurvedPathLeftUp = new ImageIcon(getClass().getResource("BlueCurvedPathLeftUp.jpg"));
-		ImageIcon BlueCurvedPathRightDown = new ImageIcon(getClass().getResource("BlueCurvedPathRightDown.jpg"));
-		ImageIcon BlueCurvedPathUpRight = new ImageIcon(getClass().getResource("BlueCurvedPathRightUp.jpg"));
-		ImageIcon BlueHorizontalPath = new ImageIcon(getClass().getResource("BlueHorizontalPath.jpg"));
-		ImageIcon BlueVerticalPath = new ImageIcon(getClass().getResource("BlueVerticalPath.jpg"));
+		ImageIcon BlueCurvedPathLeftDown = new ImageIcon(new ImageIcon(getClass().getResource("BlueCurvedPathLeftDown.jpg")).getImage().getScaledInstance(100,100, java.awt.Image.SCALE_SMOOTH));
+		ImageIcon BlueCurvedPathLeftUp = new ImageIcon(new ImageIcon(getClass().getResource("BlueCurvedPathLeftUp.jpg")).getImage().getScaledInstance(100,100, java.awt.Image.SCALE_SMOOTH));
+		ImageIcon BlueCurvedPathRightDown = new ImageIcon(new ImageIcon(getClass().getResource("BlueCurvedPathRightDown.jpg")).getImage().getScaledInstance(100,100, java.awt.Image.SCALE_SMOOTH));
+		ImageIcon BlueCurvedPathUpRight = new ImageIcon(new ImageIcon(getClass().getResource("BlueCurvedPathRightUp.jpg")).getImage().getScaledInstance(100,100, java.awt.Image.SCALE_SMOOTH));
+		ImageIcon BlueHorizontalPath = new ImageIcon(new ImageIcon(getClass().getResource("BlueHorizontalPath.jpg")).getImage().getScaledInstance(100,100, java.awt.Image.SCALE_SMOOTH));
+		ImageIcon BlueVerticalPath = new ImageIcon(new ImageIcon(getClass().getResource("BlueVerticalPath.jpg")).getImage().getScaledInstance(100,100, java.awt.Image.SCALE_SMOOTH));
 		
-		ImageIcon RedVerticalPath = new ImageIcon(getClass().getResource("RedVerticalPath.jpg"));
+		ImageIcon RedVerticalPath = new ImageIcon(new ImageIcon(getClass().getResource("RedVerticalPath.jpg")).getImage().getScaledInstance(100,100, java.awt.Image.SCALE_SMOOTH));
 		
-		ImageIcon GrassTile = new ImageIcon(getClass().getResource("GrassTile.jpg"));
+		ImageIcon GrassTile = new ImageIcon(new ImageIcon(getClass().getResource("GrassTile.jpg")).getImage().getScaledInstance(100,100, java.awt.Image.SCALE_SMOOTH));
 		
 
 		
@@ -315,6 +317,17 @@ public class GameGUI extends JFrame{
 		);
 		gamePanel.setLayout(new GridLayout(8, 10));
 		getContentPane().setLayout(groupLayout);
+		getContentPane().setLayout(new FormLayout(new ColumnSpec[] {
+				ColumnSpec.decode("1000px"),
+				FormFactory.GLUE_COLSPEC,},
+			new RowSpec[] {
+				RowSpec.decode("700px"),}));
+		getContentPane().add(gamePanel, "1, 1, fill, fill");
+		getContentPane().add(scorePanel, "2, 1, fill, fill");
+		scorePanel.setLayout(new GridLayout(0, 1, 0, 0));
+		
+		panel = new JPanel();
+		scorePanel.add(panel);
 		
 		intructions.addActionListener(
 				new ActionListener()
@@ -329,5 +342,12 @@ public class GameGUI extends JFrame{
 
 		setDefaultCloseOperation(MyFrame.EXIT_ON_CLOSE);
 		setVisible(true);
-	}		
+	}
+	
+	private static JPanel createPlayerPanel(int playerID){
+		JPanel temp = new JPanel();
+		
+		return temp;
+		
+	}
 }
