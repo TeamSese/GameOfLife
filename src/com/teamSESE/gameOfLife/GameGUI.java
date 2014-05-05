@@ -408,17 +408,13 @@ public class GameGUI extends JFrame{
 		getContentPane().add(scorePanel, "2, 1, fill, fill");
 		scorePanel.setLayout(new GridLayout(0, 1, 0, 0));
 		
-<<<<<<< HEAD
-
 		for(int i = 0; i < GameMechanics.playerList.size(); i++){
 			scorePanel.add(createPlayerPanel(i));
 		}
 
-=======
 		for(int i = 0; i < GameMechanics.playerList.size(); i++){
 			scorePanel.add(createPlayerPanel(i));
 		}
->>>>>>> 666d08c55a06939ec2b34ad31b30d5598da4b43c
 		panel = new JPanel();
 		scorePanel.add(panel);
 		
