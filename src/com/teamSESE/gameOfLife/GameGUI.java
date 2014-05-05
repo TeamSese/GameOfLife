@@ -411,6 +411,10 @@ public class GameGUI extends JFrame{
 		for(int i = 0; i < GameMechanics.playerList.size(); i++){
 			scorePanel.add(createPlayerPanel(i));
 		}
+
+		for(int i = 0; i < GameMechanics.playerList.size(); i++){
+			scorePanel.add(createPlayerPanel(i));
+		}
 		panel = new JPanel();
 		scorePanel.add(panel);
 		
@@ -441,7 +445,7 @@ public class GameGUI extends JFrame{
 		tempPanel.add(moneyLabel);
 		JLabel loanLabel = new JLabel("Loan - £" + GameMechanics.playerList.get(playerID).loan.toString());
 		tempPanel.add(loanLabel);
-		JLabel courseLabel = new JLabel("Course - £"); //+ GameMechanics.playerList.get(playerID).course.name);
+		JLabel courseLabel = new JLabel("Course - £");// + GameMechanics.playerList.get(playerID).course.name);
 		tempPanel.add(courseLabel);
 		JLabel houseLabel = new JLabel("House - £" + GameMechanics.playerList.get(playerID).house.name);
 		tempPanel.add(houseLabel);
