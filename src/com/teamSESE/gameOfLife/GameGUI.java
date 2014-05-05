@@ -12,13 +12,16 @@ import com.jgoodies.forms.layout.RowSpec;
 import com.jgoodies.forms.factories.FormFactory;
 
 import javax.swing.border.TitledBorder;
+import javax.swing.GroupLayout.Alignment;
+import javax.swing.LayoutStyle.ComponentPlacement;
 
 
 public class GameGUI extends JFrame{
 	
-	int sizeOfGrid = 8;
+	int sizeOfGridX = 8;
+	int sizeOfGridY = 10;
 	JPanel gamePanel, scorePanel;
-	JLabel [][] squares = new JLabel[sizeOfGrid][sizeOfGrid];
+	JLabel [][] squares = new JLabel[sizeOfGridX][sizeOfGridY];
 	JMenu options;
 	JMenuItem intructions;
 	instructionsFrame instructs = new instructionsFrame();
@@ -47,7 +50,6 @@ public class GameGUI extends JFrame{
 		
 		Container c = getContentPane();
 		c.setBackground(Color.green);
-		c.setLayout(new GridLayout(1,2));
 		
 		intructions = new JMenuItem("Instructions");
 		options = new JMenu("Options");
@@ -56,26 +58,87 @@ public class GameGUI extends JFrame{
 		bar.add(options);
 		
 		gamePanel = new JPanel();
-		gamePanel.setLayout(new GridLayout(sizeOfGrid,sizeOfGrid));
-		ImageIcon straight1 = new ImageIcon(getClass().getResource("straight1.jpg"));
-		ImageIcon turn1 = new ImageIcon(getClass().getResource("turn1.jpg"));
-		ImageIcon turn2 = new ImageIcon(getClass().getResource("turn2.jpg"));
-		ImageIcon turn3 = new ImageIcon(getClass().getResource("turn3.jpg"));
-		ImageIcon turn4 = new ImageIcon(getClass().getResource("turn4.jpg"));
+		gamePanel.setLayout(new GridLayout(sizeOfGridX,sizeOfGridY));
+		
+		ImageIcon GreenCurvedPathLeftDown = new ImageIcon(getClass().getResource("GreenCurvedPathLeftDown.jpg"));
+		ImageIcon GreenCurvedPathLeftUp = new ImageIcon(getClass().getResource("GreenCurvedPathLeftUp.jpg"));
+		ImageIcon GreenCurvedPathRightDown = new ImageIcon(getClass().getResource("GreenCurvedPathRightDown.jpg"));
+		ImageIcon GreenCurvedPathUpRight = new ImageIcon(getClass().getResource("GreenCurvedPathUpRight.jpg"));
+		ImageIcon GreenHorizontalPath = new ImageIcon(getClass().getResource("GreenHorizontalPath.jpg"));
+		ImageIcon GreenVerticalPath = new ImageIcon(getClass().getResource("GreenVerticalPath.jpg"));
+		
+		ImageIcon OrangeCurvedPathLeftDown = new ImageIcon(getClass().getResource("OrangeCurvedPathLeftDown.jpg"));
+		ImageIcon OrangeCurvedPathLeftUp = new ImageIcon(getClass().getResource("OrangeCurvedPathLeftUp.jpg"));
+		ImageIcon OrangeCurvedPathRightDown = new ImageIcon(getClass().getResource("OrangeCurvedPathRightDown.jpg"));
+		ImageIcon OrangeCurvedPathUpRight = new ImageIcon(getClass().getResource("OrangeCurvedPathRightUp.jpg"));
+		ImageIcon OrangeHorizontalPath = new ImageIcon(getClass().getResource("OrangeHorizontalPathOrange.jpg"));
+		ImageIcon OrangeVerticalPath = new ImageIcon(getClass().getResource("OrangeVerticalPathOrange.jpg"));
+		
+		ImageIcon BlueCurvedPathLeftDown = new ImageIcon(getClass().getResource("BlueCurvedPathLeftDown.jpg"));
+		ImageIcon BlueCurvedPathLeftUp = new ImageIcon(getClass().getResource("BlueCurvedPathLeftUp.jpg"));
+		ImageIcon BlueCurvedPathRightDown = new ImageIcon(getClass().getResource("BlueCurvedPathRightDown.jpg"));
+		ImageIcon BlueCurvedPathUpRight = new ImageIcon(getClass().getResource("BlueCurvedPathRightUp.jpg"));
+		ImageIcon BlueHorizontalPath = new ImageIcon(getClass().getResource("BlueHorizontalPath.jpg"));
+		ImageIcon BlueVerticalPath = new ImageIcon(getClass().getResource("BlueVerticalPath.jpg"));
+		
+		ImageIcon RedVerticalPath = new ImageIcon(getClass().getResource("RedVerticalPath.jpg"));
+		
+		ImageIcon GrassTile = new ImageIcon(getClass().getResource("GrassTile.jpg"));
 
 		
-		for (int i= 0; i< sizeOfGrid; i++) {
-      for (int j= 0; j< sizeOfGrid; j++) {
-      		
-          squares[i][j] = new JLabel();
-          squares[i][j].setIcon(straight1);
+		
+		// dont look in here its full of if statements 
+		for (int i= 0; i< sizeOfGridX; i++) {
+      for (int j= 0; j< sizeOfGridY; j++) {
+      	
+      	squares[i][j] = new JLabel();
+      	
+      	if (i == 0)
+      	{
+      		if (j == 2)
+      		{
+      			squares[i][j].setIcon(OrangeCurvedPathRightDown);
+      		}
+      		else if (j == 3)
+      		{
+      			squares[i][j].setIcon(OrangeHorizontalPath);
+      		}
+      		else if (j == 4)
+      		{
+      			squares[i][j].setIcon(OrangeCurvedPathLeftDown);
+      		}
+      		else if (j == 6)
+      		{
+      			squares[i][j].setIcon(OrangeCurvedPathRightDown);
+      		}
+      		else if (j == 7)
+      		{
+      			squares[i][j].setIcon(OrangeHorizontalPath);
+      		}
+      		else if (j == 8)
+      		{
+      			squares[i][j].setIcon(GreenHorizontalPath);
+      		}
+      		else if (j == 9)
+      		{
+      			squares[i][j].setIcon(OrangeCurvedPathLeftDown);
+      		}
+      		else squares[i][j].setIcon(GrassTile);
+      	}
+      	else squares[i][j].setIcon(GrassTile);
+      	
+      
+      	
+      	
+      	
+      	
+      	
           gamePanel.add(squares[i][j]);
       }
 		}
 		
 		scorePanel = new JPanel();
 		scorePanel.setBorder(new TitledBorder(null, "Player Stats", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-		scorePanel.setLayout(new FlowLayout());
 		
 		JPanel panelArray[] = new JPanel[playerList.size()];										//Creates an array of JPanels and 
 		JLabel playerNameArray[] = new JLabel[playerList.size()];									//JLabels of size number of players 
@@ -94,8 +157,25 @@ public class GameGUI extends JFrame{
 		}
 		
 		setJMenuBar(bar);
-		c.add(gamePanel);
-		c.add(scorePanel);
+		scorePanel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
+		GroupLayout groupLayout = new GroupLayout(getContentPane());
+		groupLayout.setHorizontalGroup(
+			groupLayout.createParallelGroup(Alignment.LEADING)
+				.addGroup(groupLayout.createSequentialGroup()
+					.addComponent(gamePanel, GroupLayout.PREFERRED_SIZE, 938, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(scorePanel, GroupLayout.PREFERRED_SIZE, 512, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap())
+		);
+		groupLayout.setVerticalGroup(
+			groupLayout.createParallelGroup(Alignment.LEADING)
+				.addGroup(groupLayout.createSequentialGroup()
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addComponent(gamePanel, GroupLayout.PREFERRED_SIZE, 830, GroupLayout.PREFERRED_SIZE)
+						.addComponent(scorePanel, GroupLayout.PREFERRED_SIZE, 830, GroupLayout.PREFERRED_SIZE))
+					.addContainerGap())
+		);
+		getContentPane().setLayout(groupLayout);
 		
 		intructions.addActionListener(
 				new ActionListener()
