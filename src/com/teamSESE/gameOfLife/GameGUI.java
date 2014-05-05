@@ -84,14 +84,15 @@ public class GameGUI extends JFrame{
 		ImageIcon RedVerticalPath = new ImageIcon(getClass().getResource("RedVerticalPath.jpg"));
 		
 		ImageIcon GrassTile = new ImageIcon(getClass().getResource("GrassTile.jpg"));
-
 		
+
 		
 		// dont look in here its full of if statements 
 		for (int i= 0; i< sizeOfGridX; i++) {
       for (int j= 0; j< sizeOfGridY; j++) {
       	
       	squares[i][j] = new JLabel();
+      	squares[i][j].setPreferredSize(new Dimension(100, 100));
       	
       	if (i == 0)
       	{
@@ -162,16 +163,16 @@ public class GameGUI extends JFrame{
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
-					.addComponent(gamePanel, GroupLayout.PREFERRED_SIZE, 938, GroupLayout.PREFERRED_SIZE)
+					.addComponent(gamePanel, GroupLayout.PREFERRED_SIZE, 1000, GroupLayout.PREFERRED_SIZE)
 					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(scorePanel, GroupLayout.PREFERRED_SIZE, 512, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap())
+					.addComponent(scorePanel, GroupLayout.PREFERRED_SIZE, 431, GroupLayout.PREFERRED_SIZE)
+					.addGap(81))
 		);
 		groupLayout.setVerticalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-						.addComponent(gamePanel, GroupLayout.PREFERRED_SIZE, 830, GroupLayout.PREFERRED_SIZE)
+						.addComponent(gamePanel, GroupLayout.PREFERRED_SIZE, 800, GroupLayout.PREFERRED_SIZE)
 						.addComponent(scorePanel, GroupLayout.PREFERRED_SIZE, 830, GroupLayout.PREFERRED_SIZE))
 					.addContainerGap())
 		);
