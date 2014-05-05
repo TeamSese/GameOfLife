@@ -41,8 +41,10 @@ public class GameGUI extends JFrame{
 	 */
 
 	protected static final ArrayList<Player> playerList = new ArrayList<Player>();	
+	private JPanel panel;
 
 	public GameGUI(ArrayList<Player> playerList){
+		getContentPane().setMinimumSize(new Dimension(1100, 700));
 
 		setTitle("QUB Game of Life");
 		setExtendedState(getExtendedState()|JFrame.MAXIMIZED_BOTH );		//Maximises GUI
@@ -158,25 +160,21 @@ public class GameGUI extends JFrame{
 		}
 		
 		setJMenuBar(bar);
-		scorePanel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
-		GroupLayout groupLayout = new GroupLayout(getContentPane());
-		groupLayout.setHorizontalGroup(
-			groupLayout.createParallelGroup(Alignment.LEADING)
-				.addGroup(groupLayout.createSequentialGroup()
-					.addComponent(gamePanel, GroupLayout.PREFERRED_SIZE, 1000, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(scorePanel, GroupLayout.PREFERRED_SIZE, 431, GroupLayout.PREFERRED_SIZE)
-					.addGap(81))
-		);
-		groupLayout.setVerticalGroup(
-			groupLayout.createParallelGroup(Alignment.LEADING)
-				.addGroup(groupLayout.createSequentialGroup()
-					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-						.addComponent(gamePanel, GroupLayout.PREFERRED_SIZE, 800, GroupLayout.PREFERRED_SIZE)
-						.addComponent(scorePanel, GroupLayout.PREFERRED_SIZE, 830, GroupLayout.PREFERRED_SIZE))
-					.addContainerGap())
-		);
-		getContentPane().setLayout(groupLayout);
+		getContentPane().setLayout(new FormLayout(new ColumnSpec[] {
+				ColumnSpec.decode("1000px"),
+				FormFactory.GLUE_COLSPEC,},
+			new RowSpec[] {
+				RowSpec.decode("700px"),}));
+		getContentPane().add(gamePanel, "1, 1, fill, fill");
+		getContentPane().add(scorePanel, "2, 1, fill, fill");
+		scorePanel.setLayout(new GridLayout(0, 1, 0, 0));
+		
+		panel = new JPanel();
+		scorePanel.add(panel);
+		
+		
+		
+		
 		
 		intructions.addActionListener(
 				new ActionListener()
@@ -191,5 +189,12 @@ public class GameGUI extends JFrame{
 
 		setDefaultCloseOperation(MyFrame.EXIT_ON_CLOSE);
 		setVisible(true);
-	}		
+	}
+	
+	private static JPanel createPlayerPanel(int playerID){
+		JPanel temp = new JPanel();
+		
+		return temp;
+		
+	}
 }
