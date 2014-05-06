@@ -20,6 +20,7 @@ public class GameGUI extends JFrame{
 	
 	int sizeOfGridX = 7;
 	int sizeOfGridY = 10;
+	JLayeredPane gamePane = new JLayeredPane();
 	JPanel gamePanel, scorePanel;
 	JLabel [][] squares = new JLabel[sizeOfGridX][sizeOfGridY];
 	JMenu options;
@@ -354,8 +355,8 @@ public class GameGUI extends JFrame{
       		else squares[i][j].setIcon(GrassTile);
       	}
      
-          gamePanel.add(squares[i][j]);
-
+          gamePane.add(squares[i][j], 1);
+          
       }
 		}
 		
@@ -384,7 +385,7 @@ public class GameGUI extends JFrame{
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
-					.addComponent(gamePanel, GroupLayout.PREFERRED_SIZE, 1000, GroupLayout.PREFERRED_SIZE)
+					.addComponent(gamePane, GroupLayout.PREFERRED_SIZE, 1000, GroupLayout.PREFERRED_SIZE)
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addComponent(scorePanel, GroupLayout.PREFERRED_SIZE, 431, GroupLayout.PREFERRED_SIZE)
 					.addGap(81))
@@ -393,18 +394,19 @@ public class GameGUI extends JFrame{
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-						.addComponent(gamePanel, GroupLayout.PREFERRED_SIZE, 800, GroupLayout.PREFERRED_SIZE)
+						.addComponent(gamePane, GroupLayout.PREFERRED_SIZE, 800, GroupLayout.PREFERRED_SIZE)
 						.addComponent(scorePanel, GroupLayout.PREFERRED_SIZE, 830, GroupLayout.PREFERRED_SIZE))
 					.addContainerGap())
 		);
-		gamePanel.setLayout(new GridLayout(7, 10));
+		
+		gamePane.setLayout(new GridLayout(7, 10));
 		getContentPane().setLayout(groupLayout);
 		getContentPane().setLayout(new FormLayout(new ColumnSpec[] {
 				ColumnSpec.decode("1000px"),
 				FormFactory.GLUE_COLSPEC,},
 			new RowSpec[] {
 				RowSpec.decode("700px"),}));
-		getContentPane().add(gamePanel, "1, 1, fill, fill");
+		getContentPane().add(gamePane, "1, 1, fill, fill");
 		getContentPane().add(scorePanel, "2, 1, fill, fill");
 		scorePanel.setLayout(new GridLayout(0, 1, 0, 0));
 		
