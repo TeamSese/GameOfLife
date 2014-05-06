@@ -19,7 +19,7 @@ public class MyFrame extends JFrame
 		setLocationRelativeTo(null);																	// sets the location as the centre of the screen
 
 		Container c = getContentPane();																	//container to hold the different panels
-		c.setBackground(Color.green);																			//col from main
+		c.setBackground(Color.magenta);																			//col from main
 		getContentPane().setLayout(null);																//no layout selected so we can place anywhere
 		
 		JPanel welcome = new JPanel();																		//wecome to the game message to display at top of box

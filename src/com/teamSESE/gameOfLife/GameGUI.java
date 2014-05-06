@@ -45,14 +45,14 @@ public class GameGUI extends JFrame{
 	private JPanel panel;
 
 	public GameGUI(ArrayList<Player> playerList){
-		getContentPane().setMinimumSize(new Dimension(1100, 700));
+		Container c = getContentPane();
+		c.setMinimumSize(new Dimension(1100, 700));
 
 		setTitle("QUB Game of Life");
 		setExtendedState(getExtendedState()|JFrame.MAXIMIZED_BOTH );		//Maximises GUI
 		setLocationRelativeTo(null);
-		
-		Container c = getContentPane();
-		c.setBackground(Color.green);
+
+		c.setBackground(Color.magenta);
 		
 		intructions = new JMenuItem("Instructions");
 		options = new JMenu("Options");
@@ -381,7 +381,7 @@ public class GameGUI extends JFrame{
 		
 		setJMenuBar(bar);
 		scorePanel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
-		GroupLayout groupLayout = new GroupLayout(getContentPane());
+		GroupLayout groupLayout = new GroupLayout(c);
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
@@ -400,14 +400,14 @@ public class GameGUI extends JFrame{
 		);
 		
 		gamePanel.setLayout(new GridLayout(7, 10));
-		getContentPane().setLayout(groupLayout);
-		getContentPane().setLayout(new FormLayout(new ColumnSpec[] {
+		c.setLayout(groupLayout);
+		c.setLayout(new FormLayout(new ColumnSpec[] {
 				ColumnSpec.decode("1000px"),
 				FormFactory.GLUE_COLSPEC,},
 			new RowSpec[] {
 				RowSpec.decode("700px"),}));
-		getContentPane().add(gamePanel, "1, 1, fill, fill");
-		getContentPane().add(scorePanel, "2, 1, fill, fill");
+		c.add(gamePanel, "1, 1, fill, fill");
+		c.add(scorePanel, "2, 1, fill, fill");
 		scorePanel.setLayout(new GridLayout(0, 1, 0, 0));
 		
 		for(int i = 0; i < GameMechanics.playerList.size(); i++){
