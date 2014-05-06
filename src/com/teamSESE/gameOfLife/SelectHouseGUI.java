@@ -34,20 +34,19 @@ import java.awt.Component;
 import javax.swing.SwingConstants;
 
 
-public class SelectCourseGUI extends JDialog{
+public class SelectHouseGUI extends JDialog{
 	
 	JTextField choice1txt1 = new JTextField();
 	JTextField choice1txt2 = new JTextField();
-	JTextField choice1txt3 = new JTextField();
 	JTextField choice2txt1 = new JTextField();
 	JTextField choice2txt2 = new JTextField();
-	JTextField choice2txt3 = new JTextField();
+
 	
 	JButton choiceButton1 = new JButton();
 	JButton choiceButton2 = new JButton();
 	JButton choiceButton3 = new JButton();
-	JButton selectCourse2 = new JButton();
-	JButton selectCourse1 = new JButton();
+	JButton selectHouse2 = new JButton();
+	JButton selectHouse1 = new JButton();
 	
 	JPanel welcome = new JPanel();
 	JPanel main = new JPanel();
@@ -63,25 +62,25 @@ public class SelectCourseGUI extends JDialog{
 	int playerID, buttonPressCount = 0;
 	
 	
-SelectCourseGUI(int playerIdentity){
-		super((SelectCourseGUI)null);
+SelectHouseGUI(int playerIdentity){
+		super((SelectHouseGUI)null);
 		setModal(true);										
 		
 		playerID = playerIdentity;
-		for(int i=0; i<GameMechanics.courseList.size(); i++){
-			if(GameMechanics.courseList.get(i).available){
+		for(int i=0; i<GameMechanics.houseList.size(); i++){
+			if(GameMechanics.houseList.get(i).available){
 				list.add(i);		
 			}
 		}
 		Collections.shuffle(list);
 		
-		setTitle("Select Course");
+		setTitle("Select House");
 		setSize(500,500);
 		getContentPane().setLayout(new GridLayout(0,1));
 		
 																				//wecome to the game message to display at top of box
 																
-		JLabel welcomeMessage = new JLabel (GameMechanics.playerList.get(playerIdentity) + " choose 2 career cards");
+		JLabel welcomeMessage = new JLabel (GameMechanics.playerList.get(playerIdentity) + " choose 2 house cards");
 		welcome.add(welcomeMessage);																		//add to panel
 			
 		main.setLayout(new GridLayout(1, 3, 0, 0));
@@ -112,10 +111,9 @@ SelectCourseGUI(int playerIdentity){
 		choiceDetails1a.setLayout(new GridLayout(3, 2, 0, 0));
 		choiceDetails1a.add(new JLabel("Name"));
 		choiceDetails1a.add(choice1txt1);
-		choiceDetails1a.add(new JLabel("Base Salary"));
+		choiceDetails1a.add(new JLabel("Rent Price"));
 		choiceDetails1a.add(choice1txt2);
-		choiceDetails1a.add(new JLabel("Max Salary"));
-		choiceDetails1a.add(choice1txt3);
+		
 		choiceDetails1b.setLayout(new GridLayout(1, 1, 0, 0));
 		
 		//adds a panel for the second course choice details		
@@ -127,19 +125,18 @@ SelectCourseGUI(int playerIdentity){
 		choiceDetails2a.setLayout(new GridLayout(3, 2, 0, 0));
 		choiceDetails2a.add(new JLabel("Name"));
 		choiceDetails2a.add(choice2txt1);
-		choiceDetails2a.add(new JLabel("Base Salary"));
+		choiceDetails2a.add(new JLabel("Rent Price"));
 		choiceDetails2a.add(choice2txt2);
-		choiceDetails2a.add(new JLabel("Max Salary"));
-		choiceDetails2a.add(choice2txt3);
+		
 		choiceDetails2b.setLayout(new GridLayout(1, 1, 0, 0));
 		
 		//creates select course buttons 
-		choiceDetails1b.add(selectCourse1);
-		selectCourse1.setText("Select Course");
-		selectCourse1.addActionListener(select1ActionListener);
-		choiceDetails2b.add(selectCourse2);
-		selectCourse2.setText("Select Course");
-		selectCourse2.addActionListener(select2ActionListener);
+		choiceDetails1b.add(selectHouse1);
+		selectHouse1.setText("Select House");
+		selectHouse1.addActionListener(select1ActionListener);
+		choiceDetails2b.add(selectHouse2);
+		selectHouse2.setText("Select House");
+		selectHouse2.addActionListener(select2ActionListener);
 		
 		setVisible(true);
 		
@@ -150,18 +147,16 @@ SelectCourseGUI(int playerIdentity){
 		{
 			if(buttonPressCount == 1){
 				System.out.println("button2 ActionListener Called");
-				choice2txt1.setText(GameMechanics.courseList.get(list.get(1)).name);
-				choice2txt2.setText(GameMechanics.courseList.get(list.get(1)).baseSalary.toString());
-				choice2txt3.setText(GameMechanics.courseList.get(list.get(1)).maxSalary.toString());
+				choice2txt1.setText(GameMechanics.houseList.get(list.get(1)).name);
+				choice2txt2.setText(GameMechanics.houseList.get(list.get(1)).rentPrice.toString());
 				choiceButton1.setEnabled(false);
 				choiceButton2.setEnabled(false);
 				choiceButton3.setEnabled(false);	
 			}
 			if(buttonPressCount == 0){
 				System.out.println("button1 ActionListener Called");
-				choice1txt1.setText(GameMechanics.courseList.get(list.get(0)).name);
-				choice1txt2.setText(GameMechanics.courseList.get(list.get(0)).baseSalary.toString());
-				choice1txt3.setText(GameMechanics.courseList.get(list.get(0)).maxSalary.toString());
+				choice1txt1.setText(GameMechanics.houseList.get(list.get(0)).name);
+				choice1txt2.setText(GameMechanics.houseList.get(list.get(0)).rentPrice.toString());
 				buttonPressCount++;
 			}
 		}
@@ -170,8 +165,8 @@ SelectCourseGUI(int playerIdentity){
 	ActionListener select1ActionListener = new ActionListener(){
 		public void actionPerformed(ActionEvent e)
 		{
-			GameMechanics.playerList.get(playerID).course = GameMechanics.courseList.get(list.get(0));
-			GameMechanics.courseList.get(list.get(0)).available = false;
+			GameMechanics.playerList.get(playerID).house = GameMechanics.houseList.get(list.get(0));
+			GameMechanics.houseList.get(list.get(0)).available = false;
 			dispose();
 		}	
 				
@@ -180,8 +175,8 @@ SelectCourseGUI(int playerIdentity){
 	ActionListener select2ActionListener = new ActionListener(){
 		public void actionPerformed(ActionEvent e)
 		{
-			GameMechanics.playerList.get(playerID).course = GameMechanics.courseList.get(list.get(1));
-			GameMechanics.courseList.get(list.get(1)).available = false;
+			GameMechanics.playerList.get(playerID).house = GameMechanics.houseList.get(list.get(1));
+			GameMechanics.houseList.get(list.get(1)).available = false;
 			dispose();
 		}	
 				

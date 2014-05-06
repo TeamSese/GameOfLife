@@ -21,6 +21,7 @@ public class Tile {
 	protected static final int GAIN_500 = 6;
 	protected static final int SUE_PLAYER_100 = 7;		//Player is selected from GUI when tile is landed on
 	protected static final int GAIN_LIFE_TILE = 8;
+	protected static final int SELECT_HOUSE = 9;
 	
 	//private static final int BLUE = 5;
 	//private static final int RED = 5;
@@ -73,6 +74,12 @@ public class Tile {
         		Player p = selectPlayerDialogueBox(playerID,"Sue which player?");
         		p.loan = p.loan.add(new BigDecimal(100));	//Adds to loan of sued player
         		break;
+        	}
+        	
+        	case SELECT_HOUSE:{
+        		new SelectHouseGUI(playerID);
+				System.out.println("Player " + playerID + " house selected...");
+				break;
         	}
         	
 		}

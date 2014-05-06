@@ -31,7 +31,7 @@ public class GameMechanics {
 		Tile.GAIN_200,				//12
 		Tile.GAIN_200,				//13
 		Tile.GAIN_200,				//14
-		Tile.GAIN_200,	//Tile.SELECT_HOUSE,		//15
+		Tile.SELECT_HOUSE,	//Tile.SELECT_HOUSE,		//15
 		Tile.GAIN_200,				//16
 		Tile.SUE_PLAYER_100,					//17
 		Tile.GAIN_200,	//Tile.SELECT_HOUSE,		//18
