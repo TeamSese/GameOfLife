@@ -20,8 +20,7 @@ public class GameGUI extends JFrame{
 	
 	int sizeOfGridX = 7;
 	int sizeOfGridY = 10;
-//	JLayeredPane gamePane = new JLayeredPane();
-	JPanel gamePanel, scorePanel;
+	JPanel gamePanel, scorePanel, glassPanel;
 	JLabel [][] squares = new JLabel[sizeOfGridX][sizeOfGridY];
 	JMenu options;
 	JMenuItem intructions;
@@ -42,25 +41,42 @@ public class GameGUI extends JFrame{
 	 */
 
 	protected static final ArrayList<Player> playerList = new ArrayList<Player>();	
-	private JPanel panel;
 
 	public GameGUI(ArrayList<Player> playerList){
-		Container c = getContentPane();
-		c.setMinimumSize(new Dimension(1100, 700));
-
-		setTitle("QUB Game of Life");
-		setExtendedState(getExtendedState()|JFrame.MAXIMIZED_BOTH );		//Maximises GUI
-		setLocationRelativeTo(null);
-
-		c.setBackground(Color.magenta);
+		
+		super();
 		
 		intructions = new JMenuItem("Instructions");
 		options = new JMenu("Options");
 		options.add(intructions);
 		bar = new JMenuBar();
 		bar.add(options);
+		setJMenuBar(bar);
 		
-		gamePanel = new JPanel();
+		JLayeredPane layerPane = getLayeredPane();
+		
+    JPanel gamePanel = new JPanel();
+    gamePanel.setLayout(new GridLayout(7, 10));
+    gamePanel.setSize(1000, 700); // Size is needed here, as there is no layout in lp
+
+    JPanel glassPane = new JPanel();
+    glassPane.setOpaque(false); // Set to true to see it
+    glassPane.setBackground(Color.GREEN);
+    glassPane.setSize(gamePanel.getBounds().width, gamePanel.getBounds().height);
+    glassPane.setLocation(0, 22);
+
+    layerPane.add(gamePanel, Integer.valueOf(1));
+    layerPane.add(glassPane, Integer.valueOf(2));
+		
+		Container c = getContentPane();
+		c.setMinimumSize(new Dimension(1100, 700));
+		
+
+		setTitle("QUB Game of Life");
+		setExtendedState(getExtendedState()|JFrame.MAXIMIZED_BOTH );		//Maximises GUI
+		setLocationRelativeTo(null);
+
+		c.setBackground(Color.magenta);
 		
 		int sizeConstraint = 100;
 		
@@ -359,7 +375,7 @@ public class GameGUI extends JFrame{
           
       }
 		}
-		
+	
 		scorePanel = new JPanel();
 		scorePanel.setBorder(new TitledBorder(null, "Player Stats", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		
@@ -379,7 +395,7 @@ public class GameGUI extends JFrame{
 			scorePanel.add(playerMoneyArray[i]);															// *add the JLabel to the main panel
 		}*/
 		
-		setJMenuBar(bar);
+
 		scorePanel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		GroupLayout groupLayout = new GroupLayout(c);
 		groupLayout.setHorizontalGroup(
@@ -406,7 +422,6 @@ public class GameGUI extends JFrame{
 				FormFactory.GLUE_COLSPEC,},
 			new RowSpec[] {
 				RowSpec.decode("700px"),}));
-		c.add(gamePanel, "1, 1, fill, fill");
 		c.add(scorePanel, "2, 1, fill, fill");
 		scorePanel.setLayout(new GridLayout(0, 1, 0, 0));
 		
