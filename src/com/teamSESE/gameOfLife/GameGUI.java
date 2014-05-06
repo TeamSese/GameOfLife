@@ -64,6 +64,9 @@ public class GameGUI extends JFrame{
     glassPane.setBackground(Color.GREEN);
     glassPane.setSize(gamePanel.getBounds().width, gamePanel.getBounds().height);
     glassPane.setLocation(0, 22);
+    
+//		JPanel counterPanel = new GamePanel();
+//		glassPane.add(counterPanel);
 
     layerPane.add(gamePanel, Integer.valueOf(1));
     layerPane.add(glassPane, Integer.valueOf(2));
@@ -378,6 +381,7 @@ public class GameGUI extends JFrame{
 	
 		scorePanel = new JPanel();
 		scorePanel.setBorder(new TitledBorder(null, "Player Stats", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+
 		
 		JPanel panelArray[] = new JPanel[playerList.size()];										//Creates an array of JPanels and 
 		JLabel playerNameArray[] = new JLabel[playerList.size()];									//JLabels of size number of players 
