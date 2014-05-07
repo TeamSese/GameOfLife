@@ -18,7 +18,8 @@ public class MyFrame extends JFrame
 		setTitle(title);																				//title is set in main method
 		setSize(500, 500);																				// this may need changed but looks ok 
 		setLocationRelativeTo(null);																	// sets the location as the centre of the screen
-
+		setResizable(false);
+		
 		Container c = getContentPane();																//container to hold the different panels
 		c.setBackground(Color.white);																			//col from main
 		c.setLayout(null);																//no layout selected so we can place anywhere
@@ -54,6 +55,8 @@ public class MyFrame extends JFrame
 		playerPanel.setLayout(new GridLayout(1,2));											//layout as grid
 		playerPanel.setOpaque(false);
 		c.add(playerPanel);																	//add to container
+		
+		combo.setBackground(Color.white);
 		playerPanel.add(numOfP);															//label to tell to select num of players
 		playerPanel.add(combo);																// drop down menu
 
