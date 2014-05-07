@@ -44,14 +44,6 @@ public class AddPlayersGUI extends JFrame implements ActionListener{
 				RowSpec.decode("82px"),
 				FormFactory.LINE_GAP_ROWSPEC,
 				FormFactory.GLUE_ROWSPEC,}));
-		
-//		ImageIcon gameLogo = new ImageIcon(new ImageIcon(getClass().getResource("GameLogobBlank.png")).getImage().getScaledInstance(360,80, java.awt.Image.SCALE_SMOOTH));
-//		JPanel logoPanel = new JPanel();
-//		JLabel logoLabel = new JLabel("", gameLogo, JLabel.CENTER);
-//		//logoPanel.setBounds(50, 45, gameLogo.getIconWidth() + 20, gameLogo.getIconHeight() + 20);
-//		logoPanel.setBackground(Color.white);
-//		logoPanel.add(logoLabel);
-//		getContentPane().add(logoPanel, "1, 1, fill, fill");
 
 		JPanel panel = new JPanel();
 		panel.setLocation(0, 200);
