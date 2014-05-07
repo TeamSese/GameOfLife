@@ -30,10 +30,11 @@ public class MyFrame extends JFrame
 //		welcome.setBackground(Color.white);
 //		c.add(welcome);																						// add to container
 
-		ImageIcon gameLogo = new ImageIcon(new ImageIcon(getClass().getResource("GameLogobBlank.png")).getImage());
+		ImageIcon gameLogo2 = new ImageIcon(new ImageIcon(getClass().getResource("GameLogobBlank.png")).getImage());
+		ImageIcon gameLogo = new ImageIcon(new ImageIcon(getClass().getResource("GameLogobBlank.png")).getImage().getScaledInstance(360,80, java.awt.Image.SCALE_SMOOTH));
 		JPanel logoPanel = new JPanel();
 		JLabel logoLabel = new JLabel("", gameLogo, JLabel.CENTER);
-		logoPanel.setBounds(5, 45, gameLogo.getIconWidth() + 20, gameLogo.getIconHeight() + 20);
+		logoPanel.setBounds(50, 45, gameLogo.getIconWidth() + 20, gameLogo.getIconHeight() + 20);
 		logoPanel.setBackground(Color.white);
 		logoPanel.add(logoLabel);
 		c.add(logoPanel);
@@ -49,13 +50,13 @@ public class MyFrame extends JFrame
 		ImageIcon seseLogo = new ImageIcon(new ImageIcon(getClass().getResource("seseLogo.png")).getImage());
 		JPanel seseLogoPanel = new JPanel();
 		JLabel seseLogoLabel = new JLabel("", seseLogo, JLabel.CENTER);
-		seseLogoPanel.setBounds(320, 380, qubLogo.getIconWidth() + 10, qubLogo.getIconHeight() + 10);
+		seseLogoPanel.setBounds(320, 380, seseLogo.getIconWidth() + 10, seseLogo.getIconHeight() + 10);
 		seseLogoPanel.setBackground(Color.white);
 		seseLogoPanel.add(seseLogoLabel);
 		c.add(seseLogoPanel);
 		
 		JPanel playerPanel = new JPanel(); 													// new panel for players
-		playerPanel.setBounds(92, 195, 316, 27);											// location
+		playerPanel.setBounds(92, 200, 316, 27);											// location
 		playerPanel.setLayout(new GridLayout(1,2));											//layout as grid
 		playerPanel.setOpaque(false);
 		c.add(playerPanel);																	//add to container
@@ -91,7 +92,7 @@ public class MyFrame extends JFrame
 				);																						//closes action listener
 
 		JPanel startPanel = new JPanel(); 								//start panel for start button
-		startPanel.setBounds(123, 234, 254, 70);						//location 
+		startPanel.setBounds(123, 239, 254, 70);						//location 
 		startPanel.setLayout(new GridLayout(2,1));						// using a grid layout
 		startPanel.add(players);										// text box says number of payers
 		startPanel.setBackground(Color.green);
