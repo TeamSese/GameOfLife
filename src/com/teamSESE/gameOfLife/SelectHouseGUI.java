@@ -100,6 +100,10 @@ SelectHouseGUI(int playerIdentity){
 		getContentPane().add(main);
 		getContentPane().add(choicePanel);
 		
+		ImageIcon houseButtonIcon = new ImageIcon(new ImageIcon(getClass().getResource("houseBox.png")).getImage().getScaledInstance(165,165, java.awt.Image.SCALE_SMOOTH));
+		choiceButton1.setIcon(houseButtonIcon);
+		choiceButton2.setIcon(houseButtonIcon);
+		choiceButton3.setIcon(houseButtonIcon);
 		//Adds 3 choice buttons
 		main.add(choiceButton1);
 		main.add(choiceButton2);

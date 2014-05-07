@@ -22,6 +22,11 @@ import javax.swing.border.TitledBorder;
 public class GamePanel extends JPanel {
 	
 		BufferedImage counter1;
+		BufferedImage counter2;
+		BufferedImage counter3;
+		BufferedImage counter4;
+		BufferedImage counter5;
+		BufferedImage counter6;
     
     //ArrayList<Integer> xVal = new ArrayList<Integer>();
     //ArrayList<Integer> yVal = new ArrayList<Integer>();
@@ -31,23 +36,30 @@ public class GamePanel extends JPanel {
     	try {
     		
     		counter1 = ImageIO.read(new File("PurpleIcon.png"));
+    		counter2 = ImageIO.read(new File("RedIcon.png"));
+    		counter3 = ImageIO.read(new File("YellowIcon.png"));
+    		counter4 = ImageIO.read(new File("OrangeIcon.png"));
+    		counter5 = ImageIO.read(new File("GreenIcon.png"));
+    		counter6 = ImageIO.read(new File("RedIcon.png"));
+    		
     		
     		Timer timer = new Timer(20, new ActionListener() {
     			@Override
     			public void actionPerformed(ActionEvent e) {
-    				
-    				if(playerXPos(0) != playerTargetXPos(0)){
-    					if(playerXPos(0) < playerTargetXPos(0)){incPlayerXPos(0);}
-    					if(playerXPos(0) > playerTargetXPos(0)){decPlayerXPos(0);}
-    				}
-    				if(playerYPos(0) != playerTargetYPos(0)){
-    					if(playerYPos(0) < playerTargetYPos(0)){incPlayerYPos(0);}
-    					if(playerYPos(0) > playerTargetYPos(0)){decPlayerYPos(0);}
-    				}
-    				if(playerXPos(0) == playerTargetXPos(0) && playerYPos(0) == playerTargetYPos(0)){
-    					if(playerBoardPos(0) != targetPlayerBoardPos(0)){
-    						System.out.println("Incrementing player board position");
-    						incPlayerBoardPos(0);
+    				for(int i = 0; i < GameMechanics.playerList.size(); i++){
+    					if(playerXPos(i) != playerTargetXPos(i)){
+    						if(playerXPos(i) < playerTargetXPos(i)){incPlayerXPos(i);}
+    						if(playerXPos(i) > playerTargetXPos(i)){decPlayerXPos(i);}
+    					}
+    					if(playerYPos(i) != playerTargetYPos(i)){
+    						if(playerYPos(i) < playerTargetYPos(i)){incPlayerYPos(i);}
+    						if(playerYPos(i) > playerTargetYPos(i)){decPlayerYPos(i);}
+    					}
+    					if(playerXPos(i) == playerTargetXPos(i) && playerYPos(i) == playerTargetYPos(i)){
+    						if(playerBoardPos(i) != targetPlayerBoardPos(i)){
+    							System.out.println("Incrementing player board position");
+    							incPlayerBoardPos(i);
+    						}
     					}
     				}
     				repaint();
@@ -65,6 +77,8 @@ public class GamePanel extends JPanel {
 	public void paint(Graphics g) {
     	super.paintComponent(g);
     	g.drawImage(counter1,(38 + playerXPos(0)), (38+ playerYPos(0)), this);
+    	g.drawImage(counter2,(38 + playerXPos(1)), (38+ playerYPos(1)), this);
+    	g.drawImage(counter3,(38 + playerXPos(2)), (38+ playerYPos(2)), this);
     	
     }
     

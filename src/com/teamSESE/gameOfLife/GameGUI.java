@@ -114,7 +114,7 @@ public class GameGUI extends JFrame{
 		
 		ImageIcon RedVerticalPath = new ImageIcon(new ImageIcon(getClass().getResource("RedVerticalPath.jpg")).getImage().getScaledInstance(sizeConstraint,sizeConstraint, java.awt.Image.SCALE_SMOOTH));
 		
-    ImageIcon PurpleIcon = new ImageIcon(new ImageIcon(getClass().getResource("PurpleIcon.png")).getImage().getScaledInstance(25,25, java.awt.Image.SCALE_SMOOTH));
+    //ImageIcon PurpleIcon = new ImageIcon(new ImageIcon(getClass().getResource("PurpleIcon.png")).getImage().getScaledInstance(25,25, java.awt.Image.SCALE_SMOOTH));
     ImageIcon GrassTile = new ImageIcon(new ImageIcon(getClass().getResource("GrassTile.jpg")).getImage().getScaledInstance(sizeConstraint,sizeConstraint, java.awt.Image.SCALE_SMOOTH));
      
     // ****************************************************************************************************************
