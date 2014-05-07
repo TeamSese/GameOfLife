@@ -10,7 +10,7 @@ public class MyFrame extends JFrame
 	JButton startButton;															// start button creation
 	String items[] = {"-","2","3","4","5","6"};									// options of number of players
 	JComboBox combo = new JComboBox(items);											// this is the drag down box
-	JLabel numOfP = new JLabel("Select Number Of Players");							// label of instructions
+	JLabel numOfP = new JLabel("Select Number Of Players:");							// label of instructions
 	JTextField players = new JTextField(20);										// text box shows how many players are selected
 
 	public MyFrame(String title, Color col)
@@ -19,28 +19,45 @@ public class MyFrame extends JFrame
 		setSize(500, 500);																				// this may need changed but looks ok 
 		setLocationRelativeTo(null);																	// sets the location as the centre of the screen
 
-		Container c = getContentPane();																	//container to hold the different panels
-		c.setBackground(Color.magenta);																			//col from main
+		Container c = getContentPane();																//container to hold the different panels
+		c.setBackground(Color.white);																			//col from main
 		getContentPane().setLayout(null);																//no layout selected so we can place anywhere
 		
-		JPanel welcome = new JPanel();																		//wecome to the game message to display at top of box
-		welcome.setBounds(155, 5, 190, 26);																	// location
-		JLabel welcomeMessage = new JLabel ("Welcome to the Game of Life"); //message
-		welcome.add(welcomeMessage);																		//add to panel
-		welcome.setBackground(Color.green);
-		c.add(welcome);																						// add to container
+//		JPanel welcome = new JPanel();																		//wecome to the game message to display at top of box
+//		welcome.setBounds(155, 5, 190, 26);																	// location
+//		JLabel welcomeMessage = new JLabel ("Welcome to..."); //message
+//		welcome.add(welcomeMessage);																		//add to panel
+//		welcome.setBackground(Color.white);
+//		c.add(welcome);																						// add to container
 
-		ImageIcon gameLogo = new ImageIcon("GameLogo.png");
-		JPanel logoPanel = new JPanel(new BorderLayout());
+		ImageIcon gameLogo = new ImageIcon(new ImageIcon(getClass().getResource("GameLogobBlank.png")).getImage());
+		JPanel logoPanel = new JPanel();
 		JLabel logoLabel = new JLabel("", gameLogo, JLabel.CENTER);
-		logoPanel.setBounds(50, 50, 350, 80);
+		logoPanel.setBounds(5, 45, gameLogo.getIconWidth() + 20, gameLogo.getIconHeight() + 20);
+		logoPanel.setBackground(Color.white);
 		logoPanel.add(logoLabel);
 		c.add(logoPanel);
 		
+		ImageIcon qubLogo = new ImageIcon(new ImageIcon(getClass().getResource("QUBLogo.png")).getImage());
+		JPanel qubLogoPanel = new JPanel();
+		JLabel qubLogoLabel = new JLabel("", qubLogo, JLabel.CENTER);
+		qubLogoPanel.setBounds(5, 380, qubLogo.getIconWidth() + 10, qubLogo.getIconHeight() + 10);
+		qubLogoPanel.setBackground(Color.white);
+		qubLogoPanel.add(qubLogoLabel);
+		c.add(qubLogoPanel);
+		
+		ImageIcon seseLogo = new ImageIcon(new ImageIcon(getClass().getResource("seseLogo.png")).getImage());
+		JPanel seseLogoPanel = new JPanel();
+		JLabel seseLogoLabel = new JLabel("", seseLogo, JLabel.CENTER);
+		seseLogoPanel.setBounds(320, 380, qubLogo.getIconWidth() + 10, qubLogo.getIconHeight() + 10);
+		seseLogoPanel.setBackground(Color.white);
+		seseLogoPanel.add(seseLogoLabel);
+		c.add(seseLogoPanel);
+		
 		JPanel playerPanel = new JPanel(); 													// new panel for players
-		playerPanel.setBounds(92, 225, 316, 27);											// location
+		playerPanel.setBounds(92, 195, 316, 27);											// location
 		playerPanel.setLayout(new GridLayout(1,2));											//layout as grid
-		playerPanel.setBackground(Color.green);
+		playerPanel.setOpaque(false);
 		c.add(playerPanel);																	//add to container
 		playerPanel.add(numOfP);															//label to tell to select num of players
 		playerPanel.add(combo);																// drop down menu
@@ -74,13 +91,13 @@ public class MyFrame extends JFrame
 				);																						//closes action listener
 
 		JPanel startPanel = new JPanel(); 								//start panel for start button
-		startPanel.setBounds(123, 264, 254, 70);						//location 
+		startPanel.setBounds(123, 234, 254, 70);						//location 
 		startPanel.setLayout(new GridLayout(2,1));						// using a grid layout
 		startPanel.add(players);										// text box says number of payers
 		startPanel.setBackground(Color.green);
 		
 		startButton = new JButton();
-		startButton.setText("Start");											// button has the label start												// actual start button
+		startButton.setText("Start Game!");											// button has the label start												// actual start button
 		startPanel.add(startButton);											// button added
 		startButton.addActionListener(startButtonActionListener);				// added actionlistener 
 		c.add(startPanel);														// added to container
