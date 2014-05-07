@@ -77,6 +77,7 @@ SelectCourseGUI(int playerIdentity){
 		
 		setTitle("Select Course");
 		setSize(500,500);
+		setLocationRelativeTo(null);
 		getContentPane().setLayout(new GridLayout(0,1));
 		
 																				//wecome to the game message to display at top of box
