@@ -103,15 +103,21 @@ SelectCourseGUI(int playerIdentity){
 		getContentPane().add(main);
 		getContentPane().add(choicePanel);
 		
+		ImageIcon houseButtonIcon = new ImageIcon(new ImageIcon(getClass().getResource("houseBox.png")).getImage().getScaledInstance(165,165, java.awt.Image.SCALE_SMOOTH));
+		choiceButton1.setIcon(houseButtonIcon);
+		choiceButton2.setIcon(houseButtonIcon);
+		choiceButton3.setIcon(houseButtonIcon);
+		
+//		ImageIcon courseButtonIcon = new ImageIcon(new ImageIcon(getClass().getResource("courseBox.png")).getImage().getScaledInstance(165,165, java.awt.Image.SCALE_SMOOTH));
+//		choiceButton1.setIcon(courseButtonIcon);
+//		choiceButton2.setIcon(courseButtonIcon);
+//		choiceButton3.setIcon(courseButtonIcon);
 		//Adds 3 choice buttons
 		main.add(choiceButton1);
 		main.add(choiceButton2);
 		main.add(choiceButton3);
-		choiceButton1.setText("???");
 		choiceButton1.addActionListener(buttonActionListener);
-		choiceButton2.setText("???");
 		choiceButton2.addActionListener(buttonActionListener);
-		choiceButton3.setText("???");
 		choiceButton3.addActionListener(buttonActionListener);
 			
 		 //adds a panel for the first course choice details
