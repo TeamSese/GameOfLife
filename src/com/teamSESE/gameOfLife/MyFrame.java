@@ -37,15 +37,15 @@ public class MyFrame extends JFrame
 		ImageIcon qubLogo = new ImageIcon(new ImageIcon(getClass().getResource("QUBLogo.png")).getImage());
 		JPanel qubLogoPanel = new JPanel();
 		JLabel qubLogoLabel = new JLabel("", qubLogo, JLabel.CENTER);
-		qubLogoPanel.setBounds(5, 380, qubLogo.getIconWidth() + 10, qubLogo.getIconHeight() + 10);
+		qubLogoPanel.setBounds(15, 380, qubLogo.getIconWidth() + 10, qubLogo.getIconHeight() + 10);
 		qubLogoPanel.setBackground(Color.white);
 		qubLogoPanel.add(qubLogoLabel);
 		c.add(qubLogoPanel);
 		
-		ImageIcon seseLogo = new ImageIcon(new ImageIcon(getClass().getResource("seseLogo.png")).getImage());
+		ImageIcon seseLogo = new ImageIcon(new ImageIcon(getClass().getResource("seseLogo.png")).getImage().getScaledInstance(120, 45, java.awt.Image.SCALE_SMOOTH));
 		JPanel seseLogoPanel = new JPanel();
 		JLabel seseLogoLabel = new JLabel("", seseLogo, JLabel.CENTER);
-		seseLogoPanel.setBounds(320, 380, seseLogo.getIconWidth() + 10, seseLogo.getIconHeight() + 10);
+		seseLogoPanel.setBounds(350, 390, seseLogo.getIconWidth() + 10, seseLogo.getIconHeight() + 10);
 		seseLogoPanel.setBackground(Color.white);
 		seseLogoPanel.add(seseLogoLabel);
 		c.add(seseLogoPanel);
