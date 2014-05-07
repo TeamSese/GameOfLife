@@ -17,6 +17,7 @@ import com.jgoodies.forms.factories.FormFactory;
 
 import javax.swing.border.TitledBorder;
 import javax.swing.GroupLayout.Alignment;
+import javax.swing.JLabel;
 import javax.swing.LayoutStyle.ComponentPlacement;
 
 
@@ -24,9 +25,10 @@ public class GameGUI extends JFrame{
 	
 	static int sizeOfGridX = 7;
 	static int sizeOfGridY = 10;
-	
-	JPanel gamePanel, scorePanel;
-	public static JLabel [][] squares = new JLabel[sizeOfGridX][sizeOfGridY];
+	int height, width, playerNumber;
+	JPanel gamePanel, scorePanel, rollPanel;
+	static JLabel [][] squares = new JLabel[sizeOfGridX][sizeOfGridY];
+	JButton rollDice;
 	JLabel [][] secondSquares = new JLabel[sizeOfGridX][sizeOfGridY];
 	JMenu options;
 	JMenuItem intructions;
@@ -60,6 +62,9 @@ public class GameGUI extends JFrame{
 		bar = new JMenuBar();
 		bar.add(options);
 		setJMenuBar(bar);
+		rollPanel = new JPanel();
+		rollDice = new JButton("Roll Dice");
+		playerNumber = 0;
 		
 		JLayeredPane layerPane = getLayeredPane();
 		
@@ -73,36 +78,13 @@ public class GameGUI extends JFrame{
     glassPane.setBackground(Color.GREEN);
     glassPane.setSize(gamePanel.getBounds().width, gamePanel.getBounds().height);
     glassPane.setLocation(0, 22);
-   
-//    try 
-//    {
-//    	counter1 = ImageIO.read(new File("PurpleIcon.png"));
-//    }
-//    catch (IOException ex) {
-//  		ex.printStackTrace();
-//  	}
     
-    ImageIcon PurpleIcon = new ImageIcon(new ImageIcon(getClass().getResource("PurpleIcon.png")).getImage().getScaledInstance(25,25, java.awt.Image.SCALE_SMOOTH));
-    ImageIcon GrassTile = new ImageIcon(new ImageIcon(getClass().getResource("GrassTile.jpg")).getImage().getScaledInstance(sizeConstraint,sizeConstraint, java.awt.Image.SCALE_SMOOTH));
-      	
-
+		JPanel panelArray[] = new JPanel[playerList.size()];										//Creates an array of JPanels and 
+		JLabel playerNameArray[] = new JLabel[playerList.size()];									//JLabels of size number of players 
+		JLabel playerMoneyArray[] = new JLabel[playerList.size()];	
     
-//		JPanel counterPanel = new GamePanel();
-//		glassPane.add(counterPanel);
-
-    layerPane.add(gamePanel, Integer.valueOf(1));
-    layerPane.add(glassPane, Integer.valueOf(2));
-		
-		Container c = getContentPane();
-		c.setMinimumSize(new Dimension(1100, 700));
-		
-
-		setTitle("QUB Game of Life");
-		setExtendedState(getExtendedState()|JFrame.MAXIMIZED_BOTH );		//Maximises GUI
-		setLocationRelativeTo(null);
-
-		c.setBackground(Color.magenta);
-		
+    // **************************** ICONS ARE SET UP IN HERE ****************************
+    
 		ImageIcon GreenCurvedPathLeftDown = new ImageIcon(new ImageIcon(getClass().getResource("GreenCurvedPathLeftDown.jpg")).getImage().getScaledInstance(sizeConstraint,sizeConstraint, java.awt.Image.SCALE_SMOOTH));
 		ImageIcon GreenCurvedPathLeftUp = new ImageIcon(new ImageIcon(getClass().getResource("GreenCurvedPathLeftUp.jpg")).getImage().getScaledInstance(sizeConstraint,sizeConstraint, java.awt.Image.SCALE_SMOOTH));
 		ImageIcon GreenCurvedPathRightDown = new ImageIcon(new ImageIcon(getClass().getResource("GreenCurvedPathRightDown.jpg")).getImage().getScaledInstance(sizeConstraint,sizeConstraint, java.awt.Image.SCALE_SMOOTH));
@@ -128,17 +110,31 @@ public class GameGUI extends JFrame{
 		
 		ImageIcon RedVerticalPath = new ImageIcon(new ImageIcon(getClass().getResource("RedVerticalPath.jpg")).getImage().getScaledInstance(sizeConstraint,sizeConstraint, java.awt.Image.SCALE_SMOOTH));
 		
-		
-		
+    ImageIcon PurpleIcon = new ImageIcon(new ImageIcon(getClass().getResource("PurpleIcon.png")).getImage().getScaledInstance(25,25, java.awt.Image.SCALE_SMOOTH));
+    ImageIcon GrassTile = new ImageIcon(new ImageIcon(getClass().getResource("GrassTile.jpg")).getImage().getScaledInstance(sizeConstraint,sizeConstraint, java.awt.Image.SCALE_SMOOTH));
+     
+    // ****************************************************************************************************************
 
+    layerPane.add(gamePanel, Integer.valueOf(1));
+    layerPane.add(glassPane, Integer.valueOf(2));
 		
-		// dont look in here its full of if statements 
+		Container c = getContentPane();
+		c.setMinimumSize(new Dimension(1100, 700));
+		
+		setTitle("QUB Game of Life");
+		setExtendedState(getExtendedState()|JFrame.MAXIMIZED_BOTH );		//Maximises GUI
+		setLocationRelativeTo(null);
+
+		c.setBackground(Color.magenta);
+
+		//  *************** this sets up the board, setting each icon the the appropiate position ***********
 		for (int i= 0; i< sizeOfGridX; i++) {
       for (int j= 0; j< sizeOfGridY; j++) {
       	
       	squares[i][j] = new JLabel();
       	squares[i][j].setPreferredSize(new Dimension(sizeConstraint, sizeConstraint));
 
+//****************** ROW 1 ********************
       	if (i == 0)
       	{
       		switch(j){
@@ -152,242 +148,110 @@ public class GameGUI extends JFrame{
       		default:{squares[i][j].setIcon(GrassTile);break;}
       		}
       	}
-
       	
+//****************** ROW 2 ********************
       	if (i == 1)
       	{
-      		if (j == 0)
-      		{
-      			squares[i][j].setIcon(OrangeCurvedPathRightDown);
+      		switch(j){
+      		case 0:{squares[i][j].setIcon(OrangeCurvedPathRightDown);break;}
+      		case 1:{squares[i][j].setIcon(BlueHorizontalPath);break;}
+      		case 2:{squares[i][j].setIcon(OrangeCurvedPathLeftUp);break;}
+      		case 4:{squares[i][j].setIcon(GreenVerticalPath);break;}
+      		case 5:{squares[i][j].setIcon(OrangeCurvedPathRightDown);break;}
+      		case 6:{squares[i][j].setIcon(BlueCurvedPathLeftUp);break;}
+      		case 9:{squares[i][j].setIcon(BlueVerticalPath);break;}
+      		default:{squares[i][j].setIcon(GrassTile);break;}
       		}
-      		else if (j == 1)
-      		{
-      			squares[i][j].setIcon(BlueHorizontalPath);
-      		}
-      		else if (j == 2)
-      		{
-      			squares[i][j].setIcon(OrangeCurvedPathLeftUp);
-      		}
-      		else if (j == 4)
-      		{
-      			squares[i][j].setIcon(GreenVerticalPath);
-      		}
-      		else if (j == 5)
-      		{
-      			squares[i][j].setIcon(OrangeCurvedPathRightDown);
-      		}
-      		else if (j == 6)
-      		{
-      			squares[i][j].setIcon(BlueCurvedPathLeftUp);
-      		}
-      		else if (j == 9)
-      		{
-      			squares[i][j].setIcon(BlueVerticalPath);
-      		}
-      		else squares[i][j].setIcon(GrassTile);
       	}
       	
+//****************** ROW 3 ********************      	
       	if (i == 2)
       	{
-      		if (j == 0)
-      		{
-      			squares[i][j].setIcon(OrangeVerticalPath);
+      		switch(j){
+      		case 0:{squares[i][j].setIcon(OrangeVerticalPath);break;}
+      		case 4:{squares[i][j].setIcon(OrangeVerticalPath);break;}
+      		case 5:{squares[i][j].setIcon(OrangeVerticalPath);break;}
+      		case 8:{squares[i][j].setIcon(OrangeCurvedPathRightDown);break;}
+      		case 9:{squares[i][j].setIcon(OrangeCurvedPathLeftUp);break;}
+      		default:{squares[i][j].setIcon(GrassTile);break;}
       		}
-      		else if (j == 4)
-      		{
-      			squares[i][j].setIcon(OrangeVerticalPath);
-      		}
-      		else if (j == 5)
-      		{
-      			squares[i][j].setIcon(OrangeVerticalPath);
-      		}
-      		else if (j == 8)
-      		{
-      			squares[i][j].setIcon(OrangeCurvedPathRightDown);
-      		}
-      		else if (j == 9)
-      		{
-      			squares[i][j].setIcon(OrangeCurvedPathLeftUp);
-      		}
-      		else squares[i][j].setIcon(GrassTile);
       	}
-      	
+        	
+//****************** ROW 4 ********************     	
       	if (i == 3)
       	{
-      		if (j == 0)
-      		{
-      			squares[i][j].setIcon(GreenVerticalPath);
+      		switch(j){
+      		case 0:{squares[i][j].setIcon(GreenVerticalPath);break;}
+      		case 1:{squares[i][j].setIcon(OrangeCurvedPathRightDown);break;}
+      		case 2:{squares[i][j].setIcon(OrangeCurvedPathLeftDown);break;}
+      		case 4:{squares[i][j].setIcon(OrangeFinishPathDown);break;}
+      		case 5:{squares[i][j].setIcon(OrangeVerticalPath);break;}
+      		case 6:{squares[i][j].setIcon(BlueCurvedPathRightDown);break;}
+      		case 7:{squares[i][j].setIcon(GreenCurvedPathLeftDown);break;}
+      		case 8:{squares[i][j].setIcon(OrangeCurvedPathUpRight);break;}
+      		case 9:{squares[i][j].setIcon(OrangeCurvedPathLeftDown);break;}
+      		default:{squares[i][j].setIcon(GrassTile);break;}
       		}
-      		else if (j == 1)
-      		{
-      			squares[i][j].setIcon(OrangeCurvedPathRightDown);
-      		}
-      		else if (j == 2)
-      		{
-      			squares[i][j].setIcon(OrangeCurvedPathLeftDown);
-      		}
-      		else if (j == 4)
-      		{
-      			squares[i][j].setIcon(OrangeFinishPathDown);
-      		}
-      		else if (j == 5)
-      		{
-      			squares[i][j].setIcon(OrangeVerticalPath);
-      		}
-      		else if (j == 6)
-      		{
-      			squares[i][j].setIcon(BlueCurvedPathRightDown);
-      		}
-      		else if (j == 7)
-      		{
-      			squares[i][j].setIcon(GreenCurvedPathLeftDown);
-      		}
-      		else if (j == 8)
-      		{
-      			squares[i][j].setIcon(OrangeCurvedPathUpRight);
-      		}
-      		else if (j == 9)
-      		{
-      			squares[i][j].setIcon(OrangeCurvedPathLeftDown);
-      		}
-      		else squares[i][j].setIcon(GrassTile);
       	}
-      	
+
+        	
+//****************** ROW 5 ********************
       	if (i == 4)
       	{
-      		if (j == 0)
-      		{
-      			squares[i][j].setIcon(OrangeCurvedPathUpRight);
+      		switch(j){
+      		case 0:{squares[i][j].setIcon(OrangeCurvedPathUpRight);break;}
+      		case 1:{squares[i][j].setIcon(OrangeCurvedPathLeftUp);break;}
+      		case 2:{squares[i][j].setIcon(RedVerticalPath);break;}
+      		case 3:{squares[i][j].setIcon(OrangeCurvedPathRightDown);break;}
+      		case 4:{squares[i][j].setIcon(OrangeCurvedPathLeftDown);break;}
+      		case 5:{squares[i][j].setIcon(OrangeFinishPathDown);break;}
+      		case 6:{squares[i][j].setIcon(OrangeVerticalPath);break;}
+      		case 7:{squares[i][j].setIcon(OrangeCurvedPathUpRight);break;}
+      		case 8:{squares[i][j].setIcon(OrangeCurvedPathLeftDown);break;}
+      		case 9:{squares[i][j].setIcon(BlueVerticalPath);break;}
+      		default:{squares[i][j].setIcon(GrassTile);break;}
       		}
-      		else if (j == 1)
-      		{
-      			squares[i][j].setIcon(OrangeCurvedPathLeftUp);
-      		}
-      		else if (j == 2)
-      		{
-      			squares[i][j].setIcon(RedVerticalPath);
-      		}
-      		else if (j == 3)
-      		{
-      			squares[i][j].setIcon(OrangeCurvedPathRightDown);
-      		}
-      		else if (j == 4)
-      		{
-      			squares[i][j].setIcon(OrangeCurvedPathLeftDown);
-      		}
-      		else if (j == 5)
-      		{
-      			squares[i][j].setIcon(OrangeFinishPathDown);
-      		}
-      		else if (j == 6)
-      		{
-      			squares[i][j].setIcon(OrangeVerticalPath);
-      		}
-      		else if (j == 7)
-      		{
-      			squares[i][j].setIcon(OrangeCurvedPathUpRight);
-      		}
-      		else if (j == 8)
-      		{
-      			squares[i][j].setIcon(OrangeCurvedPathLeftDown);
-      		}
-      		else if (j == 9)
-      		{
-      			squares[i][j].setIcon(BlueVerticalPath);
-      		}
-      		else squares[i][j].setIcon(GrassTile);
       	}
-      	
+        	
+//****************** ROW 6 ********************
       	if (i == 5)
       	{
-      		if (j == 1)
-      		{
-      			squares[i][j].setIcon(BlueCurvedPathRightDown);
+      		switch(j){
+      		case 1:{squares[i][j].setIcon(BlueCurvedPathRightDown);break;}
+      		case 2:{squares[i][j].setIcon(OrangeCurvedPathLeftUp);break;}
+      		case 3:{squares[i][j].setIcon(OrangeVerticalPath);break;}
+      		case 4:{squares[i][j].setIcon(OrangeCurvedPathUpRight);break;}
+      		case 5:{squares[i][j].setIcon(GreenCurvedPathLeftDown);break;}
+      		case 6:{squares[i][j].setIcon(OrangeVerticalPath);break;}
+      		case 7:{squares[i][j].setIcon(OrangeCurvedPathRightDown);break;}
+      		case 8:{squares[i][j].setIcon(BlueCurvedPathLeftUp);break;}
+      		case 9:{squares[i][j].setIcon(GreenVerticalPath);break;}
+      		default:{squares[i][j].setIcon(GrassTile);break;}
       		}
-      		else if (j == 2)
-      		{
-      			squares[i][j].setIcon(OrangeCurvedPathLeftUp);
-      		}
-      		else if (j == 3)
-      		{
-      			squares[i][j].setIcon(OrangeVerticalPath);
-      		}
-      		else if (j == 4)
-      		{
-      			squares[i][j].setIcon(OrangeCurvedPathUpRight);
-      		}
-      		else if (j == 5)
-      		{
-      			squares[i][j].setIcon(GreenCurvedPathLeftDown);
-      		}
-      		else if (j == 6)
-      		{
-      			squares[i][j].setIcon(OrangeVerticalPath);
-      		}
-      		else if (j == 7)
-      		{
-      			squares[i][j].setIcon(OrangeCurvedPathRightDown);
-      		}
-      		else if (j == 8)
-      		{
-      			squares[i][j].setIcon(BlueCurvedPathLeftUp);
-      		}
-      		else if (j == 9)
-      		{
-      			squares[i][j].setIcon(GreenVerticalPath);
-      		}
-      		else squares[i][j].setIcon(GrassTile);
       	}
-      	
+      		      	
+//****************** ROW 7 ********************
       	if (i == 6)
       	{
-      		if (j == 1)
-      		{
-      			squares[i][j].setIcon(OrangeCurvedPathUpRight);
-      		}
-      		else if (j == 2)
-      		{
-      			squares[i][j].setIcon(GreenHorizontalPath);
-      		}
-      		else if (j == 3)
-      		{
-      			squares[i][j].setIcon(OrangeCurvedPathLeftUp);
-      		}
-      		else if (j == 5)
-      		{
-      			squares[i][j].setIcon(BlueCurvedPathUpRight);
-      		}
-      		else if (j == 6)
-      		{
-      			squares[i][j].setIcon(OrangeCurvedPathLeftUp);
-      		}
-      		else if (j == 7)
-      		{
-      			squares[i][j].setIcon(OrangeCurvedPathUpRight);
-      		}
-      		else if (j == 8)
-      		{
-      			squares[i][j].setIcon(OrangeHorizontalPath);
-      		}
-      		else if (j == 9)
-      		{
-      			squares[i][j].setIcon(OrangeCurvedPathLeftUp);
-      		}
-      		else squares[i][j].setIcon(GrassTile);
+      		switch(j){
+      		case 1:{squares[i][j].setIcon(OrangeCurvedPathUpRight);break;}
+      		case 2:{squares[i][j].setIcon(GreenHorizontalPath);break;}
+      		case 3:{squares[i][j].setIcon(OrangeCurvedPathLeftUp);break;}
+      		case 5:{squares[i][j].setIcon(BlueCurvedPathUpRight);break;}
+      		case 6:{squares[i][j].setIcon(OrangeCurvedPathLeftUp);break;}
+      		case 7:{squares[i][j].setIcon(OrangeCurvedPathUpRight);break;}
+      		case 8:{squares[i][j].setIcon(OrangeHorizontalPath);break;}
+      		case 9:{squares[i][j].setIcon(OrangeCurvedPathLeftUp);break;}
+      		default:{squares[i][j].setIcon(GrassTile);break;}
+      		}  
       	}
-     
           gamePanel.add(squares[i][j]);
-          
       }
 		}
 	
 		scorePanel = new JPanel();
 		scorePanel.setBorder(new TitledBorder(null, "Player Stats", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 
-		
-		JPanel panelArray[] = new JPanel[playerList.size()];										//Creates an array of JPanels and 
-		JLabel playerNameArray[] = new JLabel[playerList.size()];									//JLabels of size number of players 
-		JLabel playerMoneyArray[] = new JLabel[playerList.size()];		
 	/*	
 		for (int i = 0; i < playerList.size(); i++){												//For each player...
 			panelArray[i] = new JPanel();															// *create a new JPanel
@@ -401,8 +265,7 @@ public class GameGUI extends JFrame{
 			scorePanel.add(playerMoneyArray[i]);															// *add the JLabel to the main panel
 		}*/
 		
-		
-
+	
 		scorePanel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		GroupLayout groupLayout = new GroupLayout(c);
 		groupLayout.setHorizontalGroup(
@@ -423,7 +286,7 @@ public class GameGUI extends JFrame{
 		);
 
 
-		gamePanel.setLayout(new GridLayout(7, 10));
+		gamePanel.setLayout(new GridLayout(sizeOfGridX,sizeOfGridY));
 		c.setLayout(groupLayout);
 		c.setLayout(new FormLayout(new ColumnSpec[] {
 				ColumnSpec.decode("1000px"),
@@ -433,9 +296,18 @@ public class GameGUI extends JFrame{
 		c.add(scorePanel, "2, 1, fill, fill");
 		scorePanel.setLayout(new GridLayout(0, 1, 0, 0));
 		
-		for(int i = 0; i < GameMechanics.playerList.size(); i++){
-			scorePanel.add(createPlayerPanel(i));
+		for(int z = 0; z < GameMechanics.playerList.size(); z++){
+			scorePanel.add(createPlayerPanel(z));
 		}
+		
+
+		rollPanel.add(rollDice);
+		
+		scorePanel.add(rollPanel);
+		height = rollPanel.getHeight();
+		width = rollPanel.getWidth();
+		
+		System.out.println("height is " + height + " width is " + width);
 		
 		intructions.addActionListener(
 				new ActionListener()
@@ -448,11 +320,36 @@ public class GameGUI extends JFrame{
 					}
 				});
 
+		rollDice.addActionListener(
+				new ActionListener()
+				{
+					//If howToPlay button is clicked
+					public void actionPerformed(ActionEvent e) {
+						//Close the menu and open the howToPlay frame (using visibility settings)
+						//setVisible(false);
+						
+						if (playerNumber < GameMechanics.playerList.size())
+						{
+							if (GameMechanics.playerList.get(playerNumber).getMissTurn() == 0)
+							{
+								GameMechanics.movePlayer(playerNumber);
+								playerNumber++;
+							}
+							
+							if (playerNumber == GameMechanics.playerList.size())
+							{
+								playerNumber = 0;
+							}
+						}	
+					}
+				});
+		
 		setDefaultCloseOperation(MyFrame.EXIT_ON_CLOSE);
 		setVisible(true);
 		
-      	System.out.println(squares[0][4].getBounds().x);
+      	System.out.println(squares[0][4].getBounds().x); 	
       	System.out.println(squares[0][4].getBounds().y);
+		
 	}
 	
 	private static JPanel createPlayerPanel(int playerID){

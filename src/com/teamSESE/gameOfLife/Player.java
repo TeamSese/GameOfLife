@@ -4,7 +4,6 @@ import java.math.BigDecimal;
 
 public class Player {
 	
-
 	String name;			//holds player name for each player
 	Color color;			//holds player colour for each player 	- note it is of type Color 
 	BigDecimal money;		//holds player money for each player 	- note it is of type BigDecimal
@@ -15,6 +14,7 @@ public class Player {
 	int targetBoardPos;
 	int XPos;			//Holds the animation current coordinates for this player
 	int YPos;
+	int missTurn;
 	boolean reachedPosition;
 
 	Player(String playerName, Color playerColor){		//Constructor -- Each player must have a name and colour
@@ -25,7 +25,7 @@ public class Player {
 		this.course = null;
 		this.house = GameMechanics.houseList.get(0);	//Sets beginner house to ELMS
 		this.boardPosition = 0;
-		
+		this.missTurn = 0;
 		
 	}
 	
@@ -52,6 +52,11 @@ public class Player {
 	
 	public String toString(){			//Needed for select player dialogue to show player
 		return this.name;
+	}
+	
+	int getMissTurn()
+	{
+		return this.missTurn;
 	}
 
 }
