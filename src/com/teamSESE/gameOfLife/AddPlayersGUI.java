@@ -33,6 +33,7 @@ public class AddPlayersGUI extends JFrame implements ActionListener{
 		setTitle("Enter Player Info");																	//title is set in main method
 		setSize(500, 500);																				// this may need changed but looks ok 
 		setLocationRelativeTo(null);																	// sets the location as the centre of the screen
+		setResizable(false);
 		setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
 		getContentPane().setBackground(Color.white);
 		getContentPane().setLayout(new FormLayout(new ColumnSpec[] {				//layout and gui created with window builder

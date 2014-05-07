@@ -80,6 +80,7 @@ SelectHouseGUI(int playerIdentity){
 		
 		setTitle("Select House");
 		setSize(500,500);
+		setResizable(false);
 		setLocationRelativeTo(null);
 		getContentPane().setLayout(new GridLayout(0,1));
 		
