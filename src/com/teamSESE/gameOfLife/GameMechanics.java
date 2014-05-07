@@ -21,15 +21,14 @@ public class GameMechanics {
 	
 	static int tileProperties[] = {		//What each tile should do goes in here - in order!
 								//Tile Number
-		//Tile.SELECT_COURSE,3,4,		//0
-		Tile.SUE_PLAYER_100,3,4,
+		Tile.SELECT_COURSE,3,4,		//0
 		Tile.GAIN_200,2,4,			//1
 		Tile.PAY_DAY,1,4,				//2
-		Tile.GAIN_200,0,4,				//3
-		Tile.GAIN_200,0,3,				//4
-		Tile.GAIN_200,0,2,				//5
-		Tile.GAIN_200,1,2,				//6
-		Tile.SUE_PLAYER_100,1,1,		//7
+		Tile.MISS_TURN,0,4,				//3
+		Tile.MISS_TURN,0,3,				//4
+		Tile.MISS_TURN,0,2,				//5
+		Tile.MISS_TURN,1,2,				//6
+		Tile.MISS_TURN,1,1,		//7
 		Tile.GAIN_200,1,0,				//8
 		Tile.GAIN_200,2,0,				//9
 		Tile.PAY_DAY,3,0,				//10
@@ -173,11 +172,11 @@ public class GameMechanics {
 		}
 
 		new GameGUI(GameMechanics.playerList);			//If all players have been added open the GameGUI and pass
-		//g1 = new DebugGUI();
+		g1 = new DebugGUI();
 
 	}
 	
 	public static void updateDebug(){
-		//g1.updateDebugGUI();	********************************* un comment me
+		g1.updateDebugGUI();
 	}
 }

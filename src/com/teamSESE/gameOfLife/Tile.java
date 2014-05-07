@@ -25,6 +25,7 @@ public class Tile {
 	protected static final int SUE_PLAYER_100 = 7;		//Player is selected from GUI when tile is landed on
 	protected static final int GAIN_LIFE_TILE = 8;
 	protected static final int SELECT_HOUSE = 9;
+	protected static final int MISS_TURN = 10;
 	
 	//private static final int BLUE = 5;
 	//private static final int RED = 5;
@@ -47,29 +48,34 @@ public class Tile {
 			
         	case PAY_DAY:{
         		paySalary(playerID);
+        		GameGUI.tileInfo.setText(GameMechanics.playerList.get(playerID).name + " has landed on a pay day");
         		break;
         	}
         	
         	case LOOSE_200:{
         		loanPlayer(playerID,new BigDecimal(200));
+        		GameGUI.tileInfo.setText(GameMechanics.playerList.get(playerID).name + " has landed on a a lose 200 tile");
         		System.out.println("Player " + playerID + " lost £200!");
         		break;
         	}
         	
         	case LOOSE_500:{
         		loanPlayer(playerID,new BigDecimal(500));
+        		GameGUI.tileInfo.setText(GameMechanics.playerList.get(playerID).name + " has landed on a lose 500 tile");
         		System.out.println("Player " + playerID + " lost £500!");
         		break;
         	}
         	
         	case GAIN_200:{
         		payPlayer(playerID,new BigDecimal(200));
+        		GameGUI.tileInfo.setText(GameMechanics.playerList.get(playerID).name + " has landed on a gain 200 tile");
         		System.out.println("Player " + playerID + " gained £200!");
         		break;
         	}
         	
         	case GAIN_500:{
         		payPlayer(playerID,new BigDecimal(500));
+        		GameGUI.tileInfo.setText(GameMechanics.playerList.get(playerID).name + " has landed on a gain 500 tile");
         		System.out.println("Player " + playerID + " gained £500!");
         		break;
         	}
@@ -78,13 +84,22 @@ public class Tile {
         		payPlayer(playerID,new BigDecimal(100)); 		//Adds to suing player
         		Player p = selectPlayerDialogueBox(playerID,"Sue which player?");
         		p.loan = p.loan.add(new BigDecimal(100));	//Adds to loan of sued player
+        		GameGUI.tileInfo.setText(GameMechanics.playerList.get(playerID).name + " has landed on a sue player tile");
         		break;
         	}
         	
         	case SELECT_HOUSE:{
         		new SelectHouseGUI(playerID);
+        		GameGUI.tileInfo.setText(GameMechanics.playerList.get(playerID).name + " has landed on a new house tile");
 				System.out.println("Player " + playerID + " house selected...");
 				break;
+        	}
+        	
+        	case MISS_TURN:{
+        		GameMechanics.playerList.get(playerID).missTurn = GameMechanics.playerList.get(playerID).missTurn + 1;
+        		GameGUI.tileInfo.setText(GameMechanics.playerList.get(playerID).name + " has landed on miss a turn");
+        		System.out.println("Player " + playerID + " has to miss a turn");
+        		break;
         	}
         	
 		}

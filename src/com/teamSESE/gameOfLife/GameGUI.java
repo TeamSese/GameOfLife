@@ -38,6 +38,7 @@ public class GameGUI extends JFrame{
 	int sizeConstraint = 100;
 	JTextField rollAmount;
 	JTextField playerTurn;
+	static JTextField tileInfo;
 	
 	/*
 	 * 
@@ -65,7 +66,7 @@ public class GameGUI extends JFrame{
 		bar.add(options);
 		setJMenuBar(bar);
 		rollPanel = new JPanel();
-		rollPanel.setLayout(new GridLayout (3,1));
+		rollPanel.setLayout(new GridLayout (4,1));
 		rollDice = new JButton("Roll Dice");
 		playerNumber = 0;
 		
@@ -305,6 +306,8 @@ public class GameGUI extends JFrame{
 		
 		rollAmount = new JTextField(20);
 		playerTurn = new JTextField(20);
+		tileInfo = new JTextField(20);
+		tileInfo.setEditable(false);
 		rollAmount.setEditable(false);
 		playerTurn.setEditable(false);
 		
@@ -312,6 +315,7 @@ public class GameGUI extends JFrame{
 		rollPanel.add(rollAmount);
 		rollPanel.add(rollDice);
 		rollPanel.add(playerTurn);
+		rollPanel.add(tileInfo);
 		scorePanel.add(rollPanel);
 		
 		intructions.addActionListener(
