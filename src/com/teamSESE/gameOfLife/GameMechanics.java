@@ -138,19 +138,19 @@ public class GameMechanics {
 		
 		if (gameOver == false){
 
-			if(playerList.get(i).boardPosition < tileList.size()){
+			if(playerList.get(i).targetBoardPos < tileList.size()){
 				tileList.get(playerList.get(i).targetBoardPos).execute(i);
 			}
-
-			if ((playerList.get(i).boardPosition  + j >= 15) && (playerList.get(i).house.equals(houseList.get(0))))
+/*
+			if ((playerList.get(i).targetBoardPos  + j >= 15) && (playerList.get(i).house.equals(houseList.get(0))))
 			{
-				playerList.get(i).boardPosition = 15;
+				playerList.get(i).targetBoardPos = 15;
 				playerList.get(i).house = houseList.get(1);
 			}
 			else
 			{
 				playerList.get(i).targetBoardPos = playerList.get(i).boardPosition + j;
-			}
+			}*/
 		}
 		else 
 		{
