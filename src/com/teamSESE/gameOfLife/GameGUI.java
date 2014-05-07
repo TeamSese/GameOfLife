@@ -36,6 +36,8 @@ public class GameGUI extends JFrame{
 	JMenuBar bar;
   BufferedImage counter1;
 	int sizeConstraint = 100;
+	JTextField rollAmount;
+	JTextField playerTurn;
 	
 	/*
 	 * 
@@ -63,6 +65,7 @@ public class GameGUI extends JFrame{
 		bar.add(options);
 		setJMenuBar(bar);
 		rollPanel = new JPanel();
+		rollPanel.setLayout(new GridLayout (3,1));
 		rollDice = new JButton("Roll Dice");
 		playerNumber = 0;
 		
@@ -300,14 +303,16 @@ public class GameGUI extends JFrame{
 			scorePanel.add(createPlayerPanel(z));
 		}
 		
-
+		rollAmount = new JTextField(20);
+		playerTurn = new JTextField(20);
+		rollAmount.setEditable(false);
+		playerTurn.setEditable(false);
+		
+		playerTurn.setText(GameMechanics.playerList.get(0).name + "'s turn");
+		rollPanel.add(rollAmount);
 		rollPanel.add(rollDice);
-		
+		rollPanel.add(playerTurn);
 		scorePanel.add(rollPanel);
-		height = rollPanel.getHeight();
-		width = rollPanel.getWidth();
-		
-		System.out.println("height is " + height + " width is " + width);
 		
 		intructions.addActionListener(
 				new ActionListener()
@@ -333,6 +338,14 @@ public class GameGUI extends JFrame{
 							if (GameMechanics.playerList.get(playerNumber).getMissTurn() == 0)
 							{
 								GameMechanics.movePlayer(playerNumber);
+								rollAmount.setText(GameMechanics.playerList.get(playerNumber).name + " has rolled a " + GameMechanics.j);
+								playerNumber++;
+								
+							}
+							else
+							{
+								GameMechanics.playerList.get(playerNumber).missTurn = GameMechanics.playerList.get(playerNumber).getMissTurn() - 1; 
+								rollAmount.setText(GameMechanics.playerList.get(playerNumber).name + " has missed a turn!");
 								playerNumber++;
 							}
 							
@@ -340,6 +353,7 @@ public class GameGUI extends JFrame{
 							{
 								playerNumber = 0;
 							}
+							playerTurn.setText(GameMechanics.playerList.get(playerNumber).name + "'s turn");
 						}	
 					}
 				});
