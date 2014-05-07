@@ -12,6 +12,10 @@ public class Player {
 	Course course;
 	House house;
 	int boardPosition;
+	int targetBoardPos;
+	int XPos;			//Holds the animation current coordinates for this player
+	int YPos;
+	boolean reachedPosition;
 
 	Player(String playerName, Color playerColor){		//Constructor -- Each player must have a name and colour
 		this.color = playerColor;

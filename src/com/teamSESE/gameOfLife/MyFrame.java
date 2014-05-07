@@ -21,16 +21,10 @@ public class MyFrame extends JFrame
 
 		Container c = getContentPane();																//container to hold the different panels
 		c.setBackground(Color.white);																			//col from main
-		getContentPane().setLayout(null);																//no layout selected so we can place anywhere
+		c.setLayout(null);																//no layout selected so we can place anywhere
 		
-//		JPanel welcome = new JPanel();																		//wecome to the game message to display at top of box
-//		welcome.setBounds(155, 5, 190, 26);																	// location
-//		JLabel welcomeMessage = new JLabel ("Welcome to..."); //message
-//		welcome.add(welcomeMessage);																		//add to panel
-//		welcome.setBackground(Color.white);
-//		c.add(welcome);																						// add to container
+																					// add to container
 
-		ImageIcon gameLogo2 = new ImageIcon(new ImageIcon(getClass().getResource("GameLogobBlank.png")).getImage());
 		ImageIcon gameLogo = new ImageIcon(new ImageIcon(getClass().getResource("GameLogobBlank.png")).getImage().getScaledInstance(360,80, java.awt.Image.SCALE_SMOOTH));
 		JPanel logoPanel = new JPanel();
 		JLabel logoLabel = new JLabel("", gameLogo, JLabel.CENTER);
@@ -63,6 +57,9 @@ public class MyFrame extends JFrame
 		playerPanel.add(numOfP);															//label to tell to select num of players
 		playerPanel.add(combo);																// drop down menu
 
+		players.setEditable(false);
+		players.setHorizontalAlignment(JLabel.CENTER);
+		
 		combo.addItemListener(new ItemListener(){											//this is to set the number of players to be displayed
 			public void itemStateChanged(ItemEvent ie){
 
@@ -70,19 +67,19 @@ public class MyFrame extends JFrame
 					String str = (String)combo.getSelectedItem();							// if the number changes then change the number of player message
 
 					if(str=="2"){
-						players.setText("2 Players selected");}
+						players.setText("2 players selected");}
 
 					if(str=="3"){
-						players.setText("3 Players selected");}
+						players.setText("3 players selected");}
 
 					if(str=="4"){
-						players.setText("4 Players selected");}
+						players.setText("4 players selected");}
 
 					if(str=="5"){
-						players.setText("5 Players selected");}
+						players.setText("5 players selected");}
 
 					if(str=="6"){
-						players.setText("6 Players selected");}
+						players.setText("6 players selected");}
 				}																						// closes if statements
 
 			}																							//closes method
@@ -95,7 +92,7 @@ public class MyFrame extends JFrame
 		startPanel.setBounds(123, 239, 254, 70);						//location 
 		startPanel.setLayout(new GridLayout(2,1));						// using a grid layout
 		startPanel.add(players);										// text box says number of payers
-		startPanel.setBackground(Color.green);
+		startPanel.setBackground(Color.white);
 		
 		startButton = new JButton();
 		startButton.setText("Start Game!");											// button has the label start												// actual start button

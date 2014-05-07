@@ -20,60 +20,60 @@ public class GameMechanics {
 	
 	static int tileProperties[] = {		//What each tile should do goes in here - in order!
 								//Tile Number
-		Tile.SELECT_COURSE,		//0
-		Tile.GAIN_200,				//1
-		Tile.PAY_DAY,					//2
-		Tile.GAIN_200,				//3
-		Tile.GAIN_200,				//4
-		Tile.GAIN_200,				//5
-		Tile.GAIN_200,				//6
-		Tile.SUE_PLAYER_100,	//7
-		Tile.GAIN_200,				//8
-		Tile.GAIN_200,				//9
-		Tile.PAY_DAY,					//10
-		Tile.GAIN_200,				//11
-		Tile.GAIN_200,				//12
-		Tile.GAIN_200,				//13
-		Tile.GAIN_200,				//14
-		Tile.SELECT_HOUSE,	//Tile.SELECT_HOUSE,		//15
-		Tile.GAIN_200,				//16
-		Tile.SUE_PLAYER_100,					//17
-		Tile.GAIN_200,	//Tile.SELECT_HOUSE,		//18
-		Tile.PAY_DAY,				//19
-		Tile.GAIN_200,				//20
-		Tile.SUE_PLAYER_100,				//21
-		Tile.GAIN_200,				//22
-		Tile.GAIN_200,				//23
-		Tile.GAIN_200,				//24
-		Tile.PAY_DAY,					//25
-		Tile.SUE_PLAYER_100,				//26
-		Tile.GAIN_200,				//27
-		Tile.GAIN_200,				//28
-		Tile.GAIN_200,				//29
-		Tile.SUE_PLAYER_100,				//30
-		Tile.PAY_DAY,				//31
-		Tile.GAIN_200,	//Tile.SELECT_HOUSE,		//32
-		Tile.GAIN_200,				//33
-		Tile.GAIN_200,				//34
-		Tile.GAIN_200,					//35
-		Tile.GAIN_200,				//36
-		Tile.GAIN_200,				//37
-		Tile.GAIN_200,				//38
-		Tile.PAY_DAY,				//39
-		Tile.SUE_PLAYER_100,				//40
-		Tile.GAIN_200,				//41
-		Tile.GAIN_200,			//42
-		Tile.GAIN_200,				//43
-		Tile.GAIN_200,				//44
-		Tile.SUE_PLAYER_100,					//45
-		Tile.GAIN_200,				//46
-		Tile.PAY_DAY,				//47
-		Tile.GAIN_200,	//Tile.SELECT_HOUSE,		//48
-		Tile.GAIN_200,				//49
-		Tile.SUE_PLAYER_100,				//50
-		Tile.GAIN_200,				//51
-		Tile.GAIN_200,			//52
-		Tile.GAIN_200,				//53
+		Tile.SELECT_COURSE,3,4,		//0
+		Tile.GAIN_200,2,4,			//1
+		Tile.PAY_DAY,1,4,				//2
+		Tile.GAIN_200,0,4,				//3
+		Tile.GAIN_200,0,3,				//4
+		Tile.GAIN_200,0,2,				//5
+		Tile.GAIN_200,1,2,				//6
+		Tile.SUE_PLAYER_100,1,1,		//7
+		Tile.GAIN_200,1,0,				//8
+		Tile.GAIN_200,2,0,				//9
+		Tile.PAY_DAY,3,0,				//10
+		Tile.GAIN_200,4,0,				//11
+		Tile.GAIN_200,4,1,				//12
+		Tile.GAIN_200,3,1,				//13
+		Tile.GAIN_200,3,2,				//14
+		Tile.SELECT_HOUSE,4,2,	//Tile.SELECT_HOUSE,		//15
+		Tile.GAIN_200,5,2,				//16
+		Tile.SUE_PLAYER_100,5,1,		//17
+		Tile.GAIN_200,6,1,	//Tile.SELECT_HOUSE,		//18
+		Tile.PAY_DAY,6,2,				//19
+		Tile.GAIN_200,6,3,				//20
+		Tile.SUE_PLAYER_100,5,3,		//21
+		Tile.GAIN_200,4,3,				//22
+		Tile.GAIN_200,4,4,				//23
+		Tile.GAIN_200,5,4,				//24
+		Tile.PAY_DAY,5,5,				//25
+		Tile.SUE_PLAYER_100,6,5,		//26
+		Tile.GAIN_200,6,6,				//27
+		Tile.GAIN_200,5,6,				//28
+		Tile.GAIN_200,4,6,				//29
+		Tile.SUE_PLAYER_100,3,6,		//30
+		Tile.PAY_DAY,3,7,				//31
+		Tile.GAIN_200,4,7,	//Tile.SELECT_HOUSE,		//32
+		Tile.GAIN_200,4,8,				//33
+		Tile.GAIN_200,5,8,				//34
+		Tile.GAIN_200,5,7,				//35
+		Tile.GAIN_200,6,7,				//36
+		Tile.GAIN_200,6,8,				//37
+		Tile.GAIN_200,6,9,				//38
+		Tile.PAY_DAY,5,9,				//39
+		Tile.SUE_PLAYER_100,4,9,		//40
+		Tile.GAIN_200,3,9,				//41
+		Tile.GAIN_200,3,8,				//42
+		Tile.GAIN_200,2,8,				//43
+		Tile.GAIN_200,2,9,				//44
+		Tile.SUE_PLAYER_100,1,9,		//45
+		Tile.GAIN_200,0,9,				//46
+		Tile.PAY_DAY,0,8,				//47
+		Tile.GAIN_200,0,7,				//Tile.SELECT_HOUSE,		//48
+		Tile.GAIN_200,0,6,				//49
+		Tile.SUE_PLAYER_100,1,6,		//50
+		Tile.GAIN_200,1,5,				//51
+		Tile.GAIN_200,2,5,				//52
+		Tile.GAIN_200,3,5,				//53
 		
 		};
 	
@@ -104,8 +104,12 @@ public class GameMechanics {
 	}
 	
 	public static void setUpBoard(){
-		for(int i = 0; i < tileProperties.length; i++){			//This will create the new tiles as they are in the tileProperties array
-			tileList.add(new Tile(tileProperties[i])); 			//and add them to the tileList ArrayList (the board)
+		int j = 0;
+		for(int i = 0; i < tileProperties.length; i=i+3){			//This will create the new tiles as they are in the tileProperties array
+			System.out.println(i);
+			tileList.add(new Tile(tileProperties[i],tileProperties[i+1],tileProperties[i+2])); 			//and add them to the tileList ArrayList (the board)
+			System.out.println("Tile: " + j + " X: "+tileList.get(j).gridXPos +" Y: "+ tileList.get(j).gridYPos);
+			j++;
 		}
 	}
 	
@@ -118,6 +122,7 @@ public class GameMechanics {
 	}
 
 	public static void movePlayer(int i) {
+<<<<<<< HEAD
 		
 		JOptionPane chooseRoll = new JOptionPane(GameMechanics.playerList.get(i).name + ", your turn to roll");
 		JDialog rollMessage = chooseRoll.createDialog("Follow the Instructions");
@@ -127,6 +132,10 @@ public class GameMechanics {
 
 		//rollMessage.setLocation((int)(GameGUI.scorePanel).getLocation().getX(), ((int)(GameGUI.rollPanel).getLocation().getY()));
 		rollMessage.setVisible(true);
+=======
+		//GameMechanics.playerList.get(0).reachedPosition = false;
+		JOptionPane.showMessageDialog(null, GameMechanics.playerList.get(i).name + ", your turn to roll");
+>>>>>>> 43210f040778c9b3a960638a803f2ffd228dc489
 		int j = dice();
 		JOptionPane.showMessageDialog(null, GameMechanics.playerList.get(i).name + ", you rolled a " + j);
 		System.out.print("Player " +i+ " rolled the dice and got a " +j+ ".. \n Moved from position " + playerList.get(i).boardPosition+ " to ");
@@ -139,8 +148,8 @@ public class GameMechanics {
 		}
 		else
 		{
-			playerList.get(i).boardPosition = playerList.get(i).boardPosition + j;
-			System.out.println("position " + playerList.get(i).boardPosition);
+			
+			playerList.get(i).targetBoardPos = playerList.get(i).boardPosition + j;
 		}
 	}
 
@@ -157,18 +166,8 @@ public class GameMechanics {
 		}
 		
 		new GameGUI(GameMechanics.playerList);			//If all players have been added open the GameGUI and pass
-		g1 = new DebugGUI();
-		
-		/*
-		int i = randomNumber(0, playerList.size()-1);	//This just gets a random number for i to see who takes first go
-		
-		do{
-			movePlayer(i);											//This will change player i s boardPosition
-			tileList.get(playerList.get(i).boardPosition).execute(i);
-			i++;
-		}
-		while(i != playerList.size());
-		*/
+		//g1 = new DebugGUI();
+
 		while(gameOver == false){
 			for(int i = 0; i < playerList.size(); i++){
 				movePlayer(i);
@@ -185,6 +184,6 @@ public class GameMechanics {
 	}
 	
 	public static void updateDebug(){
-		g1.updateDebugGUI();
+		//g1.updateDebugGUI();	********************************* un comment me
 	}
 }

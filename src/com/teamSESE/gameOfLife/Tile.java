@@ -2,10 +2,13 @@ package com.teamSESE.gameOfLife;
 
 import java.math.BigDecimal;
 
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 public class Tile {
 	String tileText;
+	int gridXPos;
+	int gridYPos;
 	
 	//tileType - 
 	//holds an in which corresponds to which function 
@@ -27,8 +30,10 @@ public class Tile {
 	//private static final int RED = 5;
 	
 	
-	public Tile(int tType){
+	public Tile(int tType,int gridXPos, int gridYPos){
 		this.tileType = tType;		//Basically tells the tile what to execute when it is landed on
+		this.gridXPos = gridXPos;
+		this.gridYPos = gridYPos;
 	}
 	
 	public void execute(int playerID){		//Player ID is their position in the GameMechanics.playerList array - so each method knows which player stats to change

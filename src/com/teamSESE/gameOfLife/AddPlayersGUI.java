@@ -1,6 +1,7 @@
 package com.teamSESE.gameOfLife;
 
 import javax.swing.ButtonGroup;
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -30,9 +31,10 @@ public class AddPlayersGUI extends JFrame implements ActionListener{
 
 		this.selectedPlayers = selectedPlayers;
 		setTitle("Enter Player Info");																	//title is set in main method
-		setSize(320, 250);																				// this may need changed but looks ok 
+		setSize(500, 500);																				// this may need changed but looks ok 
 		setLocationRelativeTo(null);																	// sets the location as the centre of the screen
 		setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
+		getContentPane().setBackground(Color.white);
 		getContentPane().setLayout(new FormLayout(new ColumnSpec[] {				//layout and gui created with window builder
 				FormFactory.GLUE_COLSPEC,},
 				new RowSpec[] {
@@ -41,11 +43,21 @@ public class AddPlayersGUI extends JFrame implements ActionListener{
 				RowSpec.decode("82px"),
 				FormFactory.LINE_GAP_ROWSPEC,
 				FormFactory.GLUE_ROWSPEC,}));
+		
+//		ImageIcon gameLogo = new ImageIcon(new ImageIcon(getClass().getResource("GameLogobBlank.png")).getImage().getScaledInstance(360,80, java.awt.Image.SCALE_SMOOTH));
+//		JPanel logoPanel = new JPanel();
+//		JLabel logoLabel = new JLabel("", gameLogo, JLabel.CENTER);
+//		//logoPanel.setBounds(50, 45, gameLogo.getIconWidth() + 20, gameLogo.getIconHeight() + 20);
+//		logoPanel.setBackground(Color.white);
+//		logoPanel.add(logoLabel);
+//		getContentPane().add(logoPanel, "1, 1, fill, fill");
 
 		JPanel panel = new JPanel();
+		panel.setLocation(0, 200);
 		getContentPane().add(panel, "1, 1, fill, fill");
+		panel.setBackground(Color.white);
 
-		JLabel lblEnterPlayer = new JLabel("Enter Player"+(GameMechanics.playerList.size()+1)+"'s Name:");
+		JLabel lblEnterPlayer = new JLabel("Enter Player "+(GameMechanics.playerList.size()+1)+"'s Name:");
 		panel.add(lblEnterPlayer);
 
 		playerNameField = new JTextField();
@@ -54,6 +66,7 @@ public class AddPlayersGUI extends JFrame implements ActionListener{
 
 		JPanel panel_1 = new JPanel();
 		getContentPane().add(panel_1, "1, 3, fill, fill");
+		panel_1.setBackground(Color.white);
 
 		JPanel panel_3 = new JPanel();
 		panel_3.setBackground(Color.RED);
@@ -121,6 +134,7 @@ public class AddPlayersGUI extends JFrame implements ActionListener{
 
 		JPanel panel_2 = new JPanel();
 		getContentPane().add(panel_2, "1, 5, fill, fill");
+		panel_2.setBackground(Color.white);
 
 		ButtonGroup group = new ButtonGroup();		//Groups the radio buttons so that 
 		group.add(rdbtnRed);						//only 1 can be selected at a time
@@ -133,7 +147,7 @@ public class AddPlayersGUI extends JFrame implements ActionListener{
 		group.add(rdbtnCyan);
 
 
-		JButton btnNext = new JButton("Next >>");
+		JButton btnNext = new JButton("Next");
 		btnNext.addActionListener(this);			//adds actionlistener (code is in method below)
 		panel_2.add(btnNext);
 		setVisible(true);
