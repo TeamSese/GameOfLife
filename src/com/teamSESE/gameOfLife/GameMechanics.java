@@ -139,7 +139,7 @@ public class GameMechanics {
 		if (gameOver == false){
 
 			if(playerList.get(i).boardPosition < tileList.size()){
-				tileList.get(playerList.get(i).boardPosition).execute(i);
+				tileList.get(playerList.get(i).targetBoardPos).execute(i);
 			}
 
 			if ((playerList.get(i).boardPosition  + j >= 15) && (playerList.get(i).house.equals(houseList.get(0))))
