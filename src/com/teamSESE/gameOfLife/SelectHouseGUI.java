@@ -77,11 +77,9 @@ SelectHouseGUI(int playerIdentity){
 		setTitle("Select House");
 		setSize(500,500);
 		getContentPane().setLayout(new GridLayout(0,1));
-		
-																				//wecome to the game message to display at top of box
 																
 		JLabel welcomeMessage = new JLabel (GameMechanics.playerList.get(playerIdentity) + " choose 2 house cards");
-		welcome.add(welcomeMessage);																		//add to panel
+		welcome.add(welcomeMessage);																	
 			
 		main.setLayout(new GridLayout(1, 3, 0, 0));
 		main.setBounds(155,50,250,250);
