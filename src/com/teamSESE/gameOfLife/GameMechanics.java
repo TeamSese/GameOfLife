@@ -17,7 +17,7 @@ public class GameMechanics {
 	static ArrayList<Tile> tileList = new ArrayList<Tile>();
 	public static boolean gameOver =false;
 	public static DebugGUI g1;
-	static int j = dice();
+	public static int j;
 	
 	static int tileProperties[] = {		//What each tile should do goes in here - in order!
 								//Tile Number
@@ -132,23 +132,19 @@ public class GameMechanics {
 //		rollMessage.setBounds((int)(GameGUI.scorePanel).getLocation().getX(), ((int)(GameGUI.rollPanel).getLocation().getY() + (GameGUI.rollPanel.getHeight() / 4)) , GameGUI.rollPanel.getWidth(), GameGUI.rollPanel.getHeight());
 //		rollMessage.setVisible(true);
 		
-		
-		
 		//GameMechanics.playerList.get(0).reachedPosition = false;
+		
+		j = dice();
 		
 		if (gameOver == false){
 
 			if(playerList.get(i).boardPosition < tileList.size()){
 				tileList.get(playerList.get(i).targetBoardPos).execute(i);
 			}
-			
-			JOptionPane.showMessageDialog(null, GameMechanics.playerList.get(i).name + ", you rolled a " + j);
-			System.out.print("Player " +i+ " rolled the dice and got a " +j+ ".. \n Moved from position " + playerList.get(i).boardPosition+ " to ");
 
 			if ((playerList.get(i).boardPosition  + j >= 15) && (playerList.get(i).house.equals(houseList.get(0))))
 			{
 				playerList.get(i).boardPosition = 15;
-				JOptionPane.showMessageDialog(null, GameMechanics.playerList.get(i).name + ", you must choose a house ");
 				playerList.get(i).house = houseList.get(1);
 			}
 			else
