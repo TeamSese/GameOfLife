@@ -2,6 +2,7 @@ package com.teamSESE.gameOfLife;
 
 import java.awt.*;
 import java.awt.event.*;
+
 import javax.swing.*;
 
 public class MyFrame extends JFrame 
@@ -29,6 +30,13 @@ public class MyFrame extends JFrame
 		welcome.setBackground(Color.green);
 		c.add(welcome);																						// add to container
 
+		ImageIcon gameLogo = new ImageIcon("GameLogo.png");
+		JPanel logoPanel = new JPanel(new BorderLayout());
+		JLabel logoLabel = new JLabel("", gameLogo, JLabel.CENTER);
+		logoPanel.setBounds(50, 50, 350, 80);
+		logoPanel.add(logoLabel);
+		c.add(logoPanel);
+		
 		JPanel playerPanel = new JPanel(); 													// new panel for players
 		playerPanel.setBounds(92, 225, 316, 27);											// location
 		playerPanel.setLayout(new GridLayout(1,2));											//layout as grid
