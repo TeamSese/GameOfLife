@@ -21,7 +21,7 @@ public class MyFrame extends JFrame
 
 		Container c = getContentPane();																//container to hold the different panels
 		c.setBackground(Color.white);																			//col from main
-		getContentPane().setLayout(null);																//no layout selected so we can place anywhere
+		c.setLayout(null);																//no layout selected so we can place anywhere
 		
 																					// add to container
 
@@ -58,6 +58,7 @@ public class MyFrame extends JFrame
 		playerPanel.add(combo);																// drop down menu
 
 		players.setEditable(false);
+		players.setHorizontalAlignment(JLabel.CENTER);
 		
 		combo.addItemListener(new ItemListener(){											//this is to set the number of players to be displayed
 			public void itemStateChanged(ItemEvent ie){

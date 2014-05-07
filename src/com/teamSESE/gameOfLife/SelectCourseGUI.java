@@ -1,6 +1,7 @@
 package com.teamSESE.gameOfLife;
 
 import javax.swing.ButtonGroup;
+import javax.swing.ImageIcon;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -29,8 +30,11 @@ import java.util.Collections;
 import java.util.List;
 import java.awt.Rectangle;
 import java.awt.Dimension;
+
 import javax.swing.BoxLayout;
+
 import java.awt.Component;
+
 import javax.swing.SwingConstants;
 
 
@@ -79,17 +83,22 @@ SelectCourseGUI(int playerIdentity){
 		setSize(500,500);
 		setLocationRelativeTo(null);
 		getContentPane().setLayout(new GridLayout(0,1));
-		
 																				//wecome to the game message to display at top of box
-																
-		JLabel welcomeMessage = new JLabel (GameMechanics.playerList.get(playerIdentity) + " choose 2 career cards");
-		welcome.add(welcomeMessage);																		//add to panel
-			
+		ImageIcon ucasHeader = new ImageIcon(new ImageIcon(getClass().getResource("ucas.png")).getImage());
+		JPanel ucasPanel = new JPanel();
+		JLabel ucasLabel = new JLabel("", ucasHeader, JLabel.CENTER);
+		ucasPanel.setBounds(0, 0, ucasHeader.getIconWidth() + 20, ucasHeader.getIconHeight() + 20);
+		ucasPanel.setBackground(Color.lightGray);
+		ucasPanel.add(ucasLabel);
+		
+//		JLabel welcomeMessage = new JLabel (GameMechanics.playerList.get(playerIdentity) + " choose 2 career cards");
+//		welcome.add(welcomeMessage);																		//add to panel
+//		welcome.setBackground(Color.white);
 		main.setLayout(new GridLayout(1, 3, 0, 0));
 		main.setBounds(155,50,250,250);
 		choicePanel.setLayout(new GridLayout(0, 2, 0, 0));
 		//Adds frames to the window
-		getContentPane().add(welcome);
+		getContentPane().add(ucasPanel);
 		getContentPane().add(main);
 		getContentPane().add(choicePanel);
 		
@@ -107,10 +116,12 @@ SelectCourseGUI(int playerIdentity){
 		 //adds a panel for the first course choice details
 		choicePanel.add(choiceDetails1);
 		choiceDetails1.add(choiceDetails1a);
+		choiceDetails1.setBackground(Color.white);
 		choiceDetails1.add(choiceDetails1b);
 		choiceDetails1.setBorder(new TitledBorder(null, "Choice 1", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		choiceDetails1.setLayout(new GridLayout(2, 1, 0, 0));
 		choiceDetails1a.setLayout(new GridLayout(3, 2, 0, 0));
+		choiceDetails1a.setBackground(Color.white);
 		choiceDetails1a.add(new JLabel("Name"));
 		choiceDetails1a.add(choice1txt1);
 		choiceDetails1a.add(new JLabel("Base Salary"));
@@ -118,6 +129,7 @@ SelectCourseGUI(int playerIdentity){
 		choiceDetails1a.add(new JLabel("Max Salary"));
 		choiceDetails1a.add(choice1txt3);
 		choiceDetails1b.setLayout(new GridLayout(1, 1, 0, 0));
+		choiceDetails1b.setBackground(Color.white);
 		
 		//adds a panel for the second course choice details		
 		choicePanel.add(choiceDetails2);
@@ -125,6 +137,7 @@ SelectCourseGUI(int playerIdentity){
 		choiceDetails2.add(choiceDetails2b);
 		choiceDetails2.setBorder(new TitledBorder(null, "Choice 2", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		choiceDetails2.setLayout(new GridLayout(2, 1, 0, 0));
+		choiceDetails2.setBackground(Color.white);
 		choiceDetails2a.setLayout(new GridLayout(3, 2, 0, 0));
 		choiceDetails2a.add(new JLabel("Name"));
 		choiceDetails2a.add(choice2txt1);
@@ -132,7 +145,9 @@ SelectCourseGUI(int playerIdentity){
 		choiceDetails2a.add(choice2txt2);
 		choiceDetails2a.add(new JLabel("Max Salary"));
 		choiceDetails2a.add(choice2txt3);
+		choiceDetails2a.setBackground(Color.white);
 		choiceDetails2b.setLayout(new GridLayout(1, 1, 0, 0));
+		choiceDetails2b.setBackground(Color.white);
 		
 		//creates select course buttons 
 		choiceDetails1b.add(selectCourse1);
@@ -142,6 +157,12 @@ SelectCourseGUI(int playerIdentity){
 		selectCourse2.setText("Select Course");
 		selectCourse2.addActionListener(select2ActionListener);
 		
+		choice1txt1.setEditable(false);
+		choice1txt2.setEditable(false);
+		choice1txt3.setEditable(false);
+		choice2txt1.setEditable(false);
+		choice2txt2.setEditable(false);
+		choice2txt3.setEditable(false);
 		setVisible(true);
 		
 }
@@ -171,19 +192,22 @@ SelectCourseGUI(int playerIdentity){
 	ActionListener select1ActionListener = new ActionListener(){
 		public void actionPerformed(ActionEvent e)
 		{
-			GameMechanics.playerList.get(playerID).course = GameMechanics.courseList.get(list.get(0));
-			GameMechanics.courseList.get(list.get(0)).available = false;
-			dispose();
+			if(!(choice1txt1.getText().isEmpty())){
+				GameMechanics.playerList.get(playerID).course = GameMechanics.courseList.get(list.get(0));
+				GameMechanics.courseList.get(list.get(0)).available = false;
+				dispose();
+			}
 		}	
-				
 	};
 	
 	ActionListener select2ActionListener = new ActionListener(){
 		public void actionPerformed(ActionEvent e)
 		{
-			GameMechanics.playerList.get(playerID).course = GameMechanics.courseList.get(list.get(1));
-			GameMechanics.courseList.get(list.get(1)).available = false;
-			dispose();
+			if(!(choice2txt1.getText().isEmpty())){
+				GameMechanics.playerList.get(playerID).course = GameMechanics.courseList.get(list.get(1));
+				GameMechanics.courseList.get(list.get(1)).available = false;
+				dispose();	
+			}
 		}	
 				
 	};
