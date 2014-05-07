@@ -76,9 +76,20 @@ public class GamePanel extends JPanel {
     @Override
 	public void paint(Graphics g) {
     	super.paintComponent(g);
-    	g.drawImage(counter1,(38 + playerXPos(0)), (38+ playerYPos(0)), this);
-    	g.drawImage(counter2,(38 + playerXPos(1)), (38+ playerYPos(1)), this);
-    	g.drawImage(counter3,(38 + playerXPos(2)), (38+ playerYPos(2)), this);
+    	g.drawImage(counter1,(30 + playerXPos(0)), (30+ playerYPos(0)), this);
+    	g.drawImage(counter2,(34 + playerXPos(1)), (30+ playerYPos(1)), this);
+    	if(GameMechanics.playerList.size() > 2){
+    		g.drawImage(counter3,(38 + playerXPos(2)), (30+ playerYPos(2)), this);
+    	}
+    	if(GameMechanics.playerList.size() > 3){
+    		g.drawImage(counter4,(30 + playerXPos(2)), (34+ playerYPos(2)), this);
+    	}
+    	if(GameMechanics.playerList.size() > 4){
+    		g.drawImage(counter5,(34 + playerXPos(2)), (34+ playerYPos(2)), this);
+    	}
+    	if(GameMechanics.playerList.size() > 5){
+    		g.drawImage(counter6,(38 + playerXPos(2)), (34+ playerYPos(2)), this);
+    	}   	
     	
     }
     
