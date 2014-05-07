@@ -17,6 +17,7 @@ import com.jgoodies.forms.factories.FormFactory;
 
 import javax.swing.border.TitledBorder;
 import javax.swing.GroupLayout.Alignment;
+import javax.swing.JLabel;
 import javax.swing.LayoutStyle.ComponentPlacement;
 
 
@@ -24,7 +25,9 @@ public class GameGUI extends JFrame{
 	
 	int sizeOfGridX = 7;
 	int sizeOfGridY = 10;
-	JPanel gamePanel, scorePanel;
+	int height, width;
+	static JPanel gamePanel, scorePanel;
+	static JLabel rollPanel;
 	JLabel [][] squares = new JLabel[sizeOfGridX][sizeOfGridY];
 	JLabel [][] secondSquares = new JLabel[sizeOfGridX][sizeOfGridY];
 	JMenu options;
@@ -717,6 +720,14 @@ public class GameGUI extends JFrame{
 		for(int i = 0; i < GameMechanics.playerList.size(); i++){
 			scorePanel.add(createPlayerPanel(i));
 		}
+		
+		rollPanel = new JLabel();
+		
+		scorePanel.add(rollPanel);
+		height = rollPanel.getHeight();
+		width = rollPanel.getWidth();
+		
+		System.out.println("height is " + height + " width is " + width);
 		
 		intructions.addActionListener(
 				new ActionListener()

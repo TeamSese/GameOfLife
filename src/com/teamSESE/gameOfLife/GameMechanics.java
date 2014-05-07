@@ -1,9 +1,13 @@
 package com.teamSESE.gameOfLife;
 
+import java.awt.Point;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 
+import javax.swing.JComponent;
+import javax.swing.JDialog;
 import javax.swing.JOptionPane;
+import javax.swing.SwingConstants;
 
 public class GameMechanics {
 	
@@ -114,7 +118,15 @@ public class GameMechanics {
 	}
 
 	public static void movePlayer(int i) {
-		JOptionPane.showMessageDialog(null, GameMechanics.playerList.get(i).name + ", your turn to roll");
+		
+		JOptionPane chooseRoll = new JOptionPane(GameMechanics.playerList.get(i).name + ", your turn to roll");
+		JDialog rollMessage = chooseRoll.createDialog("Follow the Instructions");
+		//rollMessage.setSize((int)GameGUI.rollPanel.getSize().getHeight(), (int)GameGUI.rollPanel.getSize().getWidth());
+		//rollMessage.setBounds((int)(GameGUI.scorePanel).getLocation().getX(), (int)(GameGUI.rollPanel).getLocation().getY() + 50, (int) GameGUI.rollPanel.getSize().getHeight(), (int) GameGUI.rollPanel.getSize().getWidth());
+		rollMessage.setBounds((int)(GameGUI.scorePanel).getLocation().getX(), (int)(GameGUI.rollPanel).getLocation().getY() + 50, GameGUI.rollPanel.getHeight(), GameGUI.rollPanel.getWidth());
+
+		//rollMessage.setLocation((int)(GameGUI.scorePanel).getLocation().getX(), ((int)(GameGUI.rollPanel).getLocation().getY()));
+		rollMessage.setVisible(true);
 		int j = dice();
 		JOptionPane.showMessageDialog(null, GameMechanics.playerList.get(i).name + ", you rolled a " + j);
 		System.out.print("Player " +i+ " rolled the dice and got a " +j+ ".. \n Moved from position " + playerList.get(i).boardPosition+ " to ");
@@ -130,6 +142,11 @@ public class GameMechanics {
 			playerList.get(i).boardPosition = playerList.get(i).boardPosition + j;
 			System.out.println("position " + playerList.get(i).boardPosition);
 		}
+	}
+
+	private static Point getLocation(Object setAlignmentX) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	public static void startGame() {
