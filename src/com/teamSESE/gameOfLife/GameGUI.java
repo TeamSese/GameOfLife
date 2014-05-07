@@ -2,8 +2,12 @@ package com.teamSESE.gameOfLife;
 
 import java.awt.*;
 import java.awt.event.*;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 
 import com.jgoodies.forms.layout.FormLayout;
@@ -22,10 +26,13 @@ public class GameGUI extends JFrame{
 	int sizeOfGridY = 10;
 	JPanel gamePanel, scorePanel;
 	JLabel [][] squares = new JLabel[sizeOfGridX][sizeOfGridY];
+	JLabel [][] secondSquares = new JLabel[sizeOfGridX][sizeOfGridY];
 	JMenu options;
 	JMenuItem intructions;
 	instructionsFrame instructs = new instructionsFrame();
 	JMenuBar bar;
+  BufferedImage counter1;
+	int sizeConstraint = 100;
 	
 	/*
 	 * 
@@ -41,27 +48,325 @@ public class GameGUI extends JFrame{
 	 */
 
 	protected static final ArrayList<Player> playerList = new ArrayList<Player>();	
-	private JPanel panel;
 
 	public GameGUI(ArrayList<Player> playerList){
-		getContentPane().setMinimumSize(new Dimension(1100, 700));
-
-		setTitle("QUB Game of Life");
-		setExtendedState(getExtendedState()|JFrame.MAXIMIZED_BOTH );		//Maximises GUI
-		setLocationRelativeTo(null);
 		
-		Container c = getContentPane();
-		c.setBackground(Color.green);
+		super();
 		
 		intructions = new JMenuItem("Instructions");
 		options = new JMenu("Options");
 		options.add(intructions);
 		bar = new JMenuBar();
 		bar.add(options);
+		setJMenuBar(bar);
 		
-		gamePanel = new JPanel();
+		JLayeredPane layerPane = getLayeredPane();
 		
-		int sizeConstraint = 100;
+    JPanel gamePanel = new JPanel();
+    gamePanel.setLayout(new GridLayout(7, 10));
+    gamePanel.setSize(1000, 700); // Size is needed here, as there is no layout in lp
+
+    JPanel glassPane = new JPanel();
+    glassPane.setLayout(new GridLayout(7,10));
+    glassPane.setOpaque(false); // Set to true to see it
+    glassPane.setBackground(Color.GREEN);
+    glassPane.setSize(gamePanel.getBounds().width, gamePanel.getBounds().height);
+    glassPane.setLocation(0, 22);
+   
+//    try 
+//    {
+//    	counter1 = ImageIO.read(new File("PurpleIcon.png"));
+//    }
+//    catch (IOException ex) {
+//  		ex.printStackTrace();
+//  	}
+    
+    ImageIcon PurpleIcon = new ImageIcon(new ImageIcon(getClass().getResource("PurpleIcon.png")).getImage().getScaledInstance(25,25, java.awt.Image.SCALE_SMOOTH));
+    ImageIcon GrassTile = new ImageIcon(new ImageIcon(getClass().getResource("GrassTile.jpg")).getImage().getScaledInstance(sizeConstraint,sizeConstraint, java.awt.Image.SCALE_SMOOTH));
+    
+    for (int i= 0; i< sizeOfGridX; i++) {
+      for (int j= 0; j< sizeOfGridY; j++) {
+      	
+      	secondSquares[i][j] = new JLabel("", JLabel.CENTER);
+      	
+      	if (i == 0)
+      	{
+      		if (j == 2)
+      		{
+      			secondSquares[i][j].setIcon(PurpleIcon);
+      		}
+      		else if (j == 3)
+      		{
+      			secondSquares[i][j].setIcon(PurpleIcon);
+      		}
+      		else if (j == 4)
+      		{
+      			secondSquares[i][j].setIcon(PurpleIcon);
+      		}
+      		else if (j == 6)
+      		{
+      			secondSquares[i][j].setIcon(PurpleIcon);
+      		}
+      		else if (j == 7)
+      		{
+      			secondSquares[i][j].setIcon(PurpleIcon);
+      		}
+      		else if (j == 8)
+      		{
+      			secondSquares[i][j].setIcon(PurpleIcon);
+      		}
+      		else if (j == 9)
+      		{
+      			secondSquares[i][j].setIcon(PurpleIcon);
+      		}
+      		else secondSquares[i][j].setIcon(GrassTile);
+      	}
+      	
+      	if (i == 1)
+      	{
+      		if (j == 0)
+      		{
+      			secondSquares[i][j].setIcon(PurpleIcon);
+      		}
+      		else if (j == 1)
+      		{
+      			secondSquares[i][j].setIcon(PurpleIcon);
+      		}
+      		else if (j == 2)
+      		{
+      			secondSquares[i][j].setIcon(PurpleIcon);
+      		}
+      		else if (j == 4)
+      		{
+      			secondSquares[i][j].setIcon(PurpleIcon);
+      		}
+      		else if (j == 5)
+      		{
+      			secondSquares[i][j].setIcon(PurpleIcon);
+      		}
+      		else if (j == 6)
+      		{
+      			secondSquares[i][j].setIcon(PurpleIcon);
+      		}
+      		else if (j == 9)
+      		{
+      			secondSquares[i][j].setIcon(PurpleIcon);
+      		}
+      		else secondSquares[i][j].setIcon(GrassTile);
+      	}
+      	
+      	if (i == 2)
+      	{
+      		if (j == 0)
+      		{
+      			secondSquares[i][j].setIcon(PurpleIcon);
+      		}
+      		else if (j == 4)
+      		{
+      			secondSquares[i][j].setIcon(PurpleIcon);
+      		}
+      		else if (j == 5)
+      		{
+      			secondSquares[i][j].setIcon(PurpleIcon);
+      		}
+      		else if (j == 8)
+      		{
+      			secondSquares[i][j].setIcon(PurpleIcon);
+      		}
+      		else if (j == 9)
+      		{
+      			secondSquares[i][j].setIcon(PurpleIcon);
+      		}
+      		else secondSquares[i][j].setIcon(GrassTile);
+      	}
+      	
+      	if (i == 3)
+      	{
+      		if (j == 0)
+      		{
+      			secondSquares[i][j].setIcon(PurpleIcon);
+      		}
+      		else if (j == 1)
+      		{
+      			secondSquares[i][j].setIcon(PurpleIcon);
+      		}
+      		else if (j == 2)
+      		{
+      			secondSquares[i][j].setIcon(PurpleIcon);
+      		}
+      		else if (j == 4)
+      		{
+      			secondSquares[i][j].setIcon(PurpleIcon);
+      		}
+      		else if (j == 5)
+      		{
+      			secondSquares[i][j].setIcon(PurpleIcon);
+      		}
+      		else if (j == 6)
+      		{
+      			secondSquares[i][j].setIcon(PurpleIcon);
+      		}
+      		else if (j == 7)
+      		{
+      			secondSquares[i][j].setIcon(PurpleIcon);
+      		}
+      		else if (j == 8)
+      		{
+      			secondSquares[i][j].setIcon(PurpleIcon);
+      		}
+      		else if (j == 9)
+      		{
+      			secondSquares[i][j].setIcon(PurpleIcon);
+      		}
+      		else secondSquares[i][j].setIcon(GrassTile);
+      	}
+      	
+      	if (i == 4)
+      	{
+      		if (j == 0)
+      		{
+      			secondSquares[i][j].setIcon(PurpleIcon);
+      		}
+      		else if (j == 1)
+      		{
+      			secondSquares[i][j].setIcon(PurpleIcon);
+      		}
+      		else if (j == 2)
+      		{
+      			secondSquares[i][j].setIcon(PurpleIcon);
+      		}
+      		else if (j == 3)
+      		{
+      			secondSquares[i][j].setIcon(PurpleIcon);
+      		}
+      		else if (j == 4)
+      		{
+      			secondSquares[i][j].setIcon(PurpleIcon);
+      		}
+      		else if (j == 5)
+      		{
+      			secondSquares[i][j].setIcon(PurpleIcon);
+      		}
+      		else if (j == 6)
+      		{
+      			secondSquares[i][j].setIcon(PurpleIcon);
+      		}
+      		else if (j == 7)
+      		{
+      			secondSquares[i][j].setIcon(PurpleIcon);
+      		}
+      		else if (j == 8)
+      		{
+      			secondSquares[i][j].setIcon(PurpleIcon);
+      		}
+      		else if (j == 9)
+      		{
+      			secondSquares[i][j].setIcon(PurpleIcon);
+      		}
+      		else secondSquares[i][j].setIcon(GrassTile);
+      	}
+      	
+      	if (i == 5)
+      	{
+      		if (j == 1)
+      		{
+      			secondSquares[i][j].setIcon(PurpleIcon);
+      		}
+      		else if (j == 2)
+      		{
+      			secondSquares[i][j].setIcon(PurpleIcon);
+      		}
+      		else if (j == 3)
+      		{
+      			secondSquares[i][j].setIcon(PurpleIcon);
+      		}
+      		else if (j == 4)
+      		{
+      			secondSquares[i][j].setIcon(PurpleIcon);
+      		}
+      		else if (j == 5)
+      		{
+      			secondSquares[i][j].setIcon(PurpleIcon);
+      		}
+      		else if (j == 6)
+      		{
+      			secondSquares[i][j].setIcon(PurpleIcon);
+      		}
+      		else if (j == 7)
+      		{
+      			secondSquares[i][j].setIcon(PurpleIcon);
+      		}
+      		else if (j == 8)
+      		{
+      			secondSquares[i][j].setIcon(PurpleIcon);
+      		}
+      		else if (j == 9)
+      		{
+      			secondSquares[i][j].setIcon(PurpleIcon);
+      		}
+      		else secondSquares[i][j].setIcon(GrassTile);
+      	}
+      	
+      	if (i == 6)
+      	{
+      		if (j == 1)
+      		{
+      			secondSquares[i][j].setIcon(PurpleIcon);
+      		}
+      		else if (j == 2)
+      		{
+      			secondSquares[i][j].setIcon(PurpleIcon);
+      		}
+      		else if (j == 3)
+      		{
+      			secondSquares[i][j].setIcon(PurpleIcon);
+      		}
+      		else if (j == 5)
+      		{
+      			secondSquares[i][j].setIcon(PurpleIcon);
+      		}
+      		else if (j == 6)
+      		{
+      			secondSquares[i][j].setIcon(PurpleIcon);
+      		}
+      		else if (j == 7)
+      		{
+      			secondSquares[i][j].setIcon(PurpleIcon);
+      		}
+      		else if (j == 8)
+      		{
+      			secondSquares[i][j].setIcon(PurpleIcon);
+      		}
+      		else if (j == 9)
+      		{
+      			secondSquares[i][j].setIcon(PurpleIcon);
+      		}
+      		else secondSquares[i][j].setIcon(GrassTile);
+      	}
+      	
+      	
+      	//secondSquares[i][j].setIcon(PurpleIcon);
+      	glassPane.add(secondSquares[i][j]);
+      	
+      }
+    }
+    
+    
+//		JPanel counterPanel = new GamePanel();
+//		glassPane.add(counterPanel);
+
+    layerPane.add(gamePanel, Integer.valueOf(1));
+    layerPane.add(glassPane, Integer.valueOf(2));
+		
+		Container c = getContentPane();
+		c.setMinimumSize(new Dimension(1100, 700));
+		
+
+		setTitle("QUB Game of Life");
+		setExtendedState(getExtendedState()|JFrame.MAXIMIZED_BOTH );		//Maximises GUI
+		setLocationRelativeTo(null);
+
+		c.setBackground(Color.magenta);
 		
 		ImageIcon GreenCurvedPathLeftDown = new ImageIcon(new ImageIcon(getClass().getResource("GreenCurvedPathLeftDown.jpg")).getImage().getScaledInstance(sizeConstraint,sizeConstraint, java.awt.Image.SCALE_SMOOTH));
 		ImageIcon GreenCurvedPathLeftUp = new ImageIcon(new ImageIcon(getClass().getResource("GreenCurvedPathLeftUp.jpg")).getImage().getScaledInstance(sizeConstraint,sizeConstraint, java.awt.Image.SCALE_SMOOTH));
@@ -88,7 +393,7 @@ public class GameGUI extends JFrame{
 		
 		ImageIcon RedVerticalPath = new ImageIcon(new ImageIcon(getClass().getResource("RedVerticalPath.jpg")).getImage().getScaledInstance(sizeConstraint,sizeConstraint, java.awt.Image.SCALE_SMOOTH));
 		
-		ImageIcon GrassTile = new ImageIcon(new ImageIcon(getClass().getResource("GrassTile.jpg")).getImage().getScaledInstance(sizeConstraint,sizeConstraint, java.awt.Image.SCALE_SMOOTH));
+		
 		
 
 		
@@ -355,12 +660,13 @@ public class GameGUI extends JFrame{
       	}
      
           gamePanel.add(squares[i][j]);
-
+          
       }
 		}
-		
+	
 		scorePanel = new JPanel();
 		scorePanel.setBorder(new TitledBorder(null, "Player Stats", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+
 		
 		JPanel panelArray[] = new JPanel[playerList.size()];										//Creates an array of JPanels and 
 		JLabel playerNameArray[] = new JLabel[playerList.size()];									//JLabels of size number of players 
@@ -378,9 +684,9 @@ public class GameGUI extends JFrame{
 			scorePanel.add(playerMoneyArray[i]);															// *add the JLabel to the main panel
 		}*/
 		
-		setJMenuBar(bar);
+
 		scorePanel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
-		GroupLayout groupLayout = new GroupLayout(getContentPane());
+		GroupLayout groupLayout = new GroupLayout(c);
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
@@ -397,15 +703,15 @@ public class GameGUI extends JFrame{
 						.addComponent(scorePanel, GroupLayout.PREFERRED_SIZE, 830, GroupLayout.PREFERRED_SIZE))
 					.addContainerGap())
 		);
+		
 		gamePanel.setLayout(new GridLayout(7, 10));
-		getContentPane().setLayout(groupLayout);
-		getContentPane().setLayout(new FormLayout(new ColumnSpec[] {
+		c.setLayout(groupLayout);
+		c.setLayout(new FormLayout(new ColumnSpec[] {
 				ColumnSpec.decode("1000px"),
 				FormFactory.GLUE_COLSPEC,},
 			new RowSpec[] {
 				RowSpec.decode("700px"),}));
-		getContentPane().add(gamePanel, "1, 1, fill, fill");
-		getContentPane().add(scorePanel, "2, 1, fill, fill");
+		c.add(scorePanel, "2, 1, fill, fill");
 		scorePanel.setLayout(new GridLayout(0, 1, 0, 0));
 		
 		for(int i = 0; i < GameMechanics.playerList.size(); i++){
