@@ -1,6 +1,7 @@
 package com.teamSESE.gameOfLife;
 
 import javax.swing.ButtonGroup;
+import javax.swing.ImageIcon;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -29,8 +30,11 @@ import java.util.Collections;
 import java.util.List;
 import java.awt.Rectangle;
 import java.awt.Dimension;
+
 import javax.swing.BoxLayout;
+
 import java.awt.Component;
+
 import javax.swing.SwingConstants;
 
 
@@ -76,18 +80,22 @@ SelectHouseGUI(int playerIdentity){
 		
 		setTitle("Select House");
 		setSize(500,500);
+		setLocationRelativeTo(null);
 		getContentPane().setLayout(new GridLayout(0,1));
 		
-																				//wecome to the game message to display at top of box
-																
-		JLabel welcomeMessage = new JLabel (GameMechanics.playerList.get(playerIdentity) + " choose 2 house cards");
-		welcome.add(welcomeMessage);																		//add to panel
+		ImageIcon propertyHeader = new ImageIcon(new ImageIcon(getClass().getResource("propertypal.png")).getImage());
+		JPanel propertyPanel = new JPanel();
+		JLabel propertyLabel = new JLabel("", propertyHeader, JLabel.CENTER);
+		propertyPanel.setBounds(0, 0, propertyHeader.getIconWidth() + 20, propertyHeader.getIconHeight() + 20);
+		propertyPanel.setBackground(Color.lightGray);
+		propertyPanel.add(propertyLabel);
+																															
 			
 		main.setLayout(new GridLayout(1, 3, 0, 0));
 		main.setBounds(155,50,250,250);
 		choicePanel.setLayout(new GridLayout(0, 2, 0, 0));
 		//Adds frames to the window
-		getContentPane().add(welcome);
+		getContentPane().add(propertyPanel);
 		getContentPane().add(main);
 		getContentPane().add(choicePanel);
 		
@@ -113,6 +121,8 @@ SelectHouseGUI(int playerIdentity){
 		choiceDetails1a.add(choice1txt1);
 		choiceDetails1a.add(new JLabel("Rent Price"));
 		choiceDetails1a.add(choice1txt2);
+		choiceDetails1.setBackground(Color.white);
+		choiceDetails1a.setBackground(Color.white);
 		
 		choiceDetails1b.setLayout(new GridLayout(1, 1, 0, 0));
 		
@@ -127,6 +137,8 @@ SelectHouseGUI(int playerIdentity){
 		choiceDetails2a.add(choice2txt1);
 		choiceDetails2a.add(new JLabel("Rent Price"));
 		choiceDetails2a.add(choice2txt2);
+		choiceDetails2.setBackground(Color.white);
+		choiceDetails2a.setBackground(Color.white);
 		
 		choiceDetails2b.setLayout(new GridLayout(1, 1, 0, 0));
 		
@@ -138,6 +150,10 @@ SelectHouseGUI(int playerIdentity){
 		selectHouse2.setText("Select House");
 		selectHouse2.addActionListener(select2ActionListener);
 		
+		choice1txt1.setEditable(false);
+		choice1txt2.setEditable(false);
+		choice2txt1.setEditable(false);
+		choice2txt2.setEditable(false);
 		setVisible(true);
 		
 }
@@ -165,9 +181,11 @@ SelectHouseGUI(int playerIdentity){
 	ActionListener select1ActionListener = new ActionListener(){
 		public void actionPerformed(ActionEvent e)
 		{
-			GameMechanics.playerList.get(playerID).house = GameMechanics.houseList.get(list.get(0));
-			GameMechanics.houseList.get(list.get(0)).available = false;
-			dispose();
+			if(!(choice1txt1.getText().isEmpty())){
+				GameMechanics.playerList.get(playerID).house = GameMechanics.houseList.get(list.get(0));
+				GameMechanics.houseList.get(list.get(0)).available = false;
+				dispose();	
+			}
 		}	
 				
 	};
@@ -175,9 +193,11 @@ SelectHouseGUI(int playerIdentity){
 	ActionListener select2ActionListener = new ActionListener(){
 		public void actionPerformed(ActionEvent e)
 		{
-			GameMechanics.playerList.get(playerID).house = GameMechanics.houseList.get(list.get(1));
-			GameMechanics.houseList.get(list.get(1)).available = false;
-			dispose();
+			if(!(choice2txt1.getText().isEmpty())){
+				GameMechanics.playerList.get(playerID).house = GameMechanics.houseList.get(list.get(1));
+				GameMechanics.houseList.get(list.get(1)).available = false;
+				dispose();	
+			}
 		}	
 				
 	};

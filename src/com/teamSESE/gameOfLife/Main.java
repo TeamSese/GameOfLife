@@ -12,7 +12,6 @@ public class Main {
 		GameMechanics.setUpHouses();
 		GameMechanics.setUpBoard();
 		
-		
 		MyFrame f1 = new MyFrame("Game Of Life", Color.lightGray);	//Selects number of Players	
 	}
 
