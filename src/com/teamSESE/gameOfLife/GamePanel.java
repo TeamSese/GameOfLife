@@ -82,13 +82,13 @@ public class GamePanel extends JPanel {
     		g.drawImage(counter3,(38 + playerXPos(2)), (30+ playerYPos(2)), this);
     	}
     	if(GameMechanics.playerList.size() > 3){
-    		g.drawImage(counter4,(30 + playerXPos(2)), (34+ playerYPos(2)), this);
+    		g.drawImage(counter4,(30 + playerXPos(3)), (34+ playerYPos(3)), this);
     	}
     	if(GameMechanics.playerList.size() > 4){
-    		g.drawImage(counter5,(34 + playerXPos(2)), (34+ playerYPos(2)), this);
+    		g.drawImage(counter5,(34 + playerXPos(4)), (34+ playerYPos(4)), this);
     	}
     	if(GameMechanics.playerList.size() > 5){
-    		g.drawImage(counter6,(38 + playerXPos(2)), (34+ playerYPos(2)), this);
+    		g.drawImage(counter6,(38 + playerXPos(5)), (34+ playerYPos(5)), this);
     	}   	
     	
     }

@@ -122,7 +122,7 @@ public class GameMechanics {
 		return low + (int)(high * Math.random());
 	}
 
-	public static void movePlayer(int i) {
+	public static void movePlayer(int playerID) {
 		
 		//JOptionPane chooseRoll = new JOptionPane(GameMechanics.playerList.get(i).name + ", your turn to roll");
 		//rollMessage.setBounds((int)(GameGUI.scorePanel).getLocation().getX(), ((int)(GameGUI.rollPanel).getLocation().getY() + (GameGUI.rollPanel.getHeight() / 4)) , GameGUI.rollPanel.getWidth(), GameGUI.rollPanel.getHeight());
@@ -138,31 +138,26 @@ public class GameMechanics {
 		
 		if (gameOver == false){
 
-			if(playerList.get(i).targetBoardPos < tileList.size()){
-				tileList.get(playerList.get(i).targetBoardPos).execute(i);
+			if(playerList.get(playerID).targetBoardPos < tileList.size() && playerList.get(playerID).targetBoardPos != 0){
+				tileList.get(playerList.get(playerID).targetBoardPos).execute(playerID);
 			}
-/*
-			if ((playerList.get(i).targetBoardPos  + j >= 15) && (playerList.get(i).house.equals(houseList.get(0))))
+
+			if ((playerList.get(playerID).targetBoardPos  + j >= 15) && (playerList.get(playerID).house.equals(houseList.get(0))))
 			{
-				playerList.get(i).targetBoardPos = 15;
-				playerList.get(i).house = houseList.get(1);
+				playerList.get(playerID).targetBoardPos = 15;
+				playerList.get(playerID).house = houseList.get(1);
 			}
 			else
 			{
-				playerList.get(i).targetBoardPos = playerList.get(i).boardPosition + j;
-			}*/
+				playerList.get(playerID).targetBoardPos = playerList.get(playerID).boardPosition + j;
+			}
 		}
 		else 
 		{
-			System.out.println(playerList.get(i).name + " has finished the game");
+			System.out.println(playerList.get(playerID).name + " has finished the game");
 			gameOver = true;
 		}
 		updateDebug();
-	}
-
-	private static Point getLocation(Object setAlignmentX) {
-		// TODO Auto-generated method stub
-		return null;
 	}
 
 	public static void startGame() {
