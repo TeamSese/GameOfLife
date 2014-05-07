@@ -17,6 +17,7 @@ public class GameMechanics {
 	static ArrayList<Tile> tileList = new ArrayList<Tile>();
 	public static boolean gameOver =false;
 	public static DebugGUI g1;
+	static int j = dice();
 	
 	static int tileProperties[] = {		//What each tile should do goes in here - in order!
 								//Tile Number
@@ -122,35 +123,45 @@ public class GameMechanics {
 	}
 
 	public static void movePlayer(int i) {
-<<<<<<< HEAD
 		
-		JOptionPane chooseRoll = new JOptionPane(GameMechanics.playerList.get(i).name + ", your turn to roll");
-		JDialog rollMessage = chooseRoll.createDialog("Follow the Instructions");
-		//rollMessage.setSize((int)GameGUI.rollPanel.getSize().getHeight(), (int)GameGUI.rollPanel.getSize().getWidth());
-		//rollMessage.setBounds((int)(GameGUI.scorePanel).getLocation().getX(), (int)(GameGUI.rollPanel).getLocation().getY() + 50, (int) GameGUI.rollPanel.getSize().getHeight(), (int) GameGUI.rollPanel.getSize().getWidth());
-		rollMessage.setBounds((int)(GameGUI.scorePanel).getLocation().getX(), (int)(GameGUI.rollPanel).getLocation().getY() + 50, GameGUI.rollPanel.getHeight(), GameGUI.rollPanel.getWidth());
-
+		//JOptionPane chooseRoll = new JOptionPane(GameMechanics.playerList.get(i).name + ", your turn to roll");
+		//rollMessage.setBounds((int)(GameGUI.scorePanel).getLocation().getX(), ((int)(GameGUI.rollPanel).getLocation().getY() + (GameGUI.rollPanel.getHeight() / 4)) , GameGUI.rollPanel.getWidth(), GameGUI.rollPanel.getHeight());
 		//rollMessage.setLocation((int)(GameGUI.scorePanel).getLocation().getX(), ((int)(GameGUI.rollPanel).getLocation().getY()));
-		rollMessage.setVisible(true);
-=======
-		//GameMechanics.playerList.get(0).reachedPosition = false;
-		JOptionPane.showMessageDialog(null, GameMechanics.playerList.get(i).name + ", your turn to roll");
->>>>>>> 43210f040778c9b3a960638a803f2ffd228dc489
-		int j = dice();
-		JOptionPane.showMessageDialog(null, GameMechanics.playerList.get(i).name + ", you rolled a " + j);
-		System.out.print("Player " +i+ " rolled the dice and got a " +j+ ".. \n Moved from position " + playerList.get(i).boardPosition+ " to ");
+//		JOptionPane.showMessageDialog(null, "Welcome to the Game of Life");
+//		JDialog rollMessage = chooseRoll.createDialog("Follow the Instructions");
+//		rollMessage.setBounds((int)(GameGUI.scorePanel).getLocation().getX(), ((int)(GameGUI.rollPanel).getLocation().getY() + (GameGUI.rollPanel.getHeight() / 4)) , GameGUI.rollPanel.getWidth(), GameGUI.rollPanel.getHeight());
+//		rollMessage.setVisible(true);
 		
-		if ((playerList.get(i).boardPosition  + j >= 15) && (playerList.get(i).house.equals(houseList.get(0))))
-		{
-			playerList.get(i).boardPosition = 15;
-			JOptionPane.showMessageDialog(null, GameMechanics.playerList.get(i).name + ", you must choose a house ");
-			playerList.get(i).house = houseList.get(1);
-		}
-		else
-		{
+		
+		
+		//GameMechanics.playerList.get(0).reachedPosition = false;
+		
+		if (gameOver == false){
+
+			if(playerList.get(i).boardPosition < tileList.size()){
+				tileList.get(playerList.get(i).boardPosition).execute(i);
+			}
 			
-			playerList.get(i).targetBoardPos = playerList.get(i).boardPosition + j;
+			JOptionPane.showMessageDialog(null, GameMechanics.playerList.get(i).name + ", you rolled a " + j);
+			System.out.print("Player " +i+ " rolled the dice and got a " +j+ ".. \n Moved from position " + playerList.get(i).boardPosition+ " to ");
+
+			if ((playerList.get(i).boardPosition  + j >= 15) && (playerList.get(i).house.equals(houseList.get(0))))
+			{
+				playerList.get(i).boardPosition = 15;
+				JOptionPane.showMessageDialog(null, GameMechanics.playerList.get(i).name + ", you must choose a house ");
+				playerList.get(i).house = houseList.get(1);
+			}
+			else
+			{
+				playerList.get(i).targetBoardPos = playerList.get(i).boardPosition + j;
+			}
 		}
+		else 
+		{
+			System.out.println(playerList.get(i).name + " has finished the game");
+			gameOver = true;
+		}
+		updateDebug();
 	}
 
 	private static Point getLocation(Object setAlignmentX) {
@@ -159,28 +170,14 @@ public class GameMechanics {
 	}
 
 	public static void startGame() {
-		
-		
+
 		for(int i = 0; i < playerList.size(); i++){
 			GameMechanics.tileList.get(0).execute(i);		//This will execute tile 0 on each player - they will select a course on this tile 
 		}
-		
+
 		new GameGUI(GameMechanics.playerList);			//If all players have been added open the GameGUI and pass
 		//g1 = new DebugGUI();
 
-		while(gameOver == false){
-			for(int i = 0; i < playerList.size(); i++){
-				movePlayer(i);
-				if(playerList.get(i).boardPosition < tileList.size()){
-					tileList.get(playerList.get(i).boardPosition).execute(i);
-				}
-				else{
-					System.out.println(playerList.get(i).name + " has finished the game");
-					gameOver = true;
-				}
-				updateDebug();
-			}
-		}
 	}
 	
 	public static void updateDebug(){
