@@ -7,6 +7,7 @@ import javax.swing.border.TitledBorder;
 public class PlayerScorePanel extends JPanel {
 	
 	JPanel playerColor;
+	JLabel lifeLabel;
 	JLabel moneyLabel;
 	JLabel loanLabel;
 	JLabel courseLabel;
@@ -26,6 +27,8 @@ public class PlayerScorePanel extends JPanel {
 		add(playerColor);
 		moneyLabel = new JLabel("Money - £" + GameMechanics.playerList.get(playerID).money.toString());
 		add(moneyLabel);
+		lifeLabel = new JLabel("Lifetiles: " + GameMechanics.playerList.get(playerID).numLife);
+		add(lifeLabel);
 		loanLabel = new JLabel("Loan - £" + GameMechanics.playerList.get(playerID).loan.toString());
 		add(loanLabel);
 		courseLabel = new JLabel("Course - " + GameMechanics.playerList.get(playerID).course.name);
@@ -41,6 +44,7 @@ public class PlayerScorePanel extends JPanel {
 	public void updatePanel(int playerID){
 		setBorder(new TitledBorder(null, GameMechanics.playerList.get(playerID).name, TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		playerColor.setBackground(GameMechanics.playerList.get(playerID).color);
+		lifeLabel.setText("Lifetiles: " + GameMechanics.playerList.get(playerID).numLife);
 		moneyLabel.setText("Money - £" + GameMechanics.playerList.get(playerID).money.toString());
 		loanLabel.setText("Loan - £" + GameMechanics.playerList.get(playerID).loan.toString());
 		courseLabel.setText("Course - " + GameMechanics.playerList.get(playerID).course.name);

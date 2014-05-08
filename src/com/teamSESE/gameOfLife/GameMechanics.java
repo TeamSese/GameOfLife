@@ -87,10 +87,7 @@ public class GameMechanics {
 		Tile.MISS_TURN,0,3,				//4
 		Tile.GAIN_500,0,2,				//5	
 		Tile.LOOSE_200,1,2,				//6	
-		
-		Tile.FINISH,1,1,
-		//Tile.BORROW_100,1,1,			//7		Blue
-		
+		Tile.BORROW_100,1,1,			//7		Blue
 		Tile.MISS_TURN,1,0,				//8
 		Tile.GAIN_200,2,0,				//9
 		Tile.GAIN_LOOSE_1000,3,0,		//10	Green
