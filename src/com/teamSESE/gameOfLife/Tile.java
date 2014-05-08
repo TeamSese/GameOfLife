@@ -157,6 +157,7 @@ public class Tile {
         	case GAIN_LOOSE_1000:{
         		payPlayer(playerID,new BigDecimal(1000));
         		loanPlayer(playerID,new BigDecimal(1000));
+        		lifePlayer(playerID);
         		break;
         	}
         	
