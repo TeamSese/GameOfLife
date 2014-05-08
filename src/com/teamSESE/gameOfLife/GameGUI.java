@@ -336,21 +336,15 @@ public class GameGUI extends JFrame{
 				{
 					public void actionPerformed(ActionEvent e) 
 					{
-						System.out.println("START PLAYER NUMBER =" + playerNumber);
-						System.out.println("SIZE = " + GameMechanics.playerList.size());
-						
 						if (GameMechanics.playerList.get(playerNumber).isFinished() != true)
 						{
-							System.out.println("Player is not finished " + GameMechanics.playerList.get(playerNumber) + playerNumber);
 							if (GameMechanics.playerList.get(playerNumber).getMissTurn() == 0)
 							{
-								System.out.println("Player is not miss " + GameMechanics.playerList.get(playerNumber) + playerNumber);
 								GameMechanics.movePlayer(playerNumber);
 								rollAmount.setText(GameMechanics.playerList.get(playerNumber).name + " has rolled a " + GameMechanics.j);
 								
 								if ((playerNumber + 1) == GameMechanics.playerList.size())
 								{
-									System.out.println("NEXT PLAYER IS 0");
 									playerNumber = 0;
 								}
 								else playerNumber++;
@@ -361,7 +355,6 @@ public class GameGUI extends JFrame{
 								rollAmount.setText(GameMechanics.playerList.get(playerNumber).name + " has missed a turn!");
 								if ((playerNumber + 1) == GameMechanics.playerList.size())
 								{
-									System.out.println("NEXT PLAYER IS 0");
 									playerNumber = 0;
 								}
 								else playerNumber++;
@@ -371,8 +364,6 @@ public class GameGUI extends JFrame{
 
 							while (GameMechanics.playerList.get(playerNumber).finished == true)
 							{
-								System.out.println("HAS ENTERED NEXT PLAYER DONE " + allPlayers);
-							
 								if (allPlayers == GameMechanics.playerList.size())
 								{
 									// GAME IS OVER
@@ -388,28 +379,9 @@ public class GameGUI extends JFrame{
 
 								allPlayers++;
 							}
-
-							//							else 
-							//							{
-							//								playerNumber++;
-							//	
-							//								while(checkForPlayers = true)
-							//								{
-							//									if (GameMechanics.playerList.get(playerNumber).finished == true)
-							//									{
-							//										playerNumber++;
-							//									}
-							//								}
-							//								
-							//							}
 						}
 						
-//						else if (playerNumber == GameMechanics.playerList.size())
-//						{
-//							playerNumber = 0;
-//						}
 						playerTurn.setText(GameMechanics.playerList.get(playerNumber).name + "'s turn");
-						System.out.println("END PLAYER NUMBER =" + playerNumber);
 					}
 				});
 
