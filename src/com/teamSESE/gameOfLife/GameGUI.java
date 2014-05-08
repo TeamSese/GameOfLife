@@ -387,9 +387,6 @@ public class GameGUI extends JFrame{
 		setDefaultCloseOperation(MyFrame.EXIT_ON_CLOSE);
 		setVisible(true);
 		
-      	System.out.println(squares[0][4].getBounds().x); 	
-      	System.out.println(squares[0][4].getBounds().y);
-		
 	}
 	
 	private static JPanel createPlayerPanel(int playerID){

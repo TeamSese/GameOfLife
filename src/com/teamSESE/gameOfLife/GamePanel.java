@@ -41,16 +41,16 @@ public class GamePanel extends JPanel {
 							System.out.println("Incrementing player board position");
 							incPlayerBoardPos(i);
 						}
-					}
-				}
-				for(int i = 0; i < GameMechanics.playerList.size(); i++){
-					if(playerBoardPos(i) == targetPlayerBoardPos(i)){
-						if(i == (GameMechanics.playerList.size() - 1)){
-							GameGUI.rollDice.setEnabled(true);
+						for(int j = 0; j < GameMechanics.playerList.size(); j++){
+							if(playerBoardPos(j) == targetPlayerBoardPos(j)){
+								if(j == (GameMechanics.playerList.size() - 1)){
+									GameGUI.rollDice.setEnabled(true);
+								}
+							}
+							else{
+								break;
+							}
 						}
-					}
-					else{
-						break;
 					}
 				}
 				repaint();
