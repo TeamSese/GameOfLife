@@ -2,9 +2,11 @@ package com.teamSESE.gameOfLife;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.border.TitledBorder;
 
 public class PlayerScorePanel extends JPanel {
 	
+	JPanel playerColor;
 	JLabel moneyLabel;
 	JLabel loanLabel;
 	JLabel courseLabel;
@@ -17,6 +19,11 @@ public class PlayerScorePanel extends JPanel {
 	
 	public PlayerScorePanel(int playerID){
 		
+		setBorder(new TitledBorder(null, GameMechanics.playerList.get(playerID).name, TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		
+		playerColor = new JPanel();
+		playerColor.setBackground(GameMechanics.playerList.get(playerID).color);
+		add(playerColor);
 		moneyLabel = new JLabel("Money - £" + GameMechanics.playerList.get(playerID).money.toString());
 		add(moneyLabel);
 		loanLabel = new JLabel("Loan - £" + GameMechanics.playerList.get(playerID).loan.toString());
@@ -32,6 +39,8 @@ public class PlayerScorePanel extends JPanel {
 		
 	}
 	public void updatePanel(int playerID){
+		setBorder(new TitledBorder(null, GameMechanics.playerList.get(playerID).name, TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		playerColor.setBackground(GameMechanics.playerList.get(playerID).color);
 		moneyLabel.setText("Money - £" + GameMechanics.playerList.get(playerID).money.toString());
 		loanLabel.setText("Loan - £" + GameMechanics.playerList.get(playerID).loan.toString());
 		courseLabel.setText("Course - " + GameMechanics.playerList.get(playerID).course.name);
