@@ -153,13 +153,13 @@ public class GameMechanics {
 	
 	public static void setUpHouses(){
 						//		Name		Available		Rent
-		houseList.add(new House("Elms",			false,		new BigDecimal(40)));
-		houseList.add(new House("Holylands",	true,		new BigDecimal(20)));
-		houseList.add(new House("Malone Road",	true,		new BigDecimal(40)));
-		houseList.add(new House("Lisburn Road",	true,		new BigDecimal(40)));
-		houseList.add(new House("Tates Avenue",	true,		new BigDecimal(40)));
-		houseList.add(new House("Stran",		true,		new BigDecimal(40)));
-		houseList.add(new House("Botanic",		true,		new BigDecimal(40)));
+		houseList.add(new House("Elms",			false,		new BigDecimal(60)));
+		houseList.add(new House("Holylands",	true,		new BigDecimal(40)));
+		houseList.add(new House("Malone Road",	true,		new BigDecimal(120)));
+		houseList.add(new House("Lisburn Road",	true,		new BigDecimal(80)));
+		houseList.add(new House("Tates Avenue",	true,		new BigDecimal(70)));
+		houseList.add(new House("Stranmillis",		true,		new BigDecimal(90)));
+		houseList.add(new House("Botanic",		true,		new BigDecimal(100)));
 		
 	}
 	
@@ -237,7 +237,7 @@ public class GameMechanics {
 
 		new GameGUI(GameMechanics.playerList);			//If all players have been added open the GameGUI and pass
 		g1 = new DebugGUI();
-		JOptionPane.showMessageDialog(null, "Welcome to Queens, you have moved into elms \n and rent will be paid on every turn! Good Luck!");
+		JOptionPane.showMessageDialog(null, "Welcome to Queens! You have moved into Elms\nand rent will be paid on every turn! Good Luck!");
 
 
 	}
