@@ -27,6 +27,8 @@ public class GamePanel extends JPanel {
 		BufferedImage counter4;
 		BufferedImage counter5;
 		BufferedImage counter6;
+		
+		int diceButtonFlag = 0;
     
     //ArrayList<Integer> xVal = new ArrayList<Integer>();
     //ArrayList<Integer> yVal = new ArrayList<Integer>();
@@ -60,6 +62,16 @@ public class GamePanel extends JPanel {
     							System.out.println("Incrementing player board position");
     							incPlayerBoardPos(i);
     						}
+    					}
+    				}
+    				for(int i = 0; i < GameMechanics.playerList.size(); i++){
+    					if(playerBoardPos(i) == targetPlayerBoardPos(i)){
+    						if(i == (GameMechanics.playerList.size() - 1)){
+    							GameGUI.rollDice.setEnabled(true);
+    						}
+    					}
+    					else{
+    						break;
     					}
     				}
     				repaint();

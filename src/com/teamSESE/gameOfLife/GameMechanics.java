@@ -133,7 +133,7 @@ public class GameMechanics {
 //		rollMessage.setVisible(true);
 		
 		//GameMechanics.playerList.get(0).reachedPosition = false;
-		
+		GameGUI.rollDice.setEnabled(false);
 		j = dice();
 		
 		if (gameOver == false){

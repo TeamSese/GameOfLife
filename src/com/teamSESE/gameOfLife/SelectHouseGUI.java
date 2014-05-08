@@ -108,11 +108,8 @@ SelectHouseGUI(int playerIdentity){
 		main.add(choiceButton1);
 		main.add(choiceButton2);
 		main.add(choiceButton3);
-		choiceButton1.setText("???");
 		choiceButton1.addActionListener(buttonActionListener);
-		choiceButton2.setText("???");
 		choiceButton2.addActionListener(buttonActionListener);
-		choiceButton3.setText("???");
 		choiceButton3.addActionListener(buttonActionListener);
 			
 		 //adds a panel for the first course choice details
