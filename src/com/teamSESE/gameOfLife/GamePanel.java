@@ -20,75 +20,55 @@ import javax.swing.Timer;
 import javax.swing.border.TitledBorder;
 
 public class GamePanel extends JPanel {
-	
-		BufferedImage counter1;
-		BufferedImage counter2;
-		BufferedImage counter3;
-		BufferedImage counter4;
-		BufferedImage counter5;
-		BufferedImage counter6;
     
     //ArrayList<Integer> xVal = new ArrayList<Integer>();
     //ArrayList<Integer> yVal = new ArrayList<Integer>();
 	
     public GamePanel(){
     	
-    	try {
-    		
-    		counter1 = ImageIO.read(new File("PurpleIcon.png"));
-    		counter2 = ImageIO.read(new File("RedIcon.png"));
-    		counter3 = ImageIO.read(new File("YellowIcon.png"));
-    		counter4 = ImageIO.read(new File("OrangeIcon.png"));
-    		counter5 = ImageIO.read(new File("GreenIcon.png"));
-    		counter6 = ImageIO.read(new File("RedIcon.png"));
-    		
-    		
-    		Timer timer = new Timer(20, new ActionListener() {
-    			@Override
-    			public void actionPerformed(ActionEvent e) {
-    				for(int i = 0; i < GameMechanics.playerList.size(); i++){
-    					if(playerXPos(i) != playerTargetXPos(i)){
-    						if(playerXPos(i) < playerTargetXPos(i)){incPlayerXPos(i);}
-    						if(playerXPos(i) > playerTargetXPos(i)){decPlayerXPos(i);}
-    					}
-    					if(playerYPos(i) != playerTargetYPos(i)){
-    						if(playerYPos(i) < playerTargetYPos(i)){incPlayerYPos(i);}
-    						if(playerYPos(i) > playerTargetYPos(i)){decPlayerYPos(i);}
-    					}
-    					if(playerXPos(i) == playerTargetXPos(i) && playerYPos(i) == playerTargetYPos(i)){
-    						if(playerBoardPos(i) != targetPlayerBoardPos(i)){
-    							System.out.println("Incrementing player board position");
-    							incPlayerBoardPos(i);
-    						}
-    					}
-    				}
-    				repaint();
-    			}
-    		});
-    		timer.setRepeats(true);
-    		timer.setCoalesce(true);
-    		timer.start();
-    	} catch (IOException ex) {
-    		ex.printStackTrace();
-    	}
+    	Timer timer = new Timer(5, new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				for(int i = 0; i < GameMechanics.playerList.size(); i++){
+					if(playerXPos(i) != playerTargetXPos(i)){
+						if(playerXPos(i) < playerTargetXPos(i)){incPlayerXPos(i);}
+						if(playerXPos(i) > playerTargetXPos(i)){decPlayerXPos(i);}
+					}
+					if(playerYPos(i) != playerTargetYPos(i)){
+						if(playerYPos(i) < playerTargetYPos(i)){incPlayerYPos(i);}
+						if(playerYPos(i) > playerTargetYPos(i)){decPlayerYPos(i);}
+					}
+					if(playerXPos(i) == playerTargetXPos(i) && playerYPos(i) == playerTargetYPos(i)){
+						if(playerBoardPos(i) != targetPlayerBoardPos(i)){
+							System.out.println("Incrementing player board position");
+							incPlayerBoardPos(i);
+						}
+					}
+				}
+				repaint();
+			}
+		});
+		timer.setRepeats(true);
+		timer.setCoalesce(true);
+		timer.start();
     }
     
     @Override
 	public void paint(Graphics g) {
     	super.paintComponent(g);
-    	g.drawImage(counter1,(30 + playerXPos(0)), (30+ playerYPos(0)), this);
-    	g.drawImage(counter2,(34 + playerXPos(1)), (30+ playerYPos(1)), this);
+    	g.drawImage(GameMechanics.playerList.get(0).playerIcon,(30 + playerXPos(0)), (30+ playerYPos(0)), this);
+    	g.drawImage(GameMechanics.playerList.get(1).playerIcon,(34 + playerXPos(1)), (30+ playerYPos(1)), this);
     	if(GameMechanics.playerList.size() > 2){
-    		g.drawImage(counter3,(38 + playerXPos(2)), (30+ playerYPos(2)), this);
+    		g.drawImage(GameMechanics.playerList.get(2).playerIcon,(38 + playerXPos(2)), (30+ playerYPos(2)), this);
     	}
     	if(GameMechanics.playerList.size() > 3){
-    		g.drawImage(counter4,(30 + playerXPos(3)), (34+ playerYPos(3)), this);
+    		g.drawImage(GameMechanics.playerList.get(3).playerIcon,(30 + playerXPos(3)), (34+ playerYPos(3)), this);
     	}
     	if(GameMechanics.playerList.size() > 4){
-    		g.drawImage(counter5,(34 + playerXPos(4)), (34+ playerYPos(4)), this);
+    		g.drawImage(GameMechanics.playerList.get(4).playerIcon,(34 + playerXPos(4)), (34+ playerYPos(4)), this);
     	}
     	if(GameMechanics.playerList.size() > 5){
-    		g.drawImage(counter6,(38 + playerXPos(5)), (34+ playerYPos(5)), this);
+    		g.drawImage(GameMechanics.playerList.get(5).playerIcon,(38 + playerXPos(5)), (34+ playerYPos(5)), this);
     	}   	
     	
     }
