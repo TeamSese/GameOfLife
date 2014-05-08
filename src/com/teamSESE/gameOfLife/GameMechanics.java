@@ -8,6 +8,7 @@ import javax.swing.JComponent;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
+import javax.swing.JTextField;
 
 public class GameMechanics {
 	
@@ -161,8 +162,9 @@ public class GameMechanics {
 		houseList.add(new House("Malone Road",	true,		new BigDecimal(120)));
 		houseList.add(new House("Lisburn Road",	true,		new BigDecimal(80)));
 		houseList.add(new House("Tates Avenue",	true,		new BigDecimal(70)));
-		houseList.add(new House("Stranmillis",		true,		new BigDecimal(90)));
+		houseList.add(new House("Stranmillis",	true,		new BigDecimal(90)));
 		houseList.add(new House("Botanic",		true,		new BigDecimal(100)));
+		houseList.add(new House("Donegal Road", true,       new BigDecimal(75)));
 		
 	}
 	
