@@ -19,7 +19,66 @@ public class GameMechanics {
 	public static DebugGUI g1;
 	public static int j;
 	static int lastTile = 7;
-	
+	static String tileString[] = {
+		"Select Course",					//0
+		"Defered start - miss a turn!",		//1
+		"Student Loan day!",				//2
+		"Don't like course - Switch!",		//3
+		"Get lost on a night out - Miss a turn",	//4
+		"Sue another player",						//5
+		"Buy a bike - loose £200",					//6
+		"Receive Scholarship - Receive £500",			//7
+		"Fail an exam - miss a turn",					//8
+		"STOP - Move out of elms",						//9
+		"Student Loan day!",							//10
+		"House gets broken into - loose £200",							//11
+		"Go on placement year - Receive: £5000",						//12
+		"Become addicted to something  - miss a turn",					//13
+		"Bet against your friend --- ",									//14
+		"Find some money - Receive £200",								//15
+		"Leave Game of Life Coursework to Last Minute - Miss 2 turns!!",//16
+		"Pass exams - Get a life tolken",								//17
+		"Student Loan day!",											//18
+		"Asroid stike on new house  - Gain a life tolken",				//19
+		"Bet against your friend --- ",						//20
+		"Meet your future wife - loose £500",				//21
+		"Move House!",										//22
+		"Forget to return book - loose £30",				//23
+		"Student Loan day!",								//24
+		"Student Loan day!",								//2
+		"Don't like course - Switch!",						//3
+		"Get lost on a night out - Miss a turn",			//4
+		"Sue another player",								//5
+		"Buy a bike - loose £200",							//6
+		"Receive Scholarship - Receive £500",				//7
+		"Fail an exam - miss a turn",						//8
+		"STOP - Move out of elms",							//9
+		"Student Loan day!",								//10
+		"House gets broken into - loose £200",							//11
+		"Go on placement year - Receive: £5000",						//12
+		"Become addicted to something  - miss a turn",					//13
+		"Bet against your friend --- ",									//14
+		"Find some money - Receive £200",								//15
+		"Leave Game of Life Coursework to Last Minute - Miss 2 turns!!",//16
+		"Pass exams - Get a life tolken",								//17
+		"Student Loan day!",											//18
+		"Asroid stike on new house  - Gain a life tolken",				//19
+		"Bet against your friend --- ",						//20
+		"Meet your future wife - loose £500",				//21
+		"Move House!",										//22
+		"Forget to return book - loose £30",				//23
+		"Student Loan day!",								//24
+		"Student Loan day!",				//46
+		"Don't like course - Switch!",		//47
+		"Get lost on a night out - Miss a turn",	//48
+		"Sue another player",						//49
+		"Student Loan day!",				//50
+		"Don't like course - Switch!",		//51
+		"Get lost on a night out - Miss a turn",	//52
+		"Sue another player",						//53
+		"Game OVER!",						//53
+		
+	};
 	static int tileProperties[] = {		//What each tile should do goes in here - in order!
 								//Tile Number
 		Tile.SELECT_COURSE,3,4,		//0
@@ -29,7 +88,7 @@ public class GameMechanics {
 		Tile.MISS_TURN,0,3,				//4
 		Tile.MISS_TURN,0,2,				//5
 		Tile.MISS_TURN,1,2,				//6
-		Tile.FINISH,1,1,		//7
+		Tile.GAIN_200,1,1,				//7
 		Tile.GAIN_200,1,0,				//8
 		Tile.GAIN_200,2,0,				//9
 		Tile.PAY_DAY,3,0,				//10
@@ -110,7 +169,7 @@ public class GameMechanics {
 		int j = 0;
 		for(int i = 0; i < tileProperties.length; i=i+3){			//This will create the new tiles as they are in the tileProperties array
 			System.out.println(i);
-			tileList.add(new Tile(tileProperties[i],tileProperties[i+1],tileProperties[i+2])); 			//and add them to the tileList ArrayList (the board)
+			tileList.add(new Tile(tileProperties[i],tileProperties[i+1],tileProperties[i+2],tileString[j])); 			//and add them to the tileList ArrayList (the board)
 			System.out.println("Tile: " + j + " X: "+tileList.get(j).gridXPos +" Y: "+ tileList.get(j).gridYPos);
 			j++;
 		}
@@ -158,6 +217,7 @@ public class GameMechanics {
 			if(playerList.get(playerID).targetBoardPos< tileList.size())
 			{
 				tileList.get(playerList.get(playerID).targetBoardPos).execute(playerID);
+				GameGUI.tileInfo.setText(tileList.get(playerList.get(playerID).targetBoardPos).tileText);
 			}
 		}
 		else 

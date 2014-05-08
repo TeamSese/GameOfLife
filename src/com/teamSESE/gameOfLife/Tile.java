@@ -33,10 +33,11 @@ public class Tile {
 	//private static final int RED = 5;
 	
 	
-	public Tile(int tType,int gridXPos, int gridYPos){
+	public Tile(int tType,int gridXPos, int gridYPos,String tileText){
 		this.tileType = tType;		//Basically tells the tile what to execute when it is landed on
 		this.gridXPos = gridXPos;
 		this.gridYPos = gridYPos;
+		this.tileText = tileText;
 	}
 	
 	public void execute(int playerID){		//Player ID is their position in the GameMechanics.playerList array - so each method knows which player stats to change
@@ -50,34 +51,34 @@ public class Tile {
 			
         	case PAY_DAY:{
         		paySalary(playerID);
-        		GameGUI.tileInfo.setText(GameMechanics.playerList.get(playerID).name + " has landed on a pay day");
+        		//GameGUI.tileInfo.setText(GameMechanics.playerList.get(playerID).name + " has landed on a pay day");
         		break;
         	}
         	
         	case LOOSE_200:{
         		loanPlayer(playerID,new BigDecimal(200));
-        		GameGUI.tileInfo.setText(GameMechanics.playerList.get(playerID).name + " has landed on a a lose 200 tile");
+        		//GameGUI.tileInfo.setText(GameMechanics.playerList.get(playerID).name + " has landed on a a lose 200 tile");
         		System.out.println("Player " + playerID + " lost £200!");
         		break;
         	}
         	
         	case LOOSE_500:{
         		loanPlayer(playerID,new BigDecimal(500));
-        		GameGUI.tileInfo.setText(GameMechanics.playerList.get(playerID).name + " has landed on a lose 500 tile");
+        		//GameGUI.tileInfo.setText(GameMechanics.playerList.get(playerID).name + " has landed on a lose 500 tile");
         		System.out.println("Player " + playerID + " lost £500!");
         		break;
         	}
         	
         	case GAIN_200:{
         		payPlayer(playerID,new BigDecimal(200));
-        		GameGUI.tileInfo.setText(GameMechanics.playerList.get(playerID).name + " has landed on a gain 200 tile");
+        		//GameGUI.tileInfo.setText(GameMechanics.playerList.get(playerID).name + " has landed on a gain 200 tile");
         		System.out.println("Player " + playerID + " gained £200!");
         		break;
         	}
         	
         	case GAIN_500:{
         		payPlayer(playerID,new BigDecimal(500));
-        		GameGUI.tileInfo.setText(GameMechanics.playerList.get(playerID).name + " has landed on a gain 500 tile");
+        		//GameGUI.tileInfo.setText(GameMechanics.playerList.get(playerID).name + " has landed on a gain 500 tile");
         		System.out.println("Player " + playerID + " gained £500!");
         		break;
         	}
@@ -86,13 +87,13 @@ public class Tile {
         		payPlayer(playerID,new BigDecimal(100)); 		//Adds to suing player
         		Player p = selectPlayerDialogueBox(playerID,"Sue which player?");
         		p.loan = p.loan.add(new BigDecimal(100));	//Adds to loan of sued player
-        		GameGUI.tileInfo.setText(GameMechanics.playerList.get(playerID).name + " has landed on a sue player tile");
+        		//GameGUI.tileInfo.setText(GameMechanics.playerList.get(playerID).name + " has landed on a sue player tile");
         		break;
         	}
         	
         	case SELECT_HOUSE:{
         		new SelectHouseGUI(playerID);
-        		GameGUI.tileInfo.setText(GameMechanics.playerList.get(playerID).name + " has landed on a new house tile");
+        		//GameGUI.tileInfo.setText(GameMechanics.playerList.get(playerID).name + " has landed on a new house tile");
 				System.out.println("Player " + playerID + " house selected...");
 				break;
         	}
@@ -106,7 +107,7 @@ public class Tile {
         	
         	case FINISH:{
         		GameMechanics.playerList.get(playerID).finished = true;
-        		GameGUI.tileInfo.setText(GameMechanics.playerList.get(playerID).name + " has finished the game");
+        		//GameGUI.tileInfo.setText(GameMechanics.playerList.get(playerID).name + " has finished the game");
         		System.out.println("Player " + playerID + " has completed the game");
         		break;
         	}
