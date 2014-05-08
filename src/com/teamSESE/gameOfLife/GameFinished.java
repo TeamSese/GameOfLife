@@ -71,10 +71,10 @@ public class GameFinished extends JFrame{
 				if (x == 0)
 				{
 					switch(y){
-					case 0:{values[x][y] = new JLabel("  #"); values[x][y].setBackground(Color.lightGray);break;}
-					case 1:{values[x][y] = new JLabel("  Name"); values[x][y].setBackground(Color.lightGray);break;}
-					case 2:{values[x][y] = new JLabel("  £"); values[x][y].setBackground(Color.lightGray);break;}
-					case 3:{values[x][y] = new JLabel("  Grade"); values[x][y].setBackground(Color.lightGray);break;}
+					case 0:{values[x][y] = new JLabel("  #");break;}
+					case 1:{values[x][y] = new JLabel("  Name");break;}
+					case 2:{values[x][y] = new JLabel("  £");break;}
+					case 3:{values[x][y] = new JLabel("  Grade");break;}
 					}
 				}
 
@@ -116,6 +116,7 @@ public class GameFinished extends JFrame{
 					.addGap(1))
 		);
 		panel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
+		panel.setBackground(Color.white);
 		
 		JButton btnNewButton = new JButton("Close");
 		btnNewButton.addActionListener(new ActionListener() {
