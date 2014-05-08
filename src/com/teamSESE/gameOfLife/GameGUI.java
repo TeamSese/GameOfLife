@@ -20,7 +20,6 @@ import javax.swing.GroupLayout.Alignment;
 import javax.swing.JLabel;
 import javax.swing.LayoutStyle.ComponentPlacement;
 
-
 public class GameGUI extends JFrame{
 	
 	static int sizeOfGridX = 7;
@@ -28,13 +27,13 @@ public class GameGUI extends JFrame{
 	int height, width, playerNumber, allPlayers;
 	JPanel gamePanel, scorePanel, rollPanel;
 	static JLabel [][] squares = new JLabel[sizeOfGridX][sizeOfGridY];
-	JButton rollDice;
+	static JButton rollDice;
 	JLabel [][] secondSquares = new JLabel[sizeOfGridX][sizeOfGridY];
 	JMenu options;
 	JMenuItem intructions;
 	instructionsFrame instructs = new instructionsFrame();
 	JMenuBar bar;
-  BufferedImage counter1;
+	BufferedImage counter1;
 	int sizeConstraint = 100;
 	JTextField rollAmount;
 	JTextField playerTurn;
@@ -74,16 +73,16 @@ public class GameGUI extends JFrame{
 		
 		JLayeredPane layerPane = getLayeredPane();
 		
-    JPanel gamePanel = new JPanel();
-    gamePanel.setLayout(new GridLayout(7, 10));
-    gamePanel.setSize(1000, 700); // Size is needed here, as there is no layout in lp
+		JPanel gamePanel = new JPanel();
+		gamePanel.setLayout(new GridLayout(7, 10));
+		gamePanel.setSize(1000, 700); // Size is needed here, as there is no layout in lp
 
-    GamePanel glassPane = new GamePanel();
-    glassPane.setLayout(new GridLayout(7,10));
-    glassPane.setOpaque(false); // Set to true to see it
-    glassPane.setBackground(Color.GREEN);
-    glassPane.setSize(gamePanel.getBounds().width, gamePanel.getBounds().height);
-    glassPane.setLocation(0, 22);
+		GamePanel glassPane = new GamePanel();
+		glassPane.setLayout(new GridLayout(7,10));
+		glassPane.setOpaque(false); // Set to true to see it
+		glassPane.setBackground(Color.GREEN);
+		glassPane.setSize(gamePanel.getBounds().width, gamePanel.getBounds().height);
+		glassPane.setLocation(0, 22);
     
 		JPanel panelArray[] = new JPanel[playerList.size()];										//Creates an array of JPanels and 
 		JLabel playerNameArray[] = new JLabel[playerList.size()];									//JLabels of size number of players 
@@ -116,13 +115,13 @@ public class GameGUI extends JFrame{
 		
 		ImageIcon RedVerticalPath = new ImageIcon(new ImageIcon(getClass().getResource("RedVerticalPath.jpg")).getImage().getScaledInstance(sizeConstraint,sizeConstraint, java.awt.Image.SCALE_SMOOTH));
 		
-    //ImageIcon PurpleIcon = new ImageIcon(new ImageIcon(getClass().getResource("PurpleIcon.png")).getImage().getScaledInstance(25,25, java.awt.Image.SCALE_SMOOTH));
-    ImageIcon GrassTile = new ImageIcon(new ImageIcon(getClass().getResource("GrassTile.jpg")).getImage().getScaledInstance(sizeConstraint,sizeConstraint, java.awt.Image.SCALE_SMOOTH));
+		//ImageIcon PurpleIcon = new ImageIcon(new ImageIcon(getClass().getResource("PurpleIcon.png")).getImage().getScaledInstance(25,25, java.awt.Image.SCALE_SMOOTH));
+		ImageIcon GrassTile = new ImageIcon(new ImageIcon(getClass().getResource("GrassTile.jpg")).getImage().getScaledInstance(sizeConstraint,sizeConstraint, java.awt.Image.SCALE_SMOOTH));
      
-    // ****************************************************************************************************************
+		// ****************************************************************************************************************
 
-    layerPane.add(gamePanel, Integer.valueOf(1));
-    layerPane.add(glassPane, Integer.valueOf(2));
+		layerPane.add(gamePanel, Integer.valueOf(1));
+		layerPane.add(glassPane, Integer.valueOf(2));
 		
 		Container c = getContentPane();
 		c.setMinimumSize(new Dimension(1100, 700));
@@ -135,124 +134,124 @@ public class GameGUI extends JFrame{
 
 		//  *************** this sets up the board, setting each icon the the appropiate position ***********
 		for (int i= 0; i< sizeOfGridX; i++) {
-      for (int j= 0; j< sizeOfGridY; j++) {
+			for (int j= 0; j< sizeOfGridY; j++) {
       	
-      	squares[i][j] = new JLabel();
-      	squares[i][j].setPreferredSize(new Dimension(sizeConstraint, sizeConstraint));
+				squares[i][j] = new JLabel();
+				squares[i][j].setPreferredSize(new Dimension(sizeConstraint, sizeConstraint));
 
-//****************** ROW 1 ********************
-      	if (i == 0)
-      	{
-      		switch(j){
-      		case 2:{squares[i][j].setIcon(OrangeCurvedPathRightDown);break;}
-      		case 3:{squares[i][j].setIcon(OrangeHorizontalPath);break;}
-      		case 4:{squares[i][j].setIcon(OrangeCurvedPathLeftDown);break;}
-      		case 6:{squares[i][j].setIcon(OrangeCurvedPathRightDown);break;}
-      		case 7:{squares[i][j].setIcon(OrangeHorizontalPath);break;}
-      		case 8:{squares[i][j].setIcon(GreenHorizontalPath);break;}
-      		case 9:{squares[i][j].setIcon(OrangeCurvedPathLeftDown);break;}
-      		default:{squares[i][j].setIcon(GrassTile);break;}
-      		}
-      	}
+				//****************** ROW 1 ********************
+				if (i == 0)
+				{
+					switch(j){
+						case 2:{squares[i][j].setIcon(OrangeCurvedPathRightDown);break;}
+						case 3:{squares[i][j].setIcon(OrangeHorizontalPath);break;}
+						case 4:{squares[i][j].setIcon(OrangeCurvedPathLeftDown);break;}
+						case 6:{squares[i][j].setIcon(OrangeCurvedPathRightDown);break;}
+						case 7:{squares[i][j].setIcon(OrangeHorizontalPath);break;}
+						case 8:{squares[i][j].setIcon(GreenHorizontalPath);break;}
+						case 9:{squares[i][j].setIcon(OrangeCurvedPathLeftDown);break;}
+						default:{squares[i][j].setIcon(GrassTile);break;}
+					}
+				}
       	
-//****************** ROW 2 ********************
-      	if (i == 1)
-      	{
-      		switch(j){
-      		case 0:{squares[i][j].setIcon(OrangeCurvedPathRightDown);break;}
-      		case 1:{squares[i][j].setIcon(BlueHorizontalPath);break;}
-      		case 2:{squares[i][j].setIcon(OrangeCurvedPathLeftUp);break;}
-      		case 4:{squares[i][j].setIcon(GreenVerticalPath);break;}
-      		case 5:{squares[i][j].setIcon(OrangeCurvedPathRightDown);break;}
-      		case 6:{squares[i][j].setIcon(BlueCurvedPathLeftUp);break;}
-      		case 9:{squares[i][j].setIcon(BlueVerticalPath);break;}
-      		default:{squares[i][j].setIcon(GrassTile);break;}
-      		}
-      	}
+				//****************** ROW 2 ********************
+				if (i == 1)
+				{
+					switch(j){
+						case 0:{squares[i][j].setIcon(OrangeCurvedPathRightDown);break;}
+						case 1:{squares[i][j].setIcon(BlueHorizontalPath);break;}
+						case 2:{squares[i][j].setIcon(OrangeCurvedPathLeftUp);break;}
+						case 4:{squares[i][j].setIcon(GreenVerticalPath);break;}
+						case 5:{squares[i][j].setIcon(OrangeCurvedPathRightDown);break;}
+						case 6:{squares[i][j].setIcon(BlueCurvedPathLeftUp);break;}
+						case 9:{squares[i][j].setIcon(BlueVerticalPath);break;}
+						default:{squares[i][j].setIcon(GrassTile);break;}
+					}
+				}
       	
-//****************** ROW 3 ********************      	
-      	if (i == 2)
-      	{
-      		switch(j){
-      		case 0:{squares[i][j].setIcon(OrangeVerticalPath);break;}
-      		case 4:{squares[i][j].setIcon(OrangeVerticalPath);break;}
-      		case 5:{squares[i][j].setIcon(OrangeVerticalPath);break;}
-      		case 8:{squares[i][j].setIcon(OrangeCurvedPathRightDown);break;}
-      		case 9:{squares[i][j].setIcon(OrangeCurvedPathLeftUp);break;}
-      		default:{squares[i][j].setIcon(GrassTile);break;}
-      		}
-      	}
+				//****************** ROW 3 ********************      	
+				if (i == 2)
+				{
+					switch(j){
+					case 0:{squares[i][j].setIcon(OrangeVerticalPath);break;}
+					case 4:{squares[i][j].setIcon(OrangeVerticalPath);break;}
+					case 5:{squares[i][j].setIcon(OrangeVerticalPath);break;}
+					case 8:{squares[i][j].setIcon(OrangeCurvedPathRightDown);break;}
+					case 9:{squares[i][j].setIcon(OrangeCurvedPathLeftUp);break;}
+					default:{squares[i][j].setIcon(GrassTile);break;}
+					}
+				}
         	
-//****************** ROW 4 ********************     	
-      	if (i == 3)
-      	{
-      		switch(j){
-      		case 0:{squares[i][j].setIcon(GreenVerticalPath);break;}
-      		case 1:{squares[i][j].setIcon(OrangeCurvedPathRightDown);break;}
-      		case 2:{squares[i][j].setIcon(OrangeCurvedPathLeftDown);break;}
-      		case 4:{squares[i][j].setIcon(OrangeFinishPathDown);break;}
-      		case 5:{squares[i][j].setIcon(OrangeVerticalPath);break;}
-      		case 6:{squares[i][j].setIcon(BlueCurvedPathRightDown);break;}
-      		case 7:{squares[i][j].setIcon(GreenCurvedPathLeftDown);break;}
-      		case 8:{squares[i][j].setIcon(OrangeCurvedPathUpRight);break;}
-      		case 9:{squares[i][j].setIcon(OrangeCurvedPathLeftDown);break;}
-      		default:{squares[i][j].setIcon(GrassTile);break;}
-      		}
-      	}
+				//****************** ROW 4 ********************     	
+				if (i == 3)
+				{
+					switch(j){
+						case 0:{squares[i][j].setIcon(GreenVerticalPath);break;}
+						case 1:{squares[i][j].setIcon(OrangeCurvedPathRightDown);break;}
+						case 2:{squares[i][j].setIcon(OrangeCurvedPathLeftDown);break;}
+						case 4:{squares[i][j].setIcon(OrangeFinishPathDown);break;}
+						case 5:{squares[i][j].setIcon(OrangeVerticalPath);break;}
+						case 6:{squares[i][j].setIcon(BlueCurvedPathRightDown);break;}
+						case 7:{squares[i][j].setIcon(GreenCurvedPathLeftDown);break;}
+						case 8:{squares[i][j].setIcon(OrangeCurvedPathUpRight);break;}
+						case 9:{squares[i][j].setIcon(OrangeCurvedPathLeftDown);break;}
+						default:{squares[i][j].setIcon(GrassTile);break;}
+					}
+				}
 
         	
-//****************** ROW 5 ********************
-      	if (i == 4)
-      	{
-      		switch(j){
-      		case 0:{squares[i][j].setIcon(OrangeCurvedPathUpRight);break;}
-      		case 1:{squares[i][j].setIcon(OrangeCurvedPathLeftUp);break;}
-      		case 2:{squares[i][j].setIcon(RedVerticalPath);break;}
-      		case 3:{squares[i][j].setIcon(OrangeCurvedPathRightDown);break;}
-      		case 4:{squares[i][j].setIcon(OrangeCurvedPathLeftDown);break;}
-      		case 5:{squares[i][j].setIcon(OrangeFinishPathDown);break;}
-      		case 6:{squares[i][j].setIcon(OrangeVerticalPath);break;}
-      		case 7:{squares[i][j].setIcon(OrangeCurvedPathUpRight);break;}
-      		case 8:{squares[i][j].setIcon(OrangeCurvedPathLeftDown);break;}
-      		case 9:{squares[i][j].setIcon(BlueVerticalPath);break;}
-      		default:{squares[i][j].setIcon(GrassTile);break;}
-      		}
-      	}
+				//****************** ROW 5 ********************
+				if (i == 4)
+				{
+					switch(j){
+					case 0:{squares[i][j].setIcon(OrangeCurvedPathUpRight);break;}
+					case 1:{squares[i][j].setIcon(OrangeCurvedPathLeftUp);break;}
+					case 2:{squares[i][j].setIcon(RedVerticalPath);break;}
+					case 3:{squares[i][j].setIcon(OrangeCurvedPathRightDown);break;}
+					case 4:{squares[i][j].setIcon(OrangeCurvedPathLeftDown);break;}
+					case 5:{squares[i][j].setIcon(OrangeFinishPathDown);break;}
+					case 6:{squares[i][j].setIcon(OrangeVerticalPath);break;}
+					case 7:{squares[i][j].setIcon(OrangeCurvedPathUpRight);break;}
+					case 8:{squares[i][j].setIcon(OrangeCurvedPathLeftDown);break;}
+					case 9:{squares[i][j].setIcon(BlueVerticalPath);break;}
+					default:{squares[i][j].setIcon(GrassTile);break;}
+					}
+				}
         	
-//****************** ROW 6 ********************
-      	if (i == 5)
-      	{
-      		switch(j){
-      		case 1:{squares[i][j].setIcon(BlueCurvedPathRightDown);break;}
-      		case 2:{squares[i][j].setIcon(OrangeCurvedPathLeftUp);break;}
-      		case 3:{squares[i][j].setIcon(OrangeVerticalPath);break;}
-      		case 4:{squares[i][j].setIcon(OrangeCurvedPathUpRight);break;}
-      		case 5:{squares[i][j].setIcon(GreenCurvedPathLeftDown);break;}
-      		case 6:{squares[i][j].setIcon(OrangeVerticalPath);break;}
-      		case 7:{squares[i][j].setIcon(OrangeCurvedPathRightDown);break;}
-      		case 8:{squares[i][j].setIcon(BlueCurvedPathLeftUp);break;}
-      		case 9:{squares[i][j].setIcon(GreenVerticalPath);break;}
-      		default:{squares[i][j].setIcon(GrassTile);break;}
-      		}
-      	}
+				//****************** ROW 6 ********************
+				if (i == 5)
+				{
+					switch(j){
+					case 1:{squares[i][j].setIcon(BlueCurvedPathRightDown);break;}
+					case 2:{squares[i][j].setIcon(OrangeCurvedPathLeftUp);break;}
+					case 3:{squares[i][j].setIcon(OrangeVerticalPath);break;}
+					case 4:{squares[i][j].setIcon(OrangeCurvedPathUpRight);break;}
+					case 5:{squares[i][j].setIcon(GreenCurvedPathLeftDown);break;}
+					case 6:{squares[i][j].setIcon(OrangeVerticalPath);break;}
+					case 7:{squares[i][j].setIcon(OrangeCurvedPathRightDown);break;}
+					case 8:{squares[i][j].setIcon(BlueCurvedPathLeftUp);break;}
+					case 9:{squares[i][j].setIcon(GreenVerticalPath);break;}
+					default:{squares[i][j].setIcon(GrassTile);break;}
+					}
+				}
       		      	
-//****************** ROW 7 ********************
-      	if (i == 6)
-      	{
-      		switch(j){
-      		case 1:{squares[i][j].setIcon(OrangeCurvedPathUpRight);break;}
-      		case 2:{squares[i][j].setIcon(GreenHorizontalPath);break;}
-      		case 3:{squares[i][j].setIcon(OrangeCurvedPathLeftUp);break;}
-      		case 5:{squares[i][j].setIcon(BlueCurvedPathUpRight);break;}
-      		case 6:{squares[i][j].setIcon(OrangeCurvedPathLeftUp);break;}
-      		case 7:{squares[i][j].setIcon(OrangeCurvedPathUpRight);break;}
-      		case 8:{squares[i][j].setIcon(OrangeHorizontalPath);break;}
-      		case 9:{squares[i][j].setIcon(OrangeCurvedPathLeftUp);break;}
-      		default:{squares[i][j].setIcon(GrassTile);break;}
-      		}  
-      	}
-          gamePanel.add(squares[i][j]);
-      }
+				//****************** ROW 7 ********************
+				if (i == 6)
+				{
+					switch(j){
+						case 1:{squares[i][j].setIcon(OrangeCurvedPathUpRight);break;}
+						case 2:{squares[i][j].setIcon(GreenHorizontalPath);break;}
+						case 3:{squares[i][j].setIcon(OrangeCurvedPathLeftUp);break;}
+						case 5:{squares[i][j].setIcon(BlueCurvedPathUpRight);break;}
+						case 6:{squares[i][j].setIcon(OrangeCurvedPathLeftUp);break;}
+						case 7:{squares[i][j].setIcon(OrangeCurvedPathUpRight);break;}
+						case 8:{squares[i][j].setIcon(OrangeHorizontalPath);break;}
+						case 9:{squares[i][j].setIcon(OrangeCurvedPathLeftUp);break;}
+						default:{squares[i][j].setIcon(GrassTile);break;}
+					}  
+				}
+				gamePanel.add(squares[i][j]);
+			}
 		}
 	
 		scorePanel = new JPanel();

@@ -20,12 +20,10 @@ import javax.swing.Timer;
 import javax.swing.border.TitledBorder;
 
 public class GamePanel extends JPanel {
-    
-    //ArrayList<Integer> xVal = new ArrayList<Integer>();
-    //ArrayList<Integer> yVal = new ArrayList<Integer>();
 	
     public GamePanel(){
     	
+
     	Timer timer = new Timer(5, new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -45,12 +43,23 @@ public class GamePanel extends JPanel {
 						}
 					}
 				}
+				for(int i = 0; i < GameMechanics.playerList.size(); i++){
+					if(playerBoardPos(i) == targetPlayerBoardPos(i)){
+						if(i == (GameMechanics.playerList.size() - 1)){
+							GameGUI.rollDice.setEnabled(true);
+						}
+					}
+					else{
+						break;
+					}
+				}
 				repaint();
 			}
 		});
 		timer.setRepeats(true);
 		timer.setCoalesce(true);
 		timer.start();
+
     }
     
     @Override

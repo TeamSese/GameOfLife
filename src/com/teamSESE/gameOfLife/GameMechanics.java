@@ -124,8 +124,18 @@ public class GameMechanics {
 		return low + (int)(high * Math.random());
 	}
 
-	public static void movePlayer(int playerID) 
-	{
+	public static void movePlayer(int playerID) {
+		
+		//JOptionPane chooseRoll = new JOptionPane(GameMechanics.playerList.get(i).name + ", your turn to roll");
+		//rollMessage.setBounds((int)(GameGUI.scorePanel).getLocation().getX(), ((int)(GameGUI.rollPanel).getLocation().getY() + (GameGUI.rollPanel.getHeight() / 4)) , GameGUI.rollPanel.getWidth(), GameGUI.rollPanel.getHeight());
+		//rollMessage.setLocation((int)(GameGUI.scorePanel).getLocation().getX(), ((int)(GameGUI.rollPanel).getLocation().getY()));
+//		JOptionPane.showMessageDialog(null, "Welcome to the Game of Life");
+//		JDialog rollMessage = chooseRoll.createDialog("Follow the Instructions");
+//		rollMessage.setBounds((int)(GameGUI.scorePanel).getLocation().getX(), ((int)(GameGUI.rollPanel).getLocation().getY() + (GameGUI.rollPanel.getHeight() / 4)) , GameGUI.rollPanel.getWidth(), GameGUI.rollPanel.getHeight());
+//		rollMessage.setVisible(true);
+		
+		//GameMechanics.playerList.get(0).reachedPosition = false;
+		GameGUI.rollDice.setEnabled(false);
 		
 		j = dice();
 		
