@@ -139,16 +139,16 @@ public class GameMechanics {
 	
 	
 	public static void setUpCourses(){
-								//	Name		Available	BaseSalary				MaxSalary				CurrentSalary
+								//	Name			Available	Salary
 		
-		courseList.add(new Course("SESE","Job",		true, 		new BigDecimal(60000), 	new BigDecimal(100000),	new BigDecimal(60000)));
-		courseList.add(new Course("Medicine","Job",	true, 		new BigDecimal(40000), 	new BigDecimal(70000),	new BigDecimal(40000)));
-		courseList.add(new Course("Law","Job",		true, 		new BigDecimal(40000), 	new BigDecimal(70000),	new BigDecimal(40000)));
-		courseList.add(new Course("Languages","Job",	true, 		new BigDecimal(40000), 	new BigDecimal(70000),	new BigDecimal(40000)));
-		courseList.add(new Course("History","Job",	true, 		new BigDecimal(40000), 	new BigDecimal(70000),	new BigDecimal(40000)));
-		courseList.add(new Course("Engineering","Job",true,		new BigDecimal(40000), 	new BigDecimal(70000),	new BigDecimal(40000)));
-		courseList.add(new Course("Nursing","Job",	true, 		new BigDecimal(40000), 	new BigDecimal(70000),	new BigDecimal(40000)));
-		courseList.add(new Course("Geography","Job",	true, 		new BigDecimal(40000), 	new BigDecimal(70000),	new BigDecimal(40000)));
+		courseList.add(new Course("SESE",	true, 		new BigDecimal(12000)));
+		courseList.add(new Course("Medicine",	true, 		new BigDecimal(10000)));
+		courseList.add(new Course("Law", 	true, 		new BigDecimal(8000)));
+		courseList.add(new Course("Languages",	true, 		new BigDecimal(6000)));
+		courseList.add(new Course("History",	true, 		new BigDecimal(5000)));
+		courseList.add(new Course("Engineering",	true,		new BigDecimal(11000)));
+		courseList.add(new Course("Nursing",		true, 		new BigDecimal(7000)));
+		courseList.add(new Course("Geography",	true, 		new BigDecimal(8000)));
 	}
 	
 	public static void setUpHouses(){

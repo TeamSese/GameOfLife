@@ -42,10 +42,10 @@ public class SelectCourseGUI extends JDialog{
 	
 	JTextField choice1txt1 = new JTextField();
 	JTextField choice1txt2 = new JTextField();
-	JTextField choice1txt3 = new JTextField();
+	//JTextField choice1txt3 = new JTextField();
 	JTextField choice2txt1 = new JTextField();
 	JTextField choice2txt2 = new JTextField();
-	JTextField choice2txt3 = new JTextField();
+	//JTextField choice2txt3 = new JTextField();
 	
 	JButton choiceButton1 = new JButton();
 	JButton choiceButton2 = new JButton();
@@ -127,10 +127,10 @@ SelectCourseGUI(int playerIdentity){
 		choiceDetails1a.setBackground(Color.white);
 		choiceDetails1a.add(new JLabel("Name"));
 		choiceDetails1a.add(choice1txt1);
-		choiceDetails1a.add(new JLabel("Base Salary"));
+		choiceDetails1a.add(new JLabel("Potential Salary"));
 		choiceDetails1a.add(choice1txt2);
-		choiceDetails1a.add(new JLabel("Max Salary"));
-		choiceDetails1a.add(choice1txt3);
+		//choiceDetails1a.add(new JLabel("Max Salary"));
+		//choiceDetails1a.add(choice1txt3);
 		choiceDetails1b.setLayout(new GridLayout(1, 1, 0, 0));
 		choiceDetails1b.setBackground(Color.white);
 		
@@ -144,10 +144,10 @@ SelectCourseGUI(int playerIdentity){
 		choiceDetails2a.setLayout(new GridLayout(3, 2, 0, 0));
 		choiceDetails2a.add(new JLabel("Name"));
 		choiceDetails2a.add(choice2txt1);
-		choiceDetails2a.add(new JLabel("Base Salary"));
+		choiceDetails2a.add(new JLabel("Potential Salary"));
 		choiceDetails2a.add(choice2txt2);
-		choiceDetails2a.add(new JLabel("Max Salary"));
-		choiceDetails2a.add(choice2txt3);
+		//choiceDetails2a.add(new JLabel("Max Salary"));
+		//choiceDetails2a.add(choice2txt3);
 		choiceDetails2a.setBackground(Color.white);
 		choiceDetails2b.setLayout(new GridLayout(1, 1, 0, 0));
 		choiceDetails2b.setBackground(Color.white);
@@ -162,10 +162,10 @@ SelectCourseGUI(int playerIdentity){
 		
 		choice1txt1.setEditable(false);
 		choice1txt2.setEditable(false);
-		choice1txt3.setEditable(false);
+		//choice1txt3.setEditable(false);
 		choice2txt1.setEditable(false);
 		choice2txt2.setEditable(false);
-		choice2txt3.setEditable(false);
+		//choice2txt3.setEditable(false);
 		setVisible(true);
 		
 }
@@ -176,8 +176,8 @@ SelectCourseGUI(int playerIdentity){
 			if(buttonPressCount == 1){
 				System.out.println("button2 ActionListener Called");
 				choice2txt1.setText(GameMechanics.courseList.get(list.get(1)).name);
-				choice2txt2.setText(GameMechanics.courseList.get(list.get(1)).baseSalary.toString());
-				choice2txt3.setText(GameMechanics.courseList.get(list.get(1)).maxSalary.toString());
+				choice2txt2.setText(GameMechanics.courseList.get(list.get(1)).salary.toString());
+				//choice2txt3.setText(GameMechanics.courseList.get(list.get(1)).maxSalary.toString());
 				choiceButton1.setEnabled(false);
 				choiceButton2.setEnabled(false);
 				choiceButton3.setEnabled(false);	
@@ -185,8 +185,8 @@ SelectCourseGUI(int playerIdentity){
 			if(buttonPressCount == 0){
 				System.out.println("button1 ActionListener Called");
 				choice1txt1.setText(GameMechanics.courseList.get(list.get(0)).name);
-				choice1txt2.setText(GameMechanics.courseList.get(list.get(0)).baseSalary.toString());
-				choice1txt3.setText(GameMechanics.courseList.get(list.get(0)).maxSalary.toString());
+				choice1txt2.setText(GameMechanics.courseList.get(list.get(0)).salary.toString());
+				//choice1txt3.setText(GameMechanics.courseList.get(list.get(0)).maxSalary.toString());
 				buttonPressCount++;
 			}
 		}

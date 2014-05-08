@@ -23,9 +23,7 @@ public class PlayerScorePanel extends JPanel {
 		add(loanLabel);
 		courseLabel = new JLabel("Course - " + GameMechanics.playerList.get(playerID).course.name);
 		add(courseLabel);
-		placementLabel = new JLabel("Placement - " + GameMechanics.playerList.get(playerID).course.placement);
-		add(placementLabel);
-		salaryLabel = new JLabel("Salary - £" + GameMechanics.playerList.get(playerID).course.currentSalary.toPlainString());
+		salaryLabel = new JLabel("Salary - £" + GameMechanics.playerList.get(playerID).course.salary.toPlainString());
 		add(salaryLabel);
 		houseLabel = new JLabel("House - " + GameMechanics.playerList.get(playerID).house.name);
 		add(houseLabel);
@@ -37,8 +35,7 @@ public class PlayerScorePanel extends JPanel {
 		moneyLabel.setText("Money - £" + GameMechanics.playerList.get(playerID).money.toString());
 		loanLabel.setText("Loan - £" + GameMechanics.playerList.get(playerID).loan.toString());
 		courseLabel.setText("Course - " + GameMechanics.playerList.get(playerID).course.name);
-		placementLabel.setText("Placement - " + GameMechanics.playerList.get(playerID).course.placement);
-		salaryLabel.setText("Salary - £" + GameMechanics.playerList.get(playerID).course.currentSalary.toPlainString());
+		salaryLabel.setText("Potential Salary - £" + GameMechanics.playerList.get(playerID).course.salary.toPlainString());
 		houseLabel.setText("House - " + GameMechanics.playerList.get(playerID).house.name);
 		rentLabel.setText("Rent - £" + GameMechanics.playerList.get(playerID).house.rentPrice.toString());
 		this.repaint();

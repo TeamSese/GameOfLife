@@ -180,7 +180,7 @@ public class Tile {
 
 	//	These could also go in GameMechanics class if need be!
 	private void paySalary(int playerID) {
-		GameMechanics.playerList.get(playerID).money = GameMechanics.playerList.get(playerID).money.add(GameMechanics.playerList.get(playerID).course.currentSalary);
+		GameMechanics.playerList.get(playerID).money = GameMechanics.playerList.get(playerID).money.add(GameMechanics.playerList.get(playerID).course.salary);
 	}
 	
 	private void payPlayer(int playerID, BigDecimal amount){

@@ -133,9 +133,7 @@ public class DebugGUI extends JFrame{
 			coursetfArray.get(k).setText(GameMechanics.courseList.get(i).name);k++;
 			coursetfArray.get(k).setText(GameMechanics.courseList.get(i).available.toString())
 			;k++;
-			coursetfArray.get(k).setText(GameMechanics.courseList.get(i).maxSalary.toString());k++;
-			coursetfArray.get(k).setText(GameMechanics.courseList.get(i).currentSalary.toString());k++;
-			coursetfArray.get(k).setText(GameMechanics.courseList.get(i).baseSalary.toString());k++;
+			coursetfArray.get(k).setText(GameMechanics.courseList.get(i).salary.toString());k++;
 
 		}
 		

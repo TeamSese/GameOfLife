@@ -5,20 +5,14 @@ import java.math.BigDecimal;
 public class Course {
 	
 	String name;
-	String placement;
 	Boolean available;
-	BigDecimal baseSalary;
-	BigDecimal maxSalary;
-	BigDecimal currentSalary;
+	BigDecimal salary;
 	
-	Course(String name,String placement, Boolean available, BigDecimal baseSalary, BigDecimal maxSalary, BigDecimal currentSalary){
+	Course(String name, Boolean available, BigDecimal salary){
 		
 		this.name = name;
-		this.placement = placement;
 		this.available = available;
-		this.baseSalary = baseSalary;
-		this.maxSalary = maxSalary;
-		this.currentSalary = currentSalary;
+		this.salary = salary;
 	}
 
 }
