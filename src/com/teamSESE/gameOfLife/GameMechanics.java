@@ -8,6 +8,7 @@ import javax.swing.JComponent;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
+import javax.swing.JTextField;
 
 public class GameMechanics {
 	

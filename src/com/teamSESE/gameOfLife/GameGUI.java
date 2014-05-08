@@ -35,8 +35,8 @@ public class GameGUI extends JFrame{
 	JMenuBar bar;
 	BufferedImage counter1;
 	int sizeConstraint = 100;
-	JTextField rollAmount;
-	JTextField playerTurn;
+	static JTextField  rollAmount;
+	static JTextField playerTurn;
 	static JTextField tileInfo;
 	boolean checkForPlayers;
 	
@@ -303,21 +303,30 @@ public class GameGUI extends JFrame{
 		c.add(scorePanel, "2, 1, fill, fill");
 		scorePanel.setLayout(new GridLayout(0, 1, 0, 0));
 		
-		setUpPlayerScorePanels();
+		
+		
 		
 		rollAmount = new JTextField(20);
 		playerTurn = new JTextField(20);
 		tileInfo = new JTextField(20);
+		
+		Font f1 = new Font(rollAmount.getFont().getName(), Font.BOLD, 14);
+		
 		tileInfo.setEditable(false);
+		tileInfo.setFont(f1);
 		rollAmount.setEditable(false);
+		rollAmount.setFont(f1);
 		playerTurn.setEditable(false);
+		playerTurn.setFont(f1);
 		
 		playerTurn.setText(GameMechanics.playerList.get(0).name + "'s turn");
-		rollPanel.add(rollAmount);
 		rollPanel.add(rollDice);
-		rollPanel.add(playerTurn);
+		
+		rollPanel.add(rollAmount);
+		rollAmount.setText("");
 		rollPanel.add(tileInfo);
 		scorePanel.add(rollPanel);
+		rollPanel.add(playerTurn);
 		
 		intructions.addActionListener(
 				new ActionListener()
@@ -341,6 +350,8 @@ public class GameGUI extends JFrame{
 							{
 								GameMechanics.movePlayer(playerNumber);
 								rollAmount.setText(GameMechanics.playerList.get(playerNumber).name + " has rolled a " + GameMechanics.j);
+								System.out.println(GameMechanics.playerList.get(playerNumber).name + " has rolled a " + GameMechanics.j);
+								repaint();
 								
 								if ((playerNumber + 1) == GameMechanics.playerList.size())
 								{
@@ -383,6 +394,7 @@ public class GameGUI extends JFrame{
 						playerTurn.setText(GameMechanics.playerList.get(playerNumber).name + "'s turn");
 					}
 				});
+		setUpPlayerScorePanels();
 
 		setDefaultCloseOperation(MyFrame.EXIT_ON_CLOSE);
 		setVisible(true);
@@ -398,8 +410,8 @@ public class GameGUI extends JFrame{
 	}
 
 	public static void updateScorePanel(){
-		for(int z = 0; z < GameMechanics.playerList.size(); z++){
-			((PlayerScorePanel) scorePanel.getComponent(z)).updatePanel(z);
+		for(int z = 1; z < (GameMechanics.playerList.size()+1); z++){
+			((PlayerScorePanel) scorePanel.getComponent(z)).updatePanel(z-1);
 		}
 		
 
