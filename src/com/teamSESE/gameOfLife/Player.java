@@ -107,7 +107,7 @@ public class Player{
 	
 	BigDecimal finalMoney()
 	{
-		return this.money.subtract(this.loan);
+		return this.money.subtract((this.loan).multiply(new BigDecimal(1.20)));
 	}
 	
 	boolean isFinished()

@@ -8,10 +8,6 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import java.awt.Color;
-import java.awt.GridBagLayout;
-import java.awt.GridBagConstraints;
-import java.awt.Insets;
-import java.awt.Window;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.Collections;
@@ -19,7 +15,6 @@ import java.util.Collections;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.LayoutStyle.ComponentPlacement;
-import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.JButton;
 
@@ -41,10 +36,13 @@ public class GameFinished extends JFrame{
 		setResizable(false);
 		
 		Container c = getContentPane();
+		c.setBackground(Color.white);
 		
 		JPanel panel_2 = new JPanel();
+		panel_2.setBackground(Color.white);
 		
 		JPanel panel_1 = new JPanel();
+		panel_1.setBackground(Color.white);
 		
 		gradeArray.add("1.1");
 		gradeArray.add("2.1");
@@ -118,6 +116,7 @@ public class GameFinished extends JFrame{
 					.addGap(1))
 		);
 		panel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
+		panel.setBackground(Color.white);
 		
 		JButton btnNewButton = new JButton("Close");
 		btnNewButton.addActionListener(new ActionListener() {
