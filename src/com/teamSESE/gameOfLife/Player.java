@@ -16,13 +16,10 @@ public class Player{
 	BigDecimal loan;
 	BigDecimal finalMoney;
 	BigDecimal loanIncreased;
+	BigDecimal finalTotal, numLife;;
 	Course course;
 	House house;
-	int boardPosition;
-	int targetBoardPos;
-	int XPos;			//Holds the animation current coordinates for this player
-	int YPos;
-	int missTurn;
+	int boardPosition, targetBoardPos, XPos, YPos, missTurn;
 	boolean reachedPosition;
 	boolean finished;
 	public Image playerIcon;
@@ -37,6 +34,7 @@ public class Player{
 		this.boardPosition = 0;
 		this.missTurn = 0;
 		this.finished = false;
+		this.numLife = BigDecimal.ZERO;
 		
 		this.XPos = 400;
 		this.YPos = 300;
@@ -45,9 +43,7 @@ public class Player{
 		
 		try {
 		if(this.color == color.red){
-			
 				playerIcon = ImageIO.read(new File("RedIcon.png"));
-			
 		}
 		if(this.color == color.blue){
 			playerIcon = ImageIO.read(new File("BlueIcon.png"));
@@ -112,6 +108,19 @@ public class Player{
 		BigDecimal loanIncreased = (this.loan).multiply(new BigDecimal(1.2));
 		loanIncreased = loanIncreased.setScale(0, RoundingMode.HALF_UP);
 		return this.money.subtract(loanIncreased);
+	}
+	
+	BigDecimal numLife()
+	{
+		return numLife;
+	}
+	
+	BigDecimal finalTotal()
+	{
+		BigDecimal cashLife = (numLife()).multiply(new BigDecimal(100));
+		cashLife = cashLife.setScale(0, RoundingMode.HALF_UP);
+		finalTotal = cashLife.add(finalMoney());
+		return finalTotal;
 	}
 	
 	boolean isFinished()

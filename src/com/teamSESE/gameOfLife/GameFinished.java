@@ -24,7 +24,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 public class GameFinished extends JFrame{
-	JLabel values[][] = new JLabel[7][4];
+	JLabel values[][] = new JLabel[7][6];
 	private JLabel txtItsGraduationDay;
 	ArrayList<Player> playerArray = new ArrayList<Player>();
 	ArrayList<String> gradeArray = new ArrayList<String>(); 
@@ -66,16 +66,17 @@ public class GameFinished extends JFrame{
 		
 		for (int x= 0; x<=playerArray.size(); x++)
 		{
-			for (int y= 0; y<4; y++)
+			for (int y= 0; y<6; y++)
 			{
-
 				if (x == 0)
 				{
 					switch(y){
 					case 0:{values[x][y] = new JLabel("  #");break;}
 					case 1:{values[x][y] = new JLabel("  Name");break;}
 					case 2:{values[x][y] = new JLabel("  £");break;}
-					case 3:{values[x][y] = new JLabel("  Grade");break;}
+					case 3:{values[x][y] = new JLabel("Life Tiles");break;}
+					case 4:{values[x][y] = new JLabel("Final Total");break;}
+					case 5:{values[x][y] = new JLabel("  Grade");break;}
 					}
 				}
 
@@ -84,10 +85,11 @@ public class GameFinished extends JFrame{
 					case 0:{values[x][y] = new JLabel("  " + x);break;}
 					case 1:{values[x][y] = new JLabel("  " + playerArray.get(x-1).name);break;}
 					case 2:{values[x][y] = new JLabel("  " + playerArray.get(x-1).finalMoney());break;}
-					case 3:{values[x][y] = new JLabel("  " + gradeArray.get(x-1));break;}
+					case 3:{values[x][y] = new JLabel("  " + playerArray.get(x-1).numLife());break;}
+					case 4:{values[x][y] = new JLabel("  " + playerArray.get(x-1).finalTotal());break;}
+					case 5:{values[x][y] = new JLabel("  " + gradeArray.get(x-1));break;}
 					}
 				}
-
 				panel_1.add(values[x][y]);
 			}
 		}
@@ -134,7 +136,7 @@ public class GameFinished extends JFrame{
 		});
 		
 		panel.add(btnNewButton);
-		panel_1.setLayout(new GridLayout(0, 4, 0, 0));
+		panel_1.setLayout(new GridLayout(0, 6, 0, 0));
 		
 		JPanel panel_3 = new JPanel();
 		

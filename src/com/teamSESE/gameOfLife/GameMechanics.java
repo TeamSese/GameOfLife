@@ -18,62 +18,62 @@ public class GameMechanics {
 	public static boolean gameOver =false;
 	public static DebugGUI g1;
 	public static int j;
-	static int lastTile = 54;
+	static int lastTile = 7;
 	static String tileString[] = {
 		"Select Course",					//0
 		"Defered start - miss a turn!",		//1
-		"Student loan day! Receive £1000.",				//2		GREEN
+		"Student loan day! Receive £1000 and a LIFE tile.",				//2		GREEN
 		"Switch courses - miss a turn, pay £3000.",		//3
 		"Get lost on a night out - miss a turn.",	//4
 		"Win scholarship - receive £500",			//5	
-		"Buy a bike - pay £200.",					//6
+		"Buy a bike - pay £200 and gain LIFE",					//6
 		"'Borrow' money from another player...",			//7			BLUE
 		"Fail an exam - miss a turn",					//8
-		"Find some money! Receive £200",						//9
-		"Student Loan day! Receive £1000.",							//10	GREEN
-		"House gets broken into - lose £200.",							//11
+		"Find some money! Receive £200 and LIFE tile",						//9
+		"Student Loan day! Receive £1000 and a LIFE tile.",							//10	GREEN
+		"House gets broken into - lose £200 but gain LIFE tile.",							//11
 		"Receive student bursary - receive £500",						//12
 		"Become addicted to something - miss a turn",					//13
-		"Pass exams! Receive £200",									//14
+		"Pass exams! Receive £200 and a LIFE tile",									//14
 		"STOP - move out of elms",										//15  RED
 		"Leave Game of Life coursework to last minute - miss a turn!!",//16
 		"'Borrow' money from another player...",								//17  BLUE
 		"Get mugged! Lose £100",											//18
-		"Student Loan day! Receive £1000.",				//19  GREEN
+		"Student Loan day! Receive £1000 and a LIFE tile.",				//19  GREEN
 		"Big night out! Pay £500.",						//20
 		"Meet your future partner - lose £500",				//21
 		"Buy gym membership you will never use! Pay £100.",										//22
 		"Forget to return book! Pay £30",				//23
 		"Win £100 on a scratchcard!",								//24
-		"Student Loan day! Receive £1000",								//25		GREEN
+		"Student Loan day! Receive £1000 and a LIFE tile",								//25		GREEN
 		"'Borrow' money from another player...",						//26		BLUE
-		"Complete Dynamite Chicken Challenge! Lose £5, gain respect.",			//27
+		"Complete Dynamite Chicken Challenge! Lose £5, gain respect and LIFE tile.",			//27
 		"Become human guinea pig! Receive £500",								//28
 		"Too hungover to go to class! Miss a turn.",							//29
 		"'Borrow' money from another player...",				//30		BLUE
-		"Student Loan day! Receive £1000",						//31		GREEN
+		"Student Loan day! Receive £1000 and a LIFE tile",						//31		GREEN
 		"Break your laptop! Pay £500",							//32
-		"Buy a car! Pay £1000.",								//33
+		"Buy a car! Pay £1000 but gain a LIFE tile.",								//33
 		"'Borrow' money from another player...",							//34  BLUE
-		"Win AppCamp! Receive £1000",						//35
+		"Win AppCamp! Receive £1000 and gain LIFE tile",						//35
 		"Lose wallet! Lose £100.",					//36
-		"Throw house party! Pay £200 for damages.",									//37
-		"Go to IET Formal! Pay £200",								//38
+		"Throw house party! Pay £200 for damages but gain LIFE tile.",									//37
+		"Go to IET Formal! Pay £200 and gain LIFE tile",								//38
 		"Go on placement year - receive salary!",	//39	GREEN
 		"'Borrow' money from another player...",								//40	BLUE
-		"Get a haircut! Pay £5",											//41
-		"Noise complaint! Fined £1000.",				//42
+		"Get a haircut! Pay £5 but gain LIFE tile",											//41
+		"Noise complaint! Fined £1000 but gain LIFE tile.",				//42
 		"Buy tickets for a gig! Pay £30",						//43
 		"Spend night in a cell. Miss a turn!",				//44
 		"'Borrow' money from another player...",										//45  BLUE
-		"Lose phone! Pay £200.",				//46
-		"Student Loan day! Receive £1000.",								//47   GREEN
-		"Buy a Boojum. Pay £5.",				//48
+		"Lose phone! Pay £200 and gain LIFE tile.",				//46
+		"Student Loan day! Receive £1000 and LIFE tile.",								//47   GREEN
+		"Buy a Boojum. Pay £5 and gain LIFE tile",				//48
 		"Buy birthday present for friend! Pay £100.",		//49
 		"'Borrow' money from another player...",	//50    BLUE
 		"Pay for resit exams! Pay £500",			//51
-		"Invest in Bitcoin! Lose £200",				//52
-		"Grad party! Pay £200.",		//53
+		"Invest in Bitcoin! Lose £200 but gain LIFE tile",				//52
+		"Grad party! Pay £200 and gain LIFE tile.",		//53
 		"Game OVER!",						//54
 		
 	};
@@ -86,7 +86,10 @@ public class GameMechanics {
 		Tile.MISS_TURN,0,3,				//4
 		Tile.GAIN_500,0,2,				//5	
 		Tile.LOOSE_200,1,2,				//6	
-		Tile.BORROW_100,1,1,			//7		Blue
+		
+		Tile.FINISH,1,1,
+		//Tile.BORROW_100,1,1,			//7		Blue
+		
 		Tile.MISS_TURN,1,0,				//8
 		Tile.GAIN_200,2,0,				//9
 		Tile.GAIN_LOOSE_1000,3,0,		//10	Green

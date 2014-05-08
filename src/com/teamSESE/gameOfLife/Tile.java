@@ -66,7 +66,8 @@ public class Tile {
         	
         	case LOOSE_5:{
         		loanPlayer(playerID,new BigDecimal(5));
-        		System.out.println("Player " + playerID + " lost £5!");
+        		lifePlayer(playerID);
+        		System.out.println("Player " + playerID + " lost £5! but gained LIFE tile " + GameMechanics.playerList.get(playerID).numLife);
         		break;
         	}
         	case LOOSE_30:{
@@ -81,7 +82,8 @@ public class Tile {
         	}
         	case LOOSE_200:{
         		loanPlayer(playerID,new BigDecimal(200));
-        		System.out.println("Player " + playerID + " lost £200!");
+        		lifePlayer(playerID);
+        		System.out.println("Player " + playerID + " lost £200! " + GameMechanics.playerList.get(playerID).numLife);
         		break;
         	}
         	case LOOSE_500:{
@@ -92,7 +94,8 @@ public class Tile {
         	
         	case LOOSE_1000:{
         		loanPlayer(playerID,new BigDecimal(1000));
-        		System.out.println("Player " + playerID + " lost £1000!");
+        		lifePlayer(playerID);
+        		System.out.println("Player " + playerID + " lost £1000! " + GameMechanics.playerList.get(playerID).numLife);
         		break;
         	}
         	
@@ -104,8 +107,9 @@ public class Tile {
         	}
         	case GAIN_200:{
         		payPlayer(playerID,new BigDecimal(200));
+        		lifePlayer(playerID);
         		//GameGUI.tileInfo.setText(GameMechanics.playerList.get(playerID).name + " has landed on a gain 200 tile");
-        		System.out.println("Player " + playerID + " gained £200!");
+        		System.out.println("Player " + playerID + " gained £200! and gained a LIFE tile " + GameMechanics.playerList.get(playerID).numLife);
         		break;
         	}
         	
@@ -117,8 +121,9 @@ public class Tile {
         	}
            	case GAIN_1000:{
         		payPlayer(playerID,new BigDecimal(1000));
+        		lifePlayer(playerID);
         		//GameGUI.tileInfo.setText(GameMechanics.playerList.get(playerID).name + " has landed on a gain 200 tile");
-        		System.out.println("Player " + playerID + " gained £1000!");
+        		System.out.println("Player " + playerID + " gained £1000! and a LIFE tile" + GameMechanics.playerList.get(playerID).numLife);
         		break;
         	}
         	
@@ -191,5 +196,7 @@ public class Tile {
 		GameMechanics.playerList.get(playerID).loan = GameMechanics.playerList.get(playerID).loan.add(amount);
 	}
 	
-	
+	private void lifePlayer(int playerID){
+		GameMechanics.playerList.get(playerID).numLife = GameMechanics.playerList.get(playerID).numLife.add(new BigDecimal(1));
+	}
 }
