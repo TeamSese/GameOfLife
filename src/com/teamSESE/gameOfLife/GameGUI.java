@@ -130,7 +130,7 @@ public class GameGUI extends JFrame{
 		setExtendedState(getExtendedState()|JFrame.MAXIMIZED_BOTH );		//Maximises GUI
 		setLocationRelativeTo(null);
 
-		c.setBackground(Color.magenta);
+		c.setBackground(Color.lightGray);
 
 		//  *************** this sets up the board, setting each icon the the appropiate position ***********
 		for (int i= 0; i< sizeOfGridX; i++) {
