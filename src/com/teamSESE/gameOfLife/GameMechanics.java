@@ -23,12 +23,12 @@ public class GameMechanics {
 	static int tileProperties[] = {		//What each tile should do goes in here - in order!
 								//Tile Number
 		Tile.SELECT_COURSE,3,4,		//0
-		Tile.GAIN_200,2,4,			//1
+		Tile.GAIN_500,2,4,			//1
 		Tile.PAY_DAY,1,4,				//2
-		Tile.MISS_TURN,0,4,				//3
-		Tile.MISS_TURN,0,3,				//4
-		Tile.MISS_TURN,0,2,				//5
-		Tile.MISS_TURN,1,2,				//6
+		Tile.LOOSE_200,0,4,				//3
+		Tile.GAIN_500,0,3,				//4
+		Tile.GAIN_200,0,2,				//5
+		Tile.LOOSE_500,1,2,				//6
 		Tile.FINISH,1,1,		//7
 		Tile.GAIN_200,1,0,				//8
 		Tile.GAIN_200,2,0,				//9

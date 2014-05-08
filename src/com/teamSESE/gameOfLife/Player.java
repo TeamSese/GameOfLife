@@ -7,12 +7,13 @@ import java.math.BigDecimal;
 
 import javax.imageio.ImageIO;
 
-public class Player {
+public class Player{
 	
 	String name;			//holds player name for each player
 	Color color;			//holds player colour for each player 	- note it is of type Color 
 	BigDecimal money;		//holds player money for each player 	- note it is of type BigDecimal
 	BigDecimal loan;
+	BigDecimal finalMoney;
 	Course course;
 	House house;
 	int boardPosition;
@@ -37,6 +38,8 @@ public class Player {
 		
 		this.XPos = 400;
 		this.YPos = 300;
+		
+
 		
 		try {
 		if(this.color == color.red){
@@ -100,6 +103,11 @@ public class Player {
 	int getMissTurn()
 	{
 		return this.missTurn;
+	}
+	
+	BigDecimal finalMoney()
+	{
+		return this.money.subtract(this.loan);
 	}
 	
 	boolean isFinished()
