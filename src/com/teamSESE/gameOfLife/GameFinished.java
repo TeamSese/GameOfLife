@@ -60,7 +60,7 @@ public class GameFinished extends JFrame{
       @Override
       public int compare(Player p1, Player p2)
       {
-          return  (p2.finalMoney()).compareTo(p1.finalMoney());
+          return  (p2.finalTotal()).compareTo(p1.finalTotal());
       }
   });
 		

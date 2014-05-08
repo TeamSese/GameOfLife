@@ -19,7 +19,7 @@ public class GameMechanics {
 	public static boolean gameOver =false;
 	public static DebugGUI g1;
 	public static int j;
-	static int lastTile = 7;
+	static int lastTile = 54;
 	static String tileString[] = {
 		"Select Course",					//0
 		"Defered start - miss a turn!",		//1
