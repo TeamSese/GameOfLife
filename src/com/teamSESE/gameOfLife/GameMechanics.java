@@ -124,7 +124,6 @@ public class GameMechanics {
 		return low + (int)(high * Math.random());
 	}
 
-<<<<<<< HEAD
 	public static void movePlayer(int playerID) {
 		
 		//JOptionPane chooseRoll = new JOptionPane(GameMechanics.playerList.get(i).name + ", your turn to roll");
@@ -137,11 +136,7 @@ public class GameMechanics {
 		
 		//GameMechanics.playerList.get(0).reachedPosition = false;
 		GameGUI.rollDice.setEnabled(false);
-=======
-	public static void movePlayer(int playerID) 
-	{
 		
->>>>>>> e6f6f0863b47c7ab036fe2219bc249185a3dad22
 		j = dice();
 		
 		if (gameOver == false)

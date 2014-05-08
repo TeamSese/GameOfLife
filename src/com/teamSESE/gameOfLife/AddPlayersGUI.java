@@ -68,7 +68,7 @@ public class AddPlayersGUI extends JFrame implements ActionListener{
 		
 		playerNameField = new JTextField();
 		innerTextBoxPanel.add(playerNameField);
-		playerNameField.setColumns(27);
+		playerNameField.setColumns(15);
 		textBoxPanel.add(innerTextBoxPanel, BorderLayout.CENTER);
 		
 		JLabel lblEnterColor = new JLabel("  2. Choose a colour:");

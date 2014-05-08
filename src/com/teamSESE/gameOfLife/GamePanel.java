@@ -20,74 +20,10 @@ import javax.swing.Timer;
 import javax.swing.border.TitledBorder;
 
 public class GamePanel extends JPanel {
-<<<<<<< HEAD
-	
-		BufferedImage counter1;
-		BufferedImage counter2;
-		BufferedImage counter3;
-		BufferedImage counter4;
-		BufferedImage counter5;
-		BufferedImage counter6;
-		
-		int diceButtonFlag = 0;
-=======
->>>>>>> e6f6f0863b47c7ab036fe2219bc249185a3dad22
-    
-    //ArrayList<Integer> xVal = new ArrayList<Integer>();
-    //ArrayList<Integer> yVal = new ArrayList<Integer>();
 	
     public GamePanel(){
     	
-<<<<<<< HEAD
-    	try {
-    		
-    		counter1 = ImageIO.read(new File("PurpleIcon.png"));
-    		counter2 = ImageIO.read(new File("RedIcon.png"));
-    		counter3 = ImageIO.read(new File("YellowIcon.png"));
-    		counter4 = ImageIO.read(new File("OrangeIcon.png"));
-    		counter5 = ImageIO.read(new File("GreenIcon.png"));
-    		counter6 = ImageIO.read(new File("RedIcon.png"));
-    		
-    		
-    		Timer timer = new Timer(20, new ActionListener() {
-    			@Override
-    			public void actionPerformed(ActionEvent e) {
-    				for(int i = 0; i < GameMechanics.playerList.size(); i++){
-    					if(playerXPos(i) != playerTargetXPos(i)){
-    						if(playerXPos(i) < playerTargetXPos(i)){incPlayerXPos(i);}
-    						if(playerXPos(i) > playerTargetXPos(i)){decPlayerXPos(i);}
-    					}
-    					if(playerYPos(i) != playerTargetYPos(i)){
-    						if(playerYPos(i) < playerTargetYPos(i)){incPlayerYPos(i);}
-    						if(playerYPos(i) > playerTargetYPos(i)){decPlayerYPos(i);}
-    					}
-    					if(playerXPos(i) == playerTargetXPos(i) && playerYPos(i) == playerTargetYPos(i)){
-    						if(playerBoardPos(i) != targetPlayerBoardPos(i)){
-    							System.out.println("Incrementing player board position");
-    							incPlayerBoardPos(i);
-    						}
-    					}
-    				}
-    				for(int i = 0; i < GameMechanics.playerList.size(); i++){
-    					if(playerBoardPos(i) == targetPlayerBoardPos(i)){
-    						if(i == (GameMechanics.playerList.size() - 1)){
-    							GameGUI.rollDice.setEnabled(true);
-    						}
-    					}
-    					else{
-    						break;
-    					}
-    				}
-    				repaint();
-    			}
-    		});
-    		timer.setRepeats(true);
-    		timer.setCoalesce(true);
-    		timer.start();
-    	} catch (IOException ex) {
-    		ex.printStackTrace();
-    	}
-=======
+
     	Timer timer = new Timer(5, new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -107,13 +43,23 @@ public class GamePanel extends JPanel {
 						}
 					}
 				}
+				for(int i = 0; i < GameMechanics.playerList.size(); i++){
+					if(playerBoardPos(i) == targetPlayerBoardPos(i)){
+						if(i == (GameMechanics.playerList.size() - 1)){
+							GameGUI.rollDice.setEnabled(true);
+						}
+					}
+					else{
+						break;
+					}
+				}
 				repaint();
 			}
 		});
 		timer.setRepeats(true);
 		timer.setCoalesce(true);
 		timer.start();
->>>>>>> e6f6f0863b47c7ab036fe2219bc249185a3dad22
+
     }
     
     @Override
