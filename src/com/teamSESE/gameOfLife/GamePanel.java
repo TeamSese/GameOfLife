@@ -47,6 +47,7 @@ public class GamePanel extends JPanel {
 					if(playerBoardPos(i) == targetPlayerBoardPos(i)){
 						if(i == (GameMechanics.playerList.size() - 1)){
 							GameGUI.rollDice.setEnabled(true);
+							GameMechanics.updatePlayerStats();
 						}
 					}
 					else{

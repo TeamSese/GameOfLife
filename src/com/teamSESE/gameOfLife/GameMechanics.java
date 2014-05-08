@@ -165,7 +165,7 @@ public class GameMechanics {
 			System.out.println("The Game has finished");
 			gameOver = true;
 		}
-		updateDebug();
+		updatePlayerStats();
 	}
 
 	public static void startGame() {
@@ -179,7 +179,8 @@ public class GameMechanics {
 
 	}
 	
-	public static void updateDebug(){
+	public static void updatePlayerStats(){
 		g1.updateDebugGUI();
+		GameGUI.updateScorePanel();
 	}
 }
