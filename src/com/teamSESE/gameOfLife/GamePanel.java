@@ -1,23 +1,11 @@
 package com.teamSESE.gameOfLife;
 
-import java.awt.Dimension;
 import java.awt.Graphics;
-import java.awt.GridLayout;
-import java.awt.Panel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
-import java.util.ArrayList;
-
-import javax.imageio.ImageIO;
-import javax.swing.ImageIcon;
-import javax.swing.JLabel;
-import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
 import javax.swing.Timer;
-import javax.swing.border.TitledBorder;
+
 
 public class GamePanel extends JPanel {
 	
@@ -41,16 +29,16 @@ public class GamePanel extends JPanel {
 							System.out.println("Incrementing player board position");
 							incPlayerBoardPos(i);
 						}
-					}
-				}
-				for(int i = 0; i < GameMechanics.playerList.size(); i++){
-					if(playerBoardPos(i) == targetPlayerBoardPos(i)){
-						if(i == (GameMechanics.playerList.size() - 1)){
-							GameGUI.rollDice.setEnabled(true);
+						for(int j = 0; j < GameMechanics.playerList.size(); j++){
+							if((playerBoardPos(j) == targetPlayerBoardPos(j)) && (playerXPos(i) == playerTargetXPos(i) && playerYPos(i) == playerTargetYPos(i))){
+								if(j == (GameMechanics.playerList.size() - 1)){
+									GameGUI.rollDice.setEnabled(true);
+								}
+							}
+							else{
+								break;
+							}
 						}
-					}
-					else{
-						break;
 					}
 				}
 				repaint();
