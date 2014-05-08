@@ -22,6 +22,7 @@ public class GameMechanics {
 	static String tileString[] = {
 		"Select Course",					//0
 		"Defered start - miss a turn!",		//1
+<<<<<<< HEAD
 		"Student loan day! Receive £1000.",				//2		GREEN
 		"Switch courses - miss a turn, pay £3000.",		//3
 		"Get lost on a night out - miss a turn.",	//4
@@ -75,10 +76,68 @@ public class GameMechanics {
 		"Invest in Bitcoin! Lose £200",				//52
 		"Grad party! Pay £200.",		//53
 		"Game OVER!",						//54
+=======
+		"Student loan day! Receive £1000.",				//2
+		"Switch courses - miss a turn, pay £3000.",		//3
+		"Get lost on a night out - miss a turn.",	//4
+		"'Borrow' money from another player...",						//5
+		"Buy a bike - pay £200.",					//6
+		"Win scholarship - receive £500",			//7
+		"Fail an exam - miss a turn",					//8
+		"STOP - move out of elms",						//9
+		"Student Loan day!",							//10
+		"House gets broken into - loose £200",							//11
+		"Go on placement year - Receive: £5000",						//12
+		"Become addicted to something  - miss a turn",					//13
+		"Bet against your friend --- ",									//14
+		"Find some money - Receive £200",								//15
+		"Leave Game of Life Coursework to Last Minute - Miss 2 turns!!",//16
+		"Pass exams - Get a life tolken",								//17
+		"Student Loan day!",											//18
+		"Asroid stike on new house  - Gain a life tolken",				//19
+		"Bet against your friend --- ",						//20
+		"Meet your future wife - loose £500",				//21
+		"Move House!",										//22
+		"Forget to return book - loose £30",				//23
+		"Student Loan day!",								//24
+		"Student Loan day!",								//2
+		"Don't like course - Switch!",						//3
+		"Get lost on a night out - Miss a turn",			//4
+		"Sue another player",								//5
+		"Buy a bike - loose £200",							//6
+		"Receive Scholarship - Receive £500",				//7
+		"Fail an exam - miss a turn",						//8
+		"STOP - Move out of elms",							//9
+		"Student Loan day!",								//10
+		"House gets broken into - loose £200",							//11
+		"Go on placement year - Receive: £5000",						//12
+		"Become addicted to something  - miss a turn",					//13
+		"Bet against your friend --- ",									//14
+		"Find some money - Receive £200",								//15
+		"Leave Game of Life Coursework to Last Minute - Miss 2 turns!!",//16
+		"Pass exams - Get a life tolken",								//17
+		"Student Loan day!",											//18
+		"Asroid stike on new house  - Gain a life tolken",				//19
+		"Bet against your friend --- ",						//20
+		"Meet your future wife - loose £500",				//21
+		"Move House!",										//22
+		"Forget to return book - loose £30",				//23
+		"Student Loan day!",								//24
+		"Student Loan day!",				//46
+		"Don't like course - Switch!",		//47
+		"Get lost on a night out - Miss a turn",	//48
+		"Sue another player",						//49
+		"Student Loan day!",				//50
+		"Don't like course - Switch!",		//51
+		"Get lost on a night out - Miss a turn",	//52
+		"Sue another player",						//53
+		"Game OVER!",						//53
+>>>>>>> 35fdf77eb4b15ce9588fd0c32e9361f865c1d4bc
 		
 	};
 	static int tileProperties[] = {		//What each tile should do goes in here - in order!
 								//Tile Number
+<<<<<<< HEAD
 		Tile.SELECT_COURSE,3,4,			//0
 		Tile.MISS_TURN,2,4,				//1
 		Tile.GAIN_LOOSE_1000,1,4,		//2 	Green
@@ -88,6 +147,17 @@ public class GameMechanics {
 		Tile.LOOSE_200,1,2,				//6	
 		Tile.BORROW_100,1,1,			//7		Blue
 		Tile.MISS_TURN,1,0,				//8
+=======
+		Tile.SELECT_COURSE,3,4,		//0
+		Tile.GAIN_500,2,4,			//1
+		Tile.PAY_DAY,1,4,				//2
+		Tile.LOOSE_200,0,4,				//3
+		Tile.GAIN_500,0,3,				//4
+		Tile.GAIN_200,0,2,				//5
+		Tile.LOOSE_500,1,2,				//6
+		Tile.FINISH,1,1,		//7
+		Tile.GAIN_200,1,0,				//8
+>>>>>>> 35fdf77eb4b15ce9588fd0c32e9361f865c1d4bc
 		Tile.GAIN_200,2,0,				//9
 		Tile.GAIN_LOOSE_1000,3,0,		//10	Green
 		Tile.LOOSE_200,4,0,				//11
@@ -198,6 +268,8 @@ public class GameMechanics {
 		
 		if (gameOver == false)
 		{
+			playerList.get(playerID).loan = playerList.get(playerID).loan.add(playerList.get(playerID).house.rentPrice);
+			
 			if ((playerList.get(playerID).targetBoardPos  + j >= 15) && (playerList.get(playerID).house.equals(houseList.get(0))))
 			{
 				playerList.get(playerID).targetBoardPos = 15;
@@ -234,6 +306,8 @@ public class GameMechanics {
 
 		new GameGUI(GameMechanics.playerList);			//If all players have been added open the GameGUI and pass
 		g1 = new DebugGUI();
+		JOptionPane.showMessageDialog(null, "Welcome to Queens, you have moved into elms \n and rent will be paid on every turn! Good Luck!");
+
 
 	}
 	

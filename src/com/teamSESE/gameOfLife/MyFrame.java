@@ -10,7 +10,7 @@ public class MyFrame extends JFrame
 	JButton startButton;															// start button creation
 	String items[] = {"-","2","3","4","5","6"};									// options of number of players
 	JComboBox combo = new JComboBox(items);											// this is the drag down box
-	JLabel numOfP = new JLabel("Select Number Of Players:");							// label of instructions
+	JLabel numOfP = new JLabel("Select Number Of Players: ");							// label of instructions
 	JTextField players = new JTextField(20);										// text box shows how many players are selected
 
 	public MyFrame(String title, Color col)
