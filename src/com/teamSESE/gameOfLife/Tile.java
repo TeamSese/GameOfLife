@@ -26,6 +26,8 @@ public class Tile {
 	protected static final int GAIN_LIFE_TILE = 8;
 	protected static final int SELECT_HOUSE = 9;
 	protected static final int MISS_TURN = 10;
+	protected static final int FINISH = 11;
+	
 	
 	//private static final int BLUE = 5;
 	//private static final int RED = 5;
@@ -99,6 +101,13 @@ public class Tile {
         		GameMechanics.playerList.get(playerID).missTurn = GameMechanics.playerList.get(playerID).missTurn + 1;
         		GameGUI.tileInfo.setText(GameMechanics.playerList.get(playerID).name + " has landed on miss a turn");
         		System.out.println("Player " + playerID + " has to miss a turn");
+        		break;
+        	}
+        	
+        	case FINISH:{
+        		GameMechanics.playerList.get(playerID).finished = true;
+        		GameGUI.tileInfo.setText(GameMechanics.playerList.get(playerID).name + " has finished the game");
+        		System.out.println("Player " + playerID + " has completed the game");
         		break;
         	}
         	

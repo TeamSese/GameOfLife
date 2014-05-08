@@ -16,6 +16,7 @@ public class Player {
 	int YPos;
 	int missTurn;
 	boolean reachedPosition;
+	boolean finished;
 
 	Player(String playerName, Color playerColor){		//Constructor -- Each player must have a name and colour
 		this.color = playerColor;
@@ -26,6 +27,7 @@ public class Player {
 		this.house = GameMechanics.houseList.get(0);	//Sets beginner house to ELMS
 		this.boardPosition = 0;
 		this.missTurn = 0;
+		this.finished = false;
 		
 	}
 	
@@ -58,5 +60,12 @@ public class Player {
 	{
 		return this.missTurn;
 	}
-
+	
+	boolean isFinished()
+	{
+		return this.finished;
+	}
+	
 }
+
+
