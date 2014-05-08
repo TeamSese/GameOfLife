@@ -378,6 +378,7 @@ public class GameGUI extends JFrame{
 									// GAME IS OVER
 									GameFinished FinishFrame = new GameFinished();	//Selects number of Players	
 									GameMechanics.gameOver = true;
+									break;
 								}
 								else if (playerNumber + 1 == GameMechanics.playerList.size())
 								{

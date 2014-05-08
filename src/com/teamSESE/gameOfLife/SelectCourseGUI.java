@@ -107,6 +107,7 @@ SelectCourseGUI(int playerIdentity){
 		choiceButton1.setIcon(courseButtonIcon);
 		choiceButton2.setIcon(courseButtonIcon);
 		choiceButton3.setIcon(courseButtonIcon);
+		
 		//Adds 3 choice buttons
 		main.add(choiceButton1);
 		main.add(choiceButton2);
