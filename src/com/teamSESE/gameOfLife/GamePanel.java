@@ -41,6 +41,7 @@ public class GamePanel extends JPanel {
 							System.out.println("Incrementing player board position");
 							incPlayerBoardPos(i);
 						}
+<<<<<<< HEAD
 						for(int j = 0; j < GameMechanics.playerList.size(); j++){
 							if(playerBoardPos(j) == targetPlayerBoardPos(j)){
 								if(j == (GameMechanics.playerList.size() - 1)){
@@ -50,6 +51,15 @@ public class GamePanel extends JPanel {
 							else{
 								break;
 							}
+=======
+					}
+				}
+				for(int i = 0; i < GameMechanics.playerList.size(); i++){
+					if(playerBoardPos(i) == targetPlayerBoardPos(i)){
+						if(i == (GameMechanics.playerList.size() - 1)){
+							GameGUI.rollDice.setEnabled(true);
+							GameMechanics.updatePlayerStats();
+>>>>>>> 232e50e17381ab04acf49c255bfcbd27da9b6225
 						}
 					}
 				}

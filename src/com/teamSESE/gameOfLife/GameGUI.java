@@ -25,7 +25,7 @@ public class GameGUI extends JFrame{
 	static int sizeOfGridX = 7;
 	static int sizeOfGridY = 10;
 	int height, width, playerNumber, allPlayers;
-	JPanel gamePanel, scorePanel, rollPanel;
+	static JPanel gamePanel, scorePanel, rollPanel;
 	static JLabel [][] squares = new JLabel[sizeOfGridX][sizeOfGridY];
 	static JButton rollDice;
 	JLabel [][] secondSquares = new JLabel[sizeOfGridX][sizeOfGridY];
@@ -39,6 +39,8 @@ public class GameGUI extends JFrame{
 	JTextField playerTurn;
 	static JTextField tileInfo;
 	boolean checkForPlayers;
+	
+	static ArrayList<JPanel> playerPanelArray;
 	
 	/*
 	 * 
@@ -301,9 +303,7 @@ public class GameGUI extends JFrame{
 		c.add(scorePanel, "2, 1, fill, fill");
 		scorePanel.setLayout(new GridLayout(0, 1, 0, 0));
 		
-		for(int z = 0; z < GameMechanics.playerList.size(); z++){
-			scorePanel.add(createPlayerPanel(z));
-		}
+		setUpPlayerScorePanels();
 		
 		rollAmount = new JTextField(20);
 		playerTurn = new JTextField(20);
@@ -389,31 +389,20 @@ public class GameGUI extends JFrame{
 		
 	}
 	
-	private static JPanel createPlayerPanel(int playerID){
-		JPanel tempPanel = new JPanel();
-		tempPanel.setBorder(new TitledBorder(null, GameMechanics.playerList.get(playerID).name, TitledBorder.LEADING, TitledBorder.TOP, null, null));
+	private void setUpPlayerScorePanels() {
 		
-		JPanel colorPanel = new JPanel();
-		colorPanel.setBackground(GameMechanics.playerList.get(playerID).color);	// *set the background colour to the players colour
-		tempPanel.add(colorPanel);
+		for(int z = 0; z < GameMechanics.playerList.size(); z++){
+			scorePanel.add(new PlayerScorePanel(z));
+		}
 		
-		JLabel moneyLabel = new JLabel("Money - £" + GameMechanics.playerList.get(playerID).money.toString());
-		tempPanel.add(moneyLabel);
-		JLabel loanLabel = new JLabel("Loan - £" + GameMechanics.playerList.get(playerID).loan.toString());
-		tempPanel.add(loanLabel);
-		JLabel courseLabel = new JLabel("Course - " + GameMechanics.playerList.get(playerID).course.name);
-		tempPanel.add(courseLabel);
-		JLabel placementLabel = new JLabel("Placement - " + GameMechanics.playerList.get(playerID).course.placement);
-		tempPanel.add(placementLabel);
-		JLabel salaryLabel = new JLabel("Salary - £" + GameMechanics.playerList.get(playerID).course.currentSalary.toPlainString());
-		tempPanel.add(salaryLabel);
-		JLabel houseLabel = new JLabel("House - " + GameMechanics.playerList.get(playerID).house.name);
-		tempPanel.add(houseLabel);
-		JLabel rentLabel = new JLabel("Rent - £" + GameMechanics.playerList.get(playerID).house.rentPrice.toString());
-		tempPanel.add(rentLabel);
+	}
+
+	public static void updateScorePanel(){
+		for(int z = 0; z < GameMechanics.playerList.size(); z++){
+			((PlayerScorePanel) scorePanel.getComponent(z)).updatePanel(z);
+		}
 		
-		return tempPanel;
-		
+
 	}
 	
 }
