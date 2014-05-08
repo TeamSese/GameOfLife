@@ -29,7 +29,7 @@ public class GameMechanicsTest {
 		int j = 0;
 		for(int i = 0; i < GameMechanics.tileProperties.length; i=i+3){			//This will create the new tiles as they are in the tileProperties array
 			System.out.println(i);
-			GameMechanics.tileList.add(new Tile(GameMechanics.tileProperties[i],GameMechanics.tileProperties[i+1],GameMechanics.tileProperties[i+2])); 			//and add them to the tileList ArrayList (the board)
+			GameMechanics.tileList.add(new Tile(GameMechanics.tileProperties[i],GameMechanics.tileProperties[i+1],GameMechanics.tileProperties[i+2],GameMechanics.tileString[j])); 			//and add them to the tileList ArrayList (the board)
 			System.out.println("Tile: " + j + " X: "+GameMechanics.tileList.get(j).gridXPos +" Y: "+ GameMechanics.tileList.get(j).gridYPos);
 			j++;
 		}
