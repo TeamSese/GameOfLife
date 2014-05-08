@@ -200,6 +200,8 @@ public class GameMechanics {
 		
 		if (gameOver == false)
 		{
+			playerList.get(playerID).loan = playerList.get(playerID).loan.add(playerList.get(playerID).house.rentPrice);
+			
 			if ((playerList.get(playerID).targetBoardPos  + j >= 15) && (playerList.get(playerID).house.equals(houseList.get(0))))
 			{
 				playerList.get(playerID).targetBoardPos = 15;
@@ -236,6 +238,8 @@ public class GameMechanics {
 
 		new GameGUI(GameMechanics.playerList);			//If all players have been added open the GameGUI and pass
 		g1 = new DebugGUI();
+		JOptionPane.showMessageDialog(null, "Welcome to Queens, you have moved into elms \n and rent will be paid on every turn! Good Luck!");
+
 
 	}
 	

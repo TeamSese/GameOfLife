@@ -109,7 +109,6 @@ public class Player{
 		
 	BigDecimal finalMoney()
 	{
-//		return this.money.subtract((this.loan).multiply(new BigDecimal(1.20)));
 		BigDecimal loanIncreased = (this.loan).multiply(new BigDecimal(1.2));
 		loanIncreased = loanIncreased.setScale(0, RoundingMode.HALF_UP);
 		return this.money.subtract(loanIncreased);
