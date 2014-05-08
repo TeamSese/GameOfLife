@@ -18,6 +18,7 @@ public class GameMechanics {
 	public static boolean gameOver =false;
 	public static DebugGUI g1;
 	public static int j;
+	static int lastTile = 7;
 	
 	static int tileProperties[] = {		//What each tile should do goes in here - in order!
 								//Tile Number
@@ -28,7 +29,7 @@ public class GameMechanics {
 		Tile.MISS_TURN,0,3,				//4
 		Tile.MISS_TURN,0,2,				//5
 		Tile.MISS_TURN,1,2,				//6
-		Tile.MISS_TURN,1,1,		//7
+		Tile.FINISH,1,1,		//7
 		Tile.GAIN_200,1,0,				//8
 		Tile.GAIN_200,2,0,				//9
 		Tile.PAY_DAY,3,0,				//10
@@ -75,6 +76,7 @@ public class GameMechanics {
 		Tile.GAIN_200,1,5,				//51
 		Tile.GAIN_200,2,5,				//52
 		Tile.GAIN_200,3,5,				//53
+		Tile.FINISH,4,5,					//54
 		
 		};
 	
@@ -122,6 +124,7 @@ public class GameMechanics {
 		return low + (int)(high * Math.random());
 	}
 
+<<<<<<< HEAD
 	public static void movePlayer(int playerID) {
 		
 		//JOptionPane chooseRoll = new JOptionPane(GameMechanics.playerList.get(i).name + ", your turn to roll");
@@ -134,27 +137,37 @@ public class GameMechanics {
 		
 		//GameMechanics.playerList.get(0).reachedPosition = false;
 		GameGUI.rollDice.setEnabled(false);
+=======
+	public static void movePlayer(int playerID) 
+	{
+		
+>>>>>>> e6f6f0863b47c7ab036fe2219bc249185a3dad22
 		j = dice();
 		
-		if (gameOver == false){
-
-			if(playerList.get(playerID).targetBoardPos < tileList.size() && playerList.get(playerID).targetBoardPos != 0){
-				tileList.get(playerList.get(playerID).targetBoardPos).execute(playerID);
-			}
-
+		if (gameOver == false)
+		{
 			if ((playerList.get(playerID).targetBoardPos  + j >= 15) && (playerList.get(playerID).house.equals(houseList.get(0))))
 			{
 				playerList.get(playerID).targetBoardPos = 15;
 				playerList.get(playerID).house = houseList.get(1);
+			} 
+			else if (playerList.get(playerID).targetBoardPos  + j >= lastTile)
+			{
+				playerList.get(playerID).targetBoardPos = lastTile;
 			}
 			else
 			{
 				playerList.get(playerID).targetBoardPos = playerList.get(playerID).boardPosition + j;
 			}
+			
+			if(playerList.get(playerID).targetBoardPos< tileList.size())
+			{
+				tileList.get(playerList.get(playerID).targetBoardPos).execute(playerID);
+			}
 		}
 		else 
 		{
-			System.out.println(playerList.get(playerID).name + " has finished the game");
+			System.out.println("The Game has finished");
 			gameOver = true;
 		}
 		updateDebug();

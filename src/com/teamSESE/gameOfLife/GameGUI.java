@@ -24,7 +24,7 @@ public class GameGUI extends JFrame{
 	
 	static int sizeOfGridX = 7;
 	static int sizeOfGridY = 10;
-	int height, width, playerNumber;
+	int height, width, playerNumber, allPlayers;
 	JPanel gamePanel, scorePanel, rollPanel;
 	static JLabel [][] squares = new JLabel[sizeOfGridX][sizeOfGridY];
 	static JButton rollDice;
@@ -38,6 +38,7 @@ public class GameGUI extends JFrame{
 	JTextField rollAmount;
 	JTextField playerTurn;
 	static JTextField tileInfo;
+	boolean checkForPlayers;
 	
 	/*
 	 * 
@@ -68,6 +69,7 @@ public class GameGUI extends JFrame{
 		rollPanel.setLayout(new GridLayout (4,1));
 		rollDice = new JButton("Roll Dice");
 		playerNumber = 0;
+
 		
 		JLayeredPane layerPane = getLayeredPane();
 		
@@ -331,36 +333,85 @@ public class GameGUI extends JFrame{
 		rollDice.addActionListener(
 				new ActionListener()
 				{
-					//If howToPlay button is clicked
-					public void actionPerformed(ActionEvent e) {
-						//Close the menu and open the howToPlay frame (using visibility settings)
-						//setVisible(false);
+					public void actionPerformed(ActionEvent e) 
+					{
+						System.out.println("START PLAYER NUMBER =" + playerNumber);
+						System.out.println("SIZE = " + GameMechanics.playerList.size());
 						
-						if (playerNumber < GameMechanics.playerList.size())
+						if (GameMechanics.playerList.get(playerNumber).isFinished() != true)
 						{
+							System.out.println("Player is not finished " + GameMechanics.playerList.get(playerNumber) + playerNumber);
 							if (GameMechanics.playerList.get(playerNumber).getMissTurn() == 0)
 							{
+								System.out.println("Player is not miss " + GameMechanics.playerList.get(playerNumber) + playerNumber);
 								GameMechanics.movePlayer(playerNumber);
 								rollAmount.setText(GameMechanics.playerList.get(playerNumber).name + " has rolled a " + GameMechanics.j);
-								playerNumber++;
 								
+								if ((playerNumber + 1) == GameMechanics.playerList.size())
+								{
+									System.out.println("NEXT PLAYER IS 0");
+									playerNumber = 0;
+								}
+								else playerNumber++;
 							}
 							else
 							{
 								GameMechanics.playerList.get(playerNumber).missTurn = GameMechanics.playerList.get(playerNumber).getMissTurn() - 1; 
 								rollAmount.setText(GameMechanics.playerList.get(playerNumber).name + " has missed a turn!");
-								playerNumber++;
+								if ((playerNumber + 1) == GameMechanics.playerList.size())
+								{
+									System.out.println("NEXT PLAYER IS 0");
+									playerNumber = 0;
+								}
+								else playerNumber++;
 							}
-							
-							if (playerNumber == GameMechanics.playerList.size())
+
+							allPlayers = 0;
+
+							while (GameMechanics.playerList.get(playerNumber).finished == true)
 							{
-								playerNumber = 0;
+								System.out.println("HAS ENTERED NEXT PLAYER DONE " + allPlayers);
+							
+								if (allPlayers == GameMechanics.playerList.size())
+								{
+									// GAME IS OVER
+									GameFinished FinishFrame = new GameFinished();	//Selects number of Players	
+									GameMechanics.gameOver = true;
+									break;
+								}
+								else if (playerNumber + 1 == GameMechanics.playerList.size())
+								{
+									playerNumber = 0;
+								}
+								else playerNumber++;
+
+								allPlayers++;
 							}
-							playerTurn.setText(GameMechanics.playerList.get(playerNumber).name + "'s turn");
-						}	
+
+							//							else 
+							//							{
+							//								playerNumber++;
+							//	
+							//								while(checkForPlayers = true)
+							//								{
+							//									if (GameMechanics.playerList.get(playerNumber).finished == true)
+							//									{
+							//										playerNumber++;
+							//									}
+							//								}
+							//								
+							//							}
+						}
+						
+//						else if (playerNumber == GameMechanics.playerList.size())
+//						{
+//							playerNumber = 0;
+//						}
+						playerTurn.setText(GameMechanics.playerList.get(playerNumber).name + "'s turn");
+						System.out.println("END PLAYER NUMBER =" + playerNumber);
 					}
 				});
-		
+
 		setDefaultCloseOperation(MyFrame.EXIT_ON_CLOSE);
 		setVisible(true);
 		
