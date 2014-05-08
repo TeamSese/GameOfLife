@@ -14,6 +14,7 @@ import java.util.Collections;
 
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
+import javax.swing.ImageIcon;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.SwingConstants;
 import javax.swing.JButton;
@@ -95,25 +96,26 @@ public class GameFinished extends JFrame{
 		GroupLayout groupLayout = new GroupLayout(getContentPane());
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
-				.addGroup(Alignment.TRAILING, groupLayout.createSequentialGroup()
-					.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
-						.addComponent(panel_1, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 498, Short.MAX_VALUE)
-						.addComponent(panel, Alignment.LEADING, GroupLayout.PREFERRED_SIZE, 498, Short.MAX_VALUE))
+				.addGroup(groupLayout.createSequentialGroup()
+					.addComponent(panel_2, GroupLayout.PREFERRED_SIZE, 498, Short.MAX_VALUE)
+					.addContainerGap())
+				.addGroup(groupLayout.createSequentialGroup()
+					.addComponent(panel_1, GroupLayout.DEFAULT_SIZE, 502, Short.MAX_VALUE)
 					.addGap(2))
 				.addGroup(groupLayout.createSequentialGroup()
-					.addComponent(panel_2, GroupLayout.DEFAULT_SIZE, 494, Short.MAX_VALUE)
+					.addComponent(panel, GroupLayout.PREFERRED_SIZE, 498, Short.MAX_VALUE)
 					.addContainerGap())
 		);
 		groupLayout.setVerticalGroup(
 			groupLayout.createParallelGroup(Alignment.TRAILING)
 				.addGroup(groupLayout.createSequentialGroup()
 					.addContainerGap()
-					.addComponent(panel_2, GroupLayout.DEFAULT_SIZE, 44, Short.MAX_VALUE)
+					.addComponent(panel_2, GroupLayout.PREFERRED_SIZE, 135, Short.MAX_VALUE)
 					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(panel_1, GroupLayout.PREFERRED_SIZE, 360, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(panel, GroupLayout.PREFERRED_SIZE, 55, GroupLayout.PREFERRED_SIZE)
-					.addGap(1))
+					.addComponent(panel_1, GroupLayout.PREFERRED_SIZE, 288, GroupLayout.PREFERRED_SIZE)
+					.addGap(3)
+					.addComponent(panel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap())
 		);
 		panel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		panel.setBackground(Color.white);
@@ -128,17 +130,39 @@ public class GameFinished extends JFrame{
 					win[i].dispose();   
 					win[i]=null;  
 				} 
-
-				MyFrame f1 = new MyFrame("Game Of Life", Color.lightGray);
 			}
 		});
 		
 		panel.add(btnNewButton);
 		panel_1.setLayout(new GridLayout(0, 4, 0, 0));
 		
+		JPanel panel_3 = new JPanel();
+		
+	ImageIcon gameLogo = new ImageIcon(new ImageIcon(getClass().getResource("GameLogobBlank.png")).getImage().getScaledInstance(360,80, java.awt.Image.SCALE_SMOOTH));
+	JLabel logoLabel = new JLabel("", gameLogo, JLabel.CENTER);
+	panel_3.setBounds(50, 45, gameLogo.getIconWidth() + 20, gameLogo.getIconHeight() + 20);
+	panel_3.setBackground(Color.white);
+	panel_3.add(logoLabel);
+		
 		txtItsGraduationDay = new JLabel("It's Graduation day! Congratulations class of 2014. Here are your results:");
 		txtItsGraduationDay.setHorizontalAlignment(SwingConstants.CENTER);
-		panel_2.add(txtItsGraduationDay);
+		GroupLayout gl_panel_2 = new GroupLayout(panel_2);
+		gl_panel_2.setHorizontalGroup(
+			gl_panel_2.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panel_2.createSequentialGroup()
+					.addComponent(txtItsGraduationDay, GroupLayout.PREFERRED_SIZE, 494, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+				.addComponent(panel_3, GroupLayout.DEFAULT_SIZE, 498, Short.MAX_VALUE)
+		);
+		gl_panel_2.setVerticalGroup(
+			gl_panel_2.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panel_2.createSequentialGroup()
+					.addComponent(panel_3, GroupLayout.PREFERRED_SIZE, 99, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(txtItsGraduationDay, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)
+					.addGap(1))
+		);
+		panel_2.setLayout(gl_panel_2);
 		getContentPane().setLayout(groupLayout);
 		
 //		for(int i = 0; i < GameMechanics.playerList.size(); i++){
