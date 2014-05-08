@@ -30,10 +30,9 @@ public class GamePanel extends JPanel {
 							incPlayerBoardPos(i);
 						}
 						for(int j = 0; j < GameMechanics.playerList.size(); j++){
-							if(playerBoardPos(j) == targetPlayerBoardPos(j)){
+							if((playerBoardPos(j) == targetPlayerBoardPos(j)) && (playerXPos(i) == playerTargetXPos(i) && playerYPos(i) == playerTargetYPos(i))){
 								if(j == (GameMechanics.playerList.size() - 1)){
 									GameGUI.rollDice.setEnabled(true);
-									GameMechanics.updatePlayerStats();
 								}
 							}
 							else{
